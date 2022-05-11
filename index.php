@@ -10,6 +10,7 @@
 	<?php include 'navbar.php' ?>
 </head>
 <body>
-    
+    <!--LOADER-->
+    <!--END LOADER-->
 </body>
 </html>
