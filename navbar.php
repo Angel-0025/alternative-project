@@ -7,10 +7,10 @@
 			<div class="col d-flex justify-content-end">
 				<div class="social-media">
 			    	<p class="mb-0 d-flex">
-			    		<a href="#" class="d-flex align-items-center justify-content-center"><span class="fa fa-facebook"><i class="sr-only">Facebook</i></span></a>
-			    		<a href="#" class="d-flex align-items-center justify-content-center"><span class="fa fa-twitter"><i class="sr-only">Twitter</i></span></a>
-			    		<a href="#" class="d-flex align-items-center justify-content-center"><span class="fa fa-instagram"><i class="sr-only">Instagram</i></span></a>
-						<a href="#" class="d-flex align-items-center justify-content-center"><span class="fa fa-dribbble"><i class="sr-only">Dribbble</i></span></a>
+			    		<a href="#" class="d-flex align-items-center justify-content-center"><span class="fab fa-facebook-f"><i class="sr-only">Facebook</i></span></a>
+			    		<a href="#" class="d-flex align-items-center justify-content-center"><span class="fab fa-twitter"><i class="sr-only">Twitter</i></span></a>
+			    		<a href="#" class="d-flex align-items-center justify-content-center"><span class="fab fa-instagram"><i class="sr-only">Instagram</i></span></a>
+						<a href="#" class="d-flex align-items-center justify-content-center"><span class="fab fa-dribbble"><i class="sr-only">Dribbble</i></span></a>
 			    	</p>
 		        </div>
 			</div>
@@ -99,14 +99,177 @@
 								</div>
 							</div>
 						</div>
+						<div class="item">
+							<div class="product">
+								<div class="product-img">
+									<a href="shop-product-detail.html">
+										<img src="https://media.istockphoto.com/photos/programming-source-code-abstract-background-picture-id1047259374?k=20&m=1047259374&s=612x612&w=0&h=pt3XbBvrmiYgoYmVzsaUeXtV8vw_jJI9Ly8P7AL6Qig=" alt="product_img1">
+									</a>
+									<div class="product_action_box">
+										<ul class="list_none pr_action_btn">
+											<li class="add-to-cart"><a href="#"><i class="icon-basket-loaded"></i> Add To Cart</a></li>
+											<li><a href="shop-compare.html" class="popup-ajax"><i class="icon-shuffle"></i></a></li>
+											<li><a href="shop-quick-view.html" class="popup-ajax"><i class="icon-magnifier-add"></i></a></li>
+											<li><a href="#"><i class="icon-heart"></i></a></li>
+										</ul>
+									</div>	
+								</div>
+								<div class="product_info">
+									<h6 class="product_title"><a href="shop-product-detail.html">Blue Dress For Woman</a></h6>
+									<div class="product_price">
+                                    <span class="price">$45.00</span>
+										<del>$55.25</del>
+										<div class="on_sale">
+											<span>35% Off</span>
+										</div>
+										<div class="rating_wrap">
+											<div class="rating">
+												<div class="product_rate" style="width:80%"></div>
+											</div>
+											<span class="rating_num">(21)</span>
+										</div>
+									</div>
+								</div>
+							</div>
+						</div><div class="item">
+							<div class="product">
+								<div class="product-img">
+									<a href="shop-product-detail.html">
+										<img src="https://media.istockphoto.com/photos/programming-source-code-abstract-background-picture-id1047259374?k=20&m=1047259374&s=612x612&w=0&h=pt3XbBvrmiYgoYmVzsaUeXtV8vw_jJI9Ly8P7AL6Qig=" alt="product_img1">
+									</a>
+									<div class="product_action_box">
+										<ul class="list_none pr_action_btn">
+											<li class="add-to-cart"><a href="#"><i class="icon-basket-loaded"></i> Add To Cart</a></li>
+											<li><a href="shop-compare.html" class="popup-ajax"><i class="icon-shuffle"></i></a></li>
+											<li><a href="shop-quick-view.html" class="popup-ajax"><i class="icon-magnifier-add"></i></a></li>
+											<li><a href="#"><i class="icon-heart"></i></a></li>
+										</ul>
+									</div>	
+								</div>
+								<div class="product_info">
+									<h6 class="product_title"><a href="shop-product-detail.html">Blue Dress For Woman</a></h6>
+									<div class="product_price">
+                                    <span class="price">$45.00</span>
+										<del>$55.25</del>
+										<div class="on_sale">
+											<span>35% Off</span>
+										</div>
+										<div class="rating_wrap">
+											<div class="rating">
+												<div class="product_rate" style="width:80%"></div>
+											</div>
+											<span class="rating_num">(21)</span>
+										</div>
+									</div>
+								</div>
+							</div>
+						</div><div class="item">
+							<div class="product">
+								<div class="product-img">
+									<a href="shop-product-detail.html">
+										<img src="https://media.istockphoto.com/photos/programming-source-code-abstract-background-picture-id1047259374?k=20&m=1047259374&s=612x612&w=0&h=pt3XbBvrmiYgoYmVzsaUeXtV8vw_jJI9Ly8P7AL6Qig=" alt="product_img1">
+									</a>
+									<div class="product_action_box">
+										<ul class="list_none pr_action_btn">
+											<li class="add-to-cart"><a href="#"><i class="icon-basket-loaded"></i> Add To Cart</a></li>
+											<li><a href="shop-compare.html" class="popup-ajax"><i class="icon-shuffle"></i></a></li>
+											<li><a href="shop-quick-view.html" class="popup-ajax"><i class="icon-magnifier-add"></i></a></li>
+											<li><a href="#"><i class="icon-heart"></i></a></li>
+										</ul>
+									</div>	
+								</div>
+								<div class="product_info">
+									<h6 class="product_title"><a href="shop-product-detail.html">Blue Dress For Woman</a></h6>
+									<div class="product_price">
+                                    <span class="price">$45.00</span>
+										<del>$55.25</del>
+										<div class="on_sale">
+											<span>35% Off</span>
+										</div>
+										<div class="rating_wrap">
+											<div class="rating">
+												<div class="product_rate" style="width:80%"></div>
+											</div>
+											<span class="rating_num">(21)</span>
+										</div>
+									</div>
+								</div>
+							</div>
+						</div><div class="item">
+							<div class="product">
+								<div class="product-img">
+									<a href="shop-product-detail.html">
+										<img src="https://media.istockphoto.com/photos/programming-source-code-abstract-background-picture-id1047259374?k=20&m=1047259374&s=612x612&w=0&h=pt3XbBvrmiYgoYmVzsaUeXtV8vw_jJI9Ly8P7AL6Qig=" alt="product_img1">
+									</a>
+									<div class="product_action_box">
+										<ul class="list_none pr_action_btn">
+											<li class="add-to-cart"><a href="#"><i class="icon-basket-loaded"></i> Add To Cart</a></li>
+											<li><a href="shop-compare.html" class="popup-ajax"><i class="icon-shuffle"></i></a></li>
+											<li><a href="shop-quick-view.html" class="popup-ajax"><i class="icon-magnifier-add"></i></a></li>
+											<li><a href="#"><i class="icon-heart"></i></a></li>
+										</ul>
+									</div>	
+								</div>
+								<div class="product_info">
+									<h6 class="product_title"><a href="shop-product-detail.html">Blue Dress For Woman</a></h6>
+									<div class="product_price">
+                                    <span class="price">$45.00</span>
+										<del>$55.25</del>
+										<div class="on_sale">
+											<span>35% Off</span>
+										</div>
+										<div class="rating_wrap">
+											<div class="rating">
+												<div class="product_rate" style="width:80%"></div>
+											</div>
+											<span class="rating_num">(21)</span>
+										</div>
+									</div>
+								</div>
+							</div>
+						</div><div class="item">
+							<div class="product">
+								<div class="product-img">
+									<a href="shop-product-detail.html">
+										<img src="https://media.istockphoto.com/photos/programming-source-code-abstract-background-picture-id1047259374?k=20&m=1047259374&s=612x612&w=0&h=pt3XbBvrmiYgoYmVzsaUeXtV8vw_jJI9Ly8P7AL6Qig=" alt="product_img1">
+									</a>
+									<div class="product_action_box">
+										<ul class="list_none pr_action_btn">
+											<li class="add-to-cart"><a href="#"><i class="icon-basket-loaded"></i> Add To Cart</a></li>
+											<li><a href="shop-compare.html" class="popup-ajax"><i class="icon-shuffle"></i></a></li>
+											<li><a href="shop-quick-view.html" class="popup-ajax"><i class="icon-magnifier-add"></i></a></li>
+											<li><a href="#"><i class="icon-heart"></i></a></li>
+										</ul>
+									</div>	
+								</div>
+								<div class="product_info">
+									<h6 class="product_title"><a href="shop-product-detail.html">Blue Dress For Woman</a></h6>
+									<div class="product_price">
+                                    <span class="price">$45.00</span>
+										<del>$55.25</del>
+										<div class="on_sale">
+											<span>35% Off</span>
+										</div>
+										<div class="rating_wrap">
+											<div class="rating">
+												<div class="product_rate" style="width:80%"></div>
+											</div>
+											<span class="rating_num">(21)</span>
+										</div>
+									</div>
+								</div>
+							</div>
+						</div>
 					</div>
 				</div>
 			</div>
+			
 		</div>
 	</div>
 </div>
 
 <script>
+
 
 $('.slick-slider').slick({
   dots: true,
@@ -114,6 +277,7 @@ $('.slick-slider').slick({
   speed: 300,
   slidesToShow: 3,
   slidesToScroll: 4,
+  navText: ['<i class="ion-ios-arrow-left"></i>', '<i class="ion-ios-arrow-right"></i>'],
   responsive: [
     {
       breakpoint: 1024,
@@ -149,6 +313,8 @@ $('.owl-carousel').owlCarousel({
     margin:10,
 	dots: false,
     responsiveClass:true,
+	lazyLoad:true,
+	navText: ['<i class="ion-ios-arrow-left"></i>', '<i class="ion-ios-arrow-right"></i>'],
     responsive:{
         0:{
             items:1,
@@ -170,5 +336,25 @@ $('.owl-carousel').owlCarousel({
         }
     }
 })
+
+
+$('.popup-ajax').magnificPopup({
+    type: 'ajax',
+    callbacks: {
+        ajaxContentAdded: function() {
+            carousel_slider();
+            slick_slider();
+         }
+    }
+});
+$('.popup-ajax').magnificPopup({
+		type: 'ajax',
+		callbacks: {
+			ajaxContentAdded: function() {
+				carousel_slider();
+				slick_slider();
+			 }
+		}
+	});
 </script>
     
