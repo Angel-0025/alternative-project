@@ -1,3 +1,4 @@
+<!-- START nav -->
 <div class="wrap">
 	<div class="container">
 		<div class="row justify-content-between">
@@ -48,7 +49,8 @@
 	    </div>
 	</div>
 </nav>
-    <!-- END nav -->
+<!-- END nav -->
+<!-- START main content-->
 <div class="main-content">
 	<div class="section">
 		<div class="container">
@@ -263,7 +265,6 @@
 					</div>
 				</div>
 			</div>
-			
 		</div>
 	</div>
 </div>
@@ -312,20 +313,21 @@ $('.owl-carousel').owlCarousel({
     loop:true,
     margin:10,
 	dots: false,
+	nav: true,
     responsiveClass:true,
 	lazyLoad:true,
 	navText: ['<i class="ion-ios-arrow-left"></i>', '<i class="ion-ios-arrow-right"></i>'],
     responsive:{
         0:{
             items:1,
-            nav:true
+            nav:false
         },
         481:{
             items:2,
-            nav:true
+            nav:false
         },
         768:{
-            items:4,
+            items:3,
             nav:true,
             loop:true
         },

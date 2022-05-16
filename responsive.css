@@ -1,0 +1,79 @@
+/* -------------------------------------------------
+  (min-width: 1680px)
+---------------------------------------------------*/
+@media only screen and (min-width: 1680px) {
+    .custom-container {
+        max-width: 1650px;
+        padding-right: 15px;
+        padding-left: 15px;
+        margin-right: auto;
+        margin-left: auto;
+    }
+    }
+    
+/* -------------------------------------------------
+    (max-width: 1250px)
+---------------------------------------------------*/
+@media only screen and (max-width: 1250px) {
+    .nav_style1.owl-theme .owl-nav .owl-next {
+        right: -30px;
+    }
+    .nav_style1.owl-theme .owl-nav .owl-prev {
+        left: -30px;
+    }
+}
+
+@media only screen and (max-width: 1199px) {
+    .nav_style1.owl-theme .owl-nav .owl-next {
+        right: 0;
+    }
+    .nav_style1.owl-theme .owl-nav .owl-prev {
+        left: 0px;
+    }
+}
+
+/* -------------------------------------------------
+  (min-width: 767px) and (max-width: 991px)
+---------------------------------------------------*/
+@media only screen and (min-width: 767px) and (max-width: 991px) {
+
+}
+/* -------------------------------------------------
+  max-width: 1199px
+---------------------------------------------------*/
+@media only screen and (max-width: 1199px) {
+
+}
+
+/* -------------------------------------------------
+  max-width: 991px
+---------------------------------------------------*/
+@media only screen and (max-width: 991px) {
+
+}
+
+/* -------------------------------------------------
+  max-width: 767px
+---------------------------------------------------*/
+@media only screen and (max-width: 767px) {
+
+}
+/* -------------------------------------------------
+  max-width: 575px
+---------------------------------------------------*/
+@media only screen and (max-width: 575px) {
+
+}
+/* -------------------------------------------------
+  max-width: 480px
+---------------------------------------------------*/
+@media only screen and (max-width: 480px) {
+
+}
+
+/* -------------------------------------------------
+  max-width: 380px
+---------------------------------------------------*/
+@media only screen and (max-width: 380px) {
+    
+}
