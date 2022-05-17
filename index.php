@@ -12,5 +12,7 @@
 <body>
     <!--LOADER-->
     <!--END LOADER-->
+    
 </body>
+<script src="assets/Js/script.js"></script>
 </html>
