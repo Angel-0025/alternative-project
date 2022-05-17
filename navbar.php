@@ -1,5 +1,13 @@
+<!-- LOADER -->
+<div class="preloader">
+    <div class="lds-ellipsis">
+        <span></span>
+        <span></span>
+        <span></span>
+    </div>
+</div>
 <!-- START nav -->
-<header class="header_nav fixed-top header_with_topbar">
+<header class="header_wrap fixed-top header_with_topbar">
   <div class="top-header">
     <div class="container">
       <div class="row align-items-center">
@@ -254,7 +262,7 @@
                     </ul>
                 </div>
                 <ul class="navbar-nav attr-nav align-items-center">
-                    <li><a href="javascript:void(0);" class="nav-link search_trigger"><i class="linearicons-magnifier"></i></a>
+                    <li><a href="javascript:void(0);" class="nav-link search_trigger"><span class="lnr lnr-magnifier"></span></a>
                         <div class="search_wrap">
                             <span class="close-search"><i class="ion-ios-close-empty"></i></span>
                             <form>
@@ -263,7 +271,7 @@
                             </form>
                         </div><div class="search_overlay"></div>
                     </li>
-                    <li class="dropdown cart_dropdown"><a class="nav-link cart_trigger" href="#" data-toggle="dropdown"><i class="linearicons-cart"></i><span class="cart_count">2</span></a>
+                    <li class="dropdown cart_dropdown"><a class="nav-link cart_trigger" href="#" data-toggle="dropdown"><span class="lnr lnr-cart cart"></span><span class="cart_count">2</span></a>
                         <div class="cart_box dropdown-menu dropdown-menu-right">
                             <ul class="cart_list">
                                 <li>
@@ -346,105 +354,3 @@
 		</div>
 	</div>
 </div>
-
-<script>
-
-
-$('.slick-slider').slick({
-  dots: true,
-  infinite: true,
-  speed: 300,
-  slidesToShow: 3,
-  slidesToScroll: 4,
-  navText: ['<i class="ion-ios-arrow-left"></i>', '<i class="ion-ios-arrow-right"></i>'],
-  responsive: [
-    {
-      breakpoint: 1024,
-      settings: {
-        slidesToShow: 3,
-        slidesToScroll: 3,
-        infinite: true,
-        dots: true
-      }
-    },
-    {
-      breakpoint: 600,
-      settings: {
-        slidesToShow: 2,
-        slidesToScroll: 2
-      }
-    },
-    {
-      breakpoint: 480,
-      settings: {
-        slidesToShow: 1,
-        slidesToScroll: 1
-      }
-    }
-    // You can unslick at a given breakpoint now by adding:
-    // settings: "unslick"
-    // instead of a settings object
-  ]
-});	
-
-$('.owl-carousel').owlCarousel({
-    loop:true,
-    margin:10,
-	dots: false,
-	nav: true,
-    responsiveClass:true,
-	lazyLoad:true,
-	navText: ['<i class="ion-ios-arrow-left"></i>', '<i class="ion-ios-arrow-right"></i>'],
-    responsive:{
-        0:{
-            items:1,
-            nav:false
-        },
-        481:{
-            items:2,
-            nav:false
-        },
-        768:{
-            items:3,
-            nav:true,
-            loop:true
-        },
-		1199:{
-            items:4,
-            nav:true,
-            loop:true
-        },
-		1250:{
-            items:4,
-            nav:true,
-            loop:true
-        },
-		1680:{
-            items:4,
-            nav:true,
-            loop:true
-        }
-    }
-})
-
-
-$('.popup-ajax').magnificPopup({
-    type: 'ajax',
-    callbacks: {
-        ajaxContentAdded: function() {
-            carousel_slider();
-            slick_slider();
-         }
-    }
-});
-$('.popup-ajax').magnificPopup({
-		type: 'ajax',
-		callbacks: {
-			ajaxContentAdded: function() {
-				carousel_slider();
-				slick_slider();
-			 }
-		}
-	});
-</script>
-    
