@@ -454,11 +454,12 @@
     float: left;
   }
   .navbar .navbar-nav.attr-nav li .nav-link {
-    padding: 20px 10px;
+    padding: 20px 7px;
   }
   .navbar .navbar-nav.attr-nav li .nav-link.search_trigger,
-  .navbar .navbar-nav.attr-nav li .nav-link.cart_trigger {
-    padding: 16px 8px;
+  .navbar .navbar-nav.attr-nav li .nav-link.cart_trigger,
+  .navbar .navbar-nav.attr-nav li .nav-link.wish_list{
+    padding: 16px 7px;
   }
   .cart_count, .wishlist_count {
     top: 0;
@@ -536,7 +537,7 @@
   .navbar .attr-nav li.nav-btn {
     margin-top: 8px;
   }
-  .navbar .navbar-nav.attr-nav li .nav-link.search_trigger [class*="linearicons-"], .navbar .navbar-nav.attr-nav li .nav-link.cart_trigger [class*="linearicons-"] {
+  .navbar .navbar-nav.attr-nav li .nav-link.search_trigger [class*="lnr-"], .navbar .navbar-nav.attr-nav li .nav-link.cart_trigger [class*="lnr-"], .navbar .navbar-nav.attr-nav li .nav-link.wish_list [class*="lnr-"]{
     margin-top: 5px;
     display: inline-block;
   }
@@ -1492,8 +1493,8 @@
   .sidebar_right_push.sidetoggle_active {
     right: 320px;
   }
-  .navbar .attr-nav li .nav-link i[class*="linearicons-"],
-  .navbar .navbar-nav.attr-nav li .nav-link.search_trigger [class*="linearicons-"], .navbar .navbar-nav.attr-nav li .nav-link.cart_trigger [class*="linearicons-"] {
+  .navbar .attr-nav li .nav-link i[class*="lnr-"],
+  .navbar .navbar-nav.attr-nav li .nav-link.search_trigger [class*="lnr-"], .navbar .navbar-nav.attr-nav li .nav-link.cart_trigger [class*="lnr-"], .navbar .navbar-nav.attr-nav li .nav-link.wish_list [class*="lnr-"] {
     font-size: 18px;
   }
   .banner_content1 h2 {

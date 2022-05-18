@@ -149,7 +149,7 @@
 	flex-direction: row;
 }
 .navbar-nav.attr-nav li .nav-link {
-	padding: 20px 10px;
+	padding: 20px 7px;
 	position: relative;
 	white-space: nowrap;
 }
@@ -457,6 +457,9 @@
 	vertical-align: middle;
 }
 .navbar .navbar-nav > li > .nav-link.cart_trigger  {
+	font-size: 20px;
+}
+.navbar .navbar-nav > li > .nav-link.wish_list  {
 	font-size: 20px;
 }
 .cart_list li {

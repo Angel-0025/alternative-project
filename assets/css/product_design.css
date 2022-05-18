@@ -60,42 +60,7 @@
 .product_box .product_info {
 	position: relative;
 }
-.product_box .add-to-cart {
-	position: absolute;
-	left: 0;
-	right: 0;
-	bottom: -20px;
-	background-color: #fff;
-	padding: 10px 15px 15px 15px;
-	opacity: 0;
-	transition: all 0.3s ease-in-out;
-	visibility: hidden;
-}
-.product_box:hover .add-to-cart {
-	bottom: 0px;
-	opacity: 1;
-	visibility: visible;
-}
-.product_box .pr_action_btn li a {
-	border-radius: 100%;
-	width: 45px;
-	height: 45px;
-	line-height: 45px;
-}
-.pr_action_btn{
-  padding-left: 0px;
-}
-.product_wrap .pr_action_btn li a {
-	box-shadow: 0 0 5px rgba(0,0,0,0.2);
-	border-radius: 100%;
-	width: 35px;
-	height: 35px;
-	line-height: 35px;
-}
-.product_wrap .pr_action_btn li a i {
-	line-height: 35px;
-	font-size: 16px;
-}
+
 .carousel_slider .product, 
 .carousel_slider .product_wrap {
 	margin: 5px;
@@ -217,111 +182,6 @@
 	position: absolute;
 	left: 0;
 	font-weight: 900;
-}
-.product_action_box {
-	position: absolute;
-	top: 50%;
-	left: 0;
-	z-index: 2;
-	right: 0;
-	text-align: center;
-	padding-top: 0;
-	transition: all .5s ease-in-out;
-	-moz-transform: translateY(-50%);
-	-webkit-transform: translateY(-50%);
-	transform: translateY(-50%);
-}
-.pr_action_btn {
-	display: table;
-	margin: 0 auto;
-}
-.product_img {
-	position: relative;
-	overflow: hidden;
-}
-.product_img::before {
-	content: "";
-	position: absolute;
-	left: 0;
-	right: 0;
-	bottom: 0;
-	top: 0;
-	background-color: rgba(0,0,0,0.2);
-	opacity: 0;
-	transition: all 0.5s ease-in-out;
-	z-index: 1;
-}
-.product:hover .product_img:before,
-.product_box:hover .product_img:before {
-	opacity: 1;
-}
-.pr_action_btn li {
-	position: relative;
-	margin: 0px 5px;
-	display: inline-block;
-}
-.product_wrap .pr_action_btn li {
-	display: block;
-	margin: 10px 0;
-}
-.product_wrap .pr_action_btn {
-	margin: 0 0 0 10px;
-}
-.product_action_box li {
-	-webkit-transform: translate(0, 15px);
-	-ms-transform: translate(0, 15px);
-	-o-transform: translate(0, 15px);
-	transform: translate(0, 15px);
-	opacity: 0;
-}
-.product_action_box li:nth-child(1) {
-	-webkit-transition: all 0.2s ease 0s;
-	-o-transition: all 0.2s ease 0s;
-	transition: all 0.2s ease 0s;
-}
-.product_action_box li:nth-child(2) {
-	-webkit-transition: all 0.3s ease 0s;
-	-o-transition: all 0.3s ease 0s;
-	transition: all 0.3s ease 0s;
-}
-.product_action_box li:nth-child(3) {
-	-webkit-transition: all 0.4s ease 0s;
-	-o-transition: all 0.4s ease 0s;
-	transition: all 0.4s ease 0s;
-}
-.product_action_box li:nth-child(4) {
-	-webkit-transition: all 0.5s ease 0s;
-	-o-transition: all 0.5s ease 0s;
-	transition: all 0.5s ease 0s;
-}
-.product:hover .product_action_box li,
-.product_box:hover .product_action_box li,
-.product_wrap:hover .product_action_box li {
-	-webkit-transform: translate(0, 0);
-	-ms-transform: translate(0, 0);
-	-o-transform: translate(0, 0);
-	transform: translate(0, 0);
-	opacity: 1;
-}
-.pr_action_btn li a {
-	background-color: #fff;
-	font-size: 0;
-	text-transform: capitalize;
-	transition: all 0.3s ease-in-out;
-	width: 37px;
-	height: 37px;
-	padding: 0;
-	display: block;
-	text-align: center;
-}
-.pr_action_btn li a i {
-	vertical-align: middle;
-	line-height: 37px;
-	font-size: 18px;
-}
-.pr_action_btn li a:hover {
-	background-color: #FF324D;
-	color: #fff;
 }
 .product .product_title,
 .product_box .product_title,
@@ -825,40 +685,6 @@
     transform: translate(0px, 0px);
     opacity: 1;
     filter: alpha(opacity=1);
-}
-.shop_container.list .pr_action_btn {
-	display: block;
-	margin: 0;
-}
-.shop_container.list .pr_action_btn li {
-	margin: 0 5px 0 0;
-	display: inline-block;
-	vertical-align: middle;
-}
-.shop_container.list .pr_action_btn li a {
-	box-shadow: none;
-}
-.shop_container.list .pr_action_btn li a:hover {
-	background-color: transparent;
-	color: #FF324D;
-}
-.shop_container.list .list_product_action_box .pr_action_btn li.add-to-cart a {
-	font-size: 16px;
-	width: auto;
-	height: auto;
-	padding: 12px 30px;
-	background-color: #FF324D;
-	border: 1px solid #FF324D;
-	color: #fff;
-	border-radius: 4px;
-}
-.shop_container.list .pr_action_btn li.add-to-cart a:hover {
-	background-color: transparent;
-	color: #FF324D;
-}
-.shop_container.list .pr_action_btn li.add-to-cart a i {
-	line-height: normal;
-	margin-right: 5px;
 }
 #Additional-info table td:first-child {
 	width: 25%;

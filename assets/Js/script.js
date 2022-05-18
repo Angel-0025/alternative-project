@@ -143,6 +143,19 @@ $(window).on('scroll', function() {
 	$(".categories_btn,#navCatContent,#navbarSidetoggle .navbar-nav,.side_navbar_toggler").on('click', function() {
 		rclass = false;
 	});
+
+
+
+	/*===================================*
+	02. BACKGROUND IMAGE JS
+	*===================================*/
+	/*data image src*/
+	$(".background_bg").each(function() {
+		var attr = $(this).attr('data-img-src');
+		if (typeof attr !== typeof undefined && attr !== false) {
+			$(this).css('background-image', 'url(' + attr + ')');
+		}
+	});
 	/*===================================*
   06. SEARCH JS
 	*===================================*/
@@ -254,23 +267,6 @@ $('.owl-carousel').owlCarousel({
     }
 })
 
-$('.popup-ajax').magnificPopup({
-    type: 'ajax',
-    callbacks: {
-        ajaxContentAdded: function() {
-            carousel_slider();
-            slick_slider();
-         }
-    }
-});
-$('.popup-ajax').magnificPopup({
-		type: 'ajax',
-		callbacks: {
-			ajaxContentAdded: function() {
-				carousel_slider();
-				slick_slider();
-			 }
-		}
-	});
+
 	
 })(jQuery);
