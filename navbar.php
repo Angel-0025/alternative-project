@@ -154,14 +154,13 @@
 </header>
 <!-- END nav -->
 
-
 <!-- START SECTION BANNER -->
 <div class="banner_section slide_medium shop_banner_slider staggered-animation-wrap">
     <div id="carouselExampleControls" class="carousel slide carousel-fade light_arrow" data-ride="carousel">
         <div class="carousel-inner">
             <div class="carousel-item active background_bg" data-img-src="https://images.unsplash.com/photo-1531256379416-9f000e90aacc?crop=entropy&cs=tinysrgb&fm=jpg&ixlib=rb-1.2.1&q=80&raw_url=true&ixid=MnwxMjA3fDB8MHxwaG90by1wYWdlfHx8fGVufDB8fHx8&auto=format&fit=crop&w=774">
                 <div class="banner_slide_content">
-                    <div class="container"><!-- STRART CONTAINER -->
+                    <div class="container"><!-- START CONTAINER -->
                         <div class="row">
                             <div class="col-lg-7 col-9">
                                 <div class="banner_content overflow-hidden">
@@ -212,6 +211,7 @@
 <!-- END SECTION BANNER -->
 <!-- START main content-->
 <div class="main-content">
+
 
 <!-- START SECTION SHOP -->
 <div class="section small_pb">
@@ -470,7 +470,87 @@
     </div>
 </div>
 <!-- END SECTION SHOP -->
-	<div class="section">
+
+
+<!-- START SECTION CATEGORIES -->
+<div class="section small_pb small_pt">
+	<div class="container">
+    	<div class="row justify-content-center">
+			<div class="col-md-6">
+                <div class="heading_s4 text-center">
+                    <h2>Top Categories</h2>
+                </div>
+                <p class="text-center leads">Lorem ipsum dolor sit amet, consectetur adipiscing elit. Phasellus blandit massa enim Nullam nunc varius.</p>
+            </div>
+		</div>
+        <div class="row align-items-center">
+            <div class="col-12">
+                <div class="cat_slider cat_style1 mt-4 mt-md-0 carousel_slider owl-carousel owl-theme nav_style5" data-loop="true" data-dots="false" data-nav="true" data-margin="30" data-responsive='{"0":{"items": "2"}, "480":{"items": "3"}, "576":{"items": "4"}, "768":{"items": "5"}, "991":{"items": "6"}, "1199":{"items": "7"}}'>
+                    <div class="item">
+                        <div class="categories_box">
+                            <a href="#">
+                                <img src="https://images.unsplash.com/photo-1516197926525-8c6cc1f192a5?ixlib=rb-1.2.1&ixid=MnwxMjA3fDB8MHxwaG90by1wYWdlfHx8fGVufDB8fHx8&auto=format&fit=crop&w=1468&q=80" alt="cat_img1"/>
+                                <span>Television</span>
+                            </a>
+                        </div>
+                    </div>
+                    <div class="item">
+                        <div class="categories_box">
+                            <a href="#">
+                                <img src="https://images.unsplash.com/photo-1516197926525-8c6cc1f192a5?ixlib=rb-1.2.1&ixid=MnwxMjA3fDB8MHxwaG90by1wYWdlfHx8fGVufDB8fHx8&auto=format&fit=crop&w=1468&q=80" alt="cat_img2"/>
+                                <span>Mobile</span>
+                            </a>
+                        </div>
+                    </div>
+                    <div class="item">
+                        <div class="categories_box">
+                            <a href="#">
+                                <img src="https://images.unsplash.com/photo-1516197926525-8c6cc1f192a5?ixlib=rb-1.2.1&ixid=MnwxMjA3fDB8MHxwaG90by1wYWdlfHx8fGVufDB8fHx8&auto=format&fit=crop&w=1468&q=80" alt="cat_img3"/>
+                                <span>Headphone</span>
+                            </a>
+                        </div>
+                    </div>
+                    <div class="item">
+                        <div class="categories_box">
+                            <a href="#">
+                                <img src="https://images.unsplash.com/photo-1516197926525-8c6cc1f192a5?ixlib=rb-1.2.1&ixid=MnwxMjA3fDB8MHxwaG90by1wYWdlfHx8fGVufDB8fHx8&auto=format&fit=crop&w=1468&q=80" alt="cat_img4"/>
+                                <span>Watch</span>
+                            </a>
+                        </div>
+                    </div>
+                    <div class="item">
+                        <div class="categories_box">
+                            <a href="#">
+                                <img src="https://images.unsplash.com/photo-1516197926525-8c6cc1f192a5?ixlib=rb-1.2.1&ixid=MnwxMjA3fDB8MHxwaG90by1wYWdlfHx8fGVufDB8fHx8&auto=format&fit=crop&w=1468&q=80" alt="cat_img5"/>
+                                <span>Game</span>
+                            </a>
+                        </div>
+                    </div>
+                    <div class="item">
+                        <div class="categories_box">
+                            <a href="#">
+                                <img src="https://images.unsplash.com/photo-1516197926525-8c6cc1f192a5?ixlib=rb-1.2.1&ixid=MnwxMjA3fDB8MHxwaG90by1wYWdlfHx8fGVufDB8fHx8&auto=format&fit=crop&w=1468&q=80" alt="cat_img6"/>
+                                <span>Camera</span>
+                            </a>
+                        </div>
+                    </div>
+                    <div class="item">
+                        <div class="categories_box">
+                            <a href="#">
+                                <img src="https://images.unsplash.com/photo-1516197926525-8c6cc1f192a5?ixlib=rb-1.2.1&ixid=MnwxMjA3fDB8MHxwaG90by1wYWdlfHx8fGVufDB8fHx8&auto=format&fit=crop&w=1468&q=80" alt="cat_img7"/>
+                                <span>Audio</span>
+                            </a>
+                        </div>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </div>
+</div>
+<!-- END SECTION CATEGORIES --> 
+
+<!-- FEATURED PRODUCTS-->
+<div class="section">
 		<div class="container">
 			<div class="row justify-content-center">
 				<div class="col-md-6">
@@ -642,4 +722,82 @@
 		</div>
 	</div>
 </div>
+<!-- END FEATURED PRODUCTS -->
 <!-- END main content-->
+<!-- START FOOTER -->
+<footer class="footer_dark">
+	<div class="footer_top">
+        <div class="container">
+            <div class="row">
+                <div class="col-lg-3 col-md-6 col-sm-12">
+                	<div class="widget">
+                        <div class="footer_logo">
+                            <a href="#"><img src="assets/images/logo_light.png" alt="logo"/></a>
+                        </div>
+                        <p>If you are going to use of Lorem Ipsum need to be sure there isn't hidden of text</p>
+                    </div>
+                    <div class="widget">
+                        <ul class="social_icons social_white">
+                            <li><a href="#"><i class="ion-social-facebook"></i></a></li>
+                            <li><a href="#"><i class="ion-social-twitter"></i></a></li>
+                            <li><a href="#"><i class="ion-social-googleplus"></i></a></li>
+                            <li><a href="#"><i class="ion-social-youtube-outline"></i></a></li>
+                            <li><a href="#"><i class="ion-social-instagram-outline"></i></a></li>
+                        </ul>
+                    </div>
+        		</div>
+                <div class="col-lg-2 col-md-3 col-sm-6">
+                	<div class="widget">
+                        <h6 class="widget_title">Useful Links</h6>
+                        <ul class="widget_links">
+                            <li><a href="#">About Us</a></li>
+                            <li><a href="#">FAQ</a></li>
+                            <li><a href="#">Location</a></li>
+                        </ul>
+                    </div>
+                </div>
+                <div class="col-lg-2 col-md-3 col-sm-6">
+                	<div class="widget">
+                        <h6 class="widget_title">Category</h6>
+                        <ul class="widget_links">
+                            <li><a href="#">Men</a></li>
+                            <li><a href="#">Woman</a></li>
+                            <li><a href="#">Kids</a></li>
+                            <li><a href="#">Best Saller</a></li>
+                            <li><a href="#">New Arrivals</a></li>
+                        </ul>
+                    </div>
+                </div>
+                <div class="col-lg-2 col-md-4 col-sm-6">
+                    <div class="widget">
+                        <h6 class="widget_title">Information</h6>
+                        <ul class="widget_links">
+                            <li><a href="#">Term Of Service</a></li>
+                            <li><a href="#">Privacy Policy</a></li>
+                        </ul>
+                    </div>
+                </div>
+                <div class="col-lg-3 col-md-4 col-sm-6">
+                	<div class="widget">
+                        <h6 class="widget_title">Contact Info</h6>
+                        <ul class="contact_info contact_info_light">
+                            <li>
+                                <i class="ti-location-pin"></i>
+                                <p>123 Street, Old Trafford, New South London , UK</p>
+                            </li>
+                            <li>
+                                <i class="ti-email"></i>
+                                <a href="mailto:info@sitename.com">info@sitename.com</a>
+                            </li>
+                            <li>
+                                <i class="ti-mobile"></i>
+                                <p>+ 457 789 789 65</p>
+                            </li>
+                        </ul>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </div>
+</footer>
+<!-- END FOOTER -->

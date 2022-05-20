@@ -227,7 +227,7 @@ $('.slick-slider').slick({
   ]
 });	
 
-$('.owl-carousel').owlCarousel({
+$('.product_slider').owlCarousel({
     loop:true,
     margin:10,
 	dots: false,
@@ -266,7 +266,45 @@ $('.owl-carousel').owlCarousel({
         }
     }
 })
-
+$('.cat_slider').owlCarousel({
+    loop:true,
+    margin:10,
+	dots: false,
+	nav: true,
+    responsiveClass:true,
+	lazyLoad:true,
+	navText: ['<i class="ion-ios-arrow-left"></i>', '<i class="ion-ios-arrow-right"></i>'],
+    responsive:{
+        0:{
+            items:3,
+            nav:false
+        },
+        481:{
+            items:3,
+            nav:false
+        },
+        768:{
+            items:3,
+            nav:true,
+            loop:true
+        },
+		1199:{
+            items:4,
+            nav:true,
+            loop:true
+        },
+		1250:{
+            items:7,
+            nav:true,
+            loop:false
+        },
+		1680:{
+            items:7,
+            nav:true,
+            loop:false
+        }
+    }
+})
 
 	
 })(jQuery);
