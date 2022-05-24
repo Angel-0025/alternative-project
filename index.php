@@ -6,11 +6,24 @@
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
     <title>Home Page</title>
     
-	<?php include 'header.php' ?>
-	<?php include 'navbar.php' ?>
+	
 </head>
 <body>
-    <!--LOADER-->
+    <?php include 'header.php' ?>
+	<?php include 'navbar.php' ?>
+    <main id="view-panel" >
+        <?php $page = isset($_GET['page']) ? $_GET['page'] : 'home_page'; ?>
+        <?php include $page.'.php' ?>
+    </main>
+    <?php include 'footer.php' ?>
+    <!-- LOADER -->
+    <div class="preloader">
+        <div class="lds-ellipsis">
+            <span></span>
+            <span></span>
+            <span></span>
+        </div>
+    </div>
     <!--END LOADER-->
     
 </body>

@@ -1,35 +1,27 @@
-<!-- LOADER -->
-<div class="preloader">
-    <div class="lds-ellipsis">
-        <span></span>
-        <span></span>
-        <span></span>
-    </div>
-</div>
 <!-- START nav -->
 <header class="header_wrap fixed-top header_with_topbar">
-  <div class="top-header">
-    <div class="container">
-      <div class="row align-items-center">
-        <div class="col-md-6">
-          <div class="d-flex align-items-center justify-content-center justify-content-md-start">
-            <ul class="contact_detail text-center text-lg-left">
-              <li><i class="ti-mobile"></i><span>123-456-7890</span></li>
-            </ul>
-          </div>
+    <div class="top-header">
+        <div class="container">
+        <div class="row align-items-center">
+            <div class="col-md-6">
+            <div class="d-flex align-items-center justify-content-center justify-content-md-start">
+                <ul class="contact_detail text-center text-lg-left">
+                <li><i class="ti-mobile"></i><span>123-456-7890</span></li>
+                </ul>
+            </div>
+            </div>
+            <div class="col-md-6">
+            <div class="text-center text-md-right">
+                <ul class="header_list">
+                    <li><a href="wishlist.html"><i class="ti-heart"></i><span>Wishlist</span></a></li>
+                    <li><a href="login.html"><i class="ti-user"></i><span>Login</span></a></li>
+                </ul>
+            </div>
+            </div>
         </div>
-        <div class="col-md-6">
-          <div class="text-center text-md-right">
-            <ul class="header_list">
-              <li><a href="wishlist.html"><i class="ti-heart"></i><span>Wishlist</span></a></li>
-              <li><a href="login.html"><i class="ti-user"></i><span>Login</span></a></li>
-						</ul>
-          </div>
         </div>
-      </div>
     </div>
-  </div>
-  <div class="bottom_header dark_skin main_menu_uppercase">
+    <div class="bottom_header dark_skin main_menu_uppercase">
     	<div class="container">
             <nav class="navbar navbar-expand-lg"> 
                 <a class="navbar-brand" href="index.html">
@@ -41,6 +33,31 @@
                 </button>
                 <div class="collapse navbar-collapse justify-content-end" id="navbarSupportedContent">
                     <ul class="navbar-nav">
+                        <li class="dropdown">
+                            <a data-toggle="dropdown" class="nav-link dropdown-toggle nav-home_page" href="#">Home</a>
+                            <div class="dropdown-menu">
+                                <ul> 
+                                    <li><a class="dropdown-item nav-link nav_item nav-home_page" href="index.php?page=home_page">Fashion 1</a></li>
+                                    <li><a class="dropdown-item nav-link nav_item" href="#">Fashion 2</a></li>
+                                    <li><a class="dropdown-item nav-link nav_item" href="#">Furniture 1</a></li>
+                                    <li><a class="dropdown-item nav-link nav_item" href="#">Furniture 2</a></li>
+                                    <li><a class="dropdown-item nav-link nav_item" href="#">Electronics 1</a></li>
+                                    <li><a class="dropdown-item nav-link nav_item" href="#">Electronics 2</a></li>
+                                </ul>
+                            </div>   
+                        </li>
+                        <li class="dropdown">
+                            <a class="dropdown-toggle nav-link" href="#" data-toggle="dropdown">Pages</a>
+                            <div class="dropdown-menu">
+                                <ul> 
+                                    <li><a class="dropdown-item nav-link nav_item" href="about.html">About Us</a></li> 
+                                    <li><a class="dropdown-item nav-link nav_item" href="contact.html">Contact Us</a></li> 
+                                    <li><a class="dropdown-item nav-link nav_item" href="login.html">Login</a></li>
+                                    <li><a class="dropdown-item nav-link nav_item" href="signup.html">Register</a></li>
+                                    <li><a class="dropdown-item nav-link nav_item" href="term-condition.html">Terms and Conditions</a></li>
+                                </ul>
+                            </div>
+                        </li>
                         <li class="dropdown dropdown-mega-menu">
                             <a class="dropdown-toggle nav-link" href="#" data-toggle="dropdown">Products</a>
                             <div class="dropdown-menu">
@@ -87,33 +104,8 @@
                                     </li>
                                 </ul>
                             </div>
-                        </li>
-                        <li class="dropdown">
-                            <a data-toggle="dropdown" class="nav-link dropdown-toggle active" href="#">Best Seller</a>
-                            <div class="dropdown-menu">
-                                <ul> 
-                                    <li><a class="dropdown-item nav-link nav_item active" href="#">Fashion 1</a></li>
-                                    <li><a class="dropdown-item nav-link nav_item" href="#">Fashion 2</a></li>
-                                    <li><a class="dropdown-item nav-link nav_item" href="#">Furniture 1</a></li>
-                                    <li><a class="dropdown-item nav-link nav_item" href="#">Furniture 2</a></li>
-                                    <li><a class="dropdown-item nav-link nav_item" href="#">Electronics 1</a></li>
-                                    <li><a class="dropdown-item nav-link nav_item" href="#">Electronics 2</a></li>
-                                </ul>
-                            </div>   
-                        </li>
-                        <li class="dropdown">
-                            <a class="dropdown-toggle nav-link" href="#" data-toggle="dropdown">Pages</a>
-                            <div class="dropdown-menu">
-                                <ul> 
-                                    <li><a class="dropdown-item nav-link nav_item" href="about.html">About Us</a></li> 
-                                    <li><a class="dropdown-item nav-link nav_item" href="contact.html">Contact Us</a></li> 
-                                    <li><a class="dropdown-item nav-link nav_item" href="login.html">Login</a></li>
-                                    <li><a class="dropdown-item nav-link nav_item" href="signup.html">Register</a></li>
-                                    <li><a class="dropdown-item nav-link nav_item" href="term-condition.html">Terms and Conditions</a></li>
-                                </ul>
-                            </div>
-                        </li>
-                        <li><a class="nav-link nav_item" href="contact.html">Contact Us</a></li> 
+                        </li>                        
+                        <li><a class="nav-link nav_item nav-product_search" href="index.php?page=product_search">Contact Us</a></li> 
                     </ul>
                 </div>
                 <ul class="navbar-nav attr-nav align-items-center">
@@ -153,651 +145,9 @@
     </div>
 </header>
 <!-- END nav -->
-
-<!-- START SECTION BANNER -->
-<div class="banner_section slide_medium shop_banner_slider staggered-animation-wrap">
-    <div id="carouselExampleControls" class="carousel slide carousel-fade light_arrow" data-ride="carousel">
-        <div class="carousel-inner">
-            <div class="carousel-item active background_bg" data-img-src="https://images.unsplash.com/photo-1531256379416-9f000e90aacc?crop=entropy&cs=tinysrgb&fm=jpg&ixlib=rb-1.2.1&q=80&raw_url=true&ixid=MnwxMjA3fDB8MHxwaG90by1wYWdlfHx8fGVufDB8fHx8&auto=format&fit=crop&w=774">
-                <div class="banner_slide_content">
-                    <div class="container"><!-- START CONTAINER -->
-                        <div class="row">
-                            <div class="col-lg-7 col-9">
-                                <div class="banner_content overflow-hidden">
-                                	<h5 class="mb-3 staggered-animation font-weight-light" data-animation="slideInLeft" data-animation-delay="0.5s">Get up to 50% off Today Only!</h5>
-                                    <h2 class="staggered-animation" data-animation="slideInLeft" data-animation-delay="1s">Woman Fashion</h2>
-                                    <a class="btn btn-fill-out rounded-0 staggered-animation text-uppercase" href="shop-left-sidebar.html" data-animation="slideInLeft" data-animation-delay="1.5s">Shop Now</a>
-                                </div>
-                            </div>
-                        </div>
-                    </div><!-- END CONTAINER-->
-                </div>
-            </div>
-            <div class="carousel-item background_bg" data-img-src="https://images.unsplash.com/photo-1531256379416-9f000e90aacc?crop=entropy&cs=tinysrgb&fm=jpg&ixlib=rb-1.2.1&q=80&raw_url=true&ixid=MnwxMjA3fDB8MHxwaG90by1wYWdlfHx8fGVufDB8fHx8&auto=format&fit=crop&w=774">
-                <div class="banner_slide_content">
-                    <div class="container"><!-- STRART CONTAINER -->
-                        <div class="row">
-                            <div class="col-lg-6">
-                                <div class="banner_content overflow-hidden">
-                                	<h5 class="mb-3 staggered-animation font-weight-light" data-animation="slideInLeft" data-animation-delay="0.5s">50% off in all products</h5>
-                                    <h2 class="staggered-animation" data-animation="slideInLeft" data-animation-delay="1s">Man Fashion</h2>
-                                    <a class="btn btn-fill-out rounded-0 staggered-animation text-uppercase" href="shop-left-sidebar.html" data-animation="slideInLeft" data-animation-delay="1.5s">Shop Now</a>
-                                </div>
-                            </div>
-                        </div>
-                    </div><!-- END CONTAINER-->
-                </div>
-            </div>
-            <div class="carousel-item background_bg" data-img-src="https://images.unsplash.com/photo-1531256379416-9f000e90aacc?crop=entropy&cs=tinysrgb&fm=jpg&ixlib=rb-1.2.1&q=80&raw_url=true&ixid=MnwxMjA3fDB8MHxwaG90by1wYWdlfHx8fGVufDB8fHx8&auto=format&fit=crop&w=774">
-                <div class="banner_slide_content">
-                    <div class="container"><!-- STRART CONTAINER -->
-                        <div class="row">
-                            <div class="col-lg-6">
-                                <div class="banner_content overflow-hidden">
-                                	<h5 class="mb-3 staggered-animation font-weight-light" data-animation="slideInLeft" data-animation-delay="0.5s">Taking your Viewing Experience to Next Level</h5>
-                                    <h2 class="staggered-animation" data-animation="slideInLeft" data-animation-delay="1s">Summer Sale</h2>
-                                    <a class="btn btn-fill-out rounded-0 staggered-animation text-uppercase" href="shop-left-sidebar.html" data-animation="slideInLeft" data-animation-delay="1.5s">Shop Now</a>
-                                </div>
-                            </div>
-                        </div>
-                    </div><!-- END CONTAINER-->
-                </div>
-            </div>
-        </div>
-        <a class="carousel-control-prev" href="#carouselExampleControls" role="button" data-slide="prev"><i class="ion-chevron-left"></i></a>
-        <a class="carousel-control-next" href="#carouselExampleControls" role="button" data-slide="next"><i class="ion-chevron-right"></i></a>
-    </div>
-</div>
-<!-- END SECTION BANNER -->
-<!-- START main content-->
-<div class="main-content">
-
-
-<!-- START SECTION SHOP -->
-<div class="section small_pb">
-	<div class="container">
-		<div class="row">
-			<div class="col-12">
-            	<div class="heading_tab_header">
-                    <div class="heading_s2">
-                        <h2>Exclusive Products</h2>
-                    </div>
-                    <div class="tab-style2">
-                        <button class="navbar-toggler" type="button" data-toggle="collapse" data-target="#tabmenubar" aria-expanded="false"> 
-                            <span class="ion-android-menu"></span>
-                        </button>
-                        <ul class="nav nav-tabs justify-content-center justify-content-md-end" id="tabmenubar" role="tablist">
-                            <li class="nav-item">
-                                <a class="nav-link active" id="arrival-tab" data-toggle="tab" href="#arrival" role="tab" aria-controls="arrival" aria-selected="true">New Arrival</a>
-                            </li>
-                            <li class="nav-item">
-                                <a class="nav-link" id="sellers-tab" data-toggle="tab" href="#sellers" role="tab" aria-controls="sellers" aria-selected="false">Best Sellers</a>
-                            </li>
-                            <li class="nav-item">
-                                <a class="nav-link" id="featured-tab" data-toggle="tab" href="#featured" role="tab" aria-controls="featured" aria-selected="false">Featured</a>
-                            </li>
-                            <li class="nav-item">
-                                <a class="nav-link" id="special-tab" data-toggle="tab" href="#special" role="tab" aria-controls="special" aria-selected="false">Special Offer
-    </a>
-                            </li>
-                        </ul>
-                    </div>
-                </div>
-            </div>
-		</div>
-        <div class="row">
-        	<div class="col-12">
-                <div class="tab_slider">
-                	<div class="tab-pane fade show active" id="arrival" role="tabpanel" aria-labelledby="arrival-tab">
-                        <div class="product_slider carousel_slider owl-carousel owl-theme nav_style1" data-loop="true" data-dots="false" data-nav="true" data-margin="20" data-responsive='{"0":{"items": "1"}, "481":{"items": "2"}, "768":{"items": "3"}, "1199":{"items": "4"}}'>
-                            <div class="item">
-                                <div class="product">
-                                    <div class="product_img">
-                                        <a href="shop-product-detail.html">
-                                            <img src="https://images.unsplash.com/photo-1516197926525-8c6cc1f192a5?ixlib=rb-1.2.1&ixid=MnwxMjA3fDB8MHxwaG90by1wYWdlfHx8fGVufDB8fHx8&auto=format&fit=crop&w=1468&q=80" alt="product_img1" alt="product_img1">
-                                        </a>
-                                    </div>
-                                    <div class="product_info">
-                                        <h6 class="product_title"><a href="shop-product-detail.html">Blue Dress For Woman</a></h6>
-                                        <div class="product_price">
-                                            <span class="price">$45.00</span>
-                                            <del>$55.25</del>
-                                            <div class="on_sale">
-                                                <span>35% Off</span>
-                                            </div>
-                                        </div>
-                                        <div class="rating_wrap">
-                                            <div class="rating">
-                                                <div class="product_rate" style="width:80%"></div>
-                                            </div>
-                                            <span class="rating_num">(21)</span>
-                                        </div>
-                                    </div>
-                                </div>
-                            </div>
-                            <div class="item">
-                                <div class="product">
-                                    <div class="product_img">
-                                        <a href="shop-product-detail.html">
-                                            <img src="https://images.unsplash.com/photo-1516197926525-8c6cc1f192a5?ixlib=rb-1.2.1&ixid=MnwxMjA3fDB8MHxwaG90by1wYWdlfHx8fGVufDB8fHx8&auto=format&fit=crop&w=1468&q=80" alt="product_img1" alt="product_img9">
-                                        </a>
-                                    </div>
-                                    <div class="product_info">
-                                        <h6 class="product_title"><a href="shop-product-detail.html">T-Shirt Form Girls</a></h6>
-                                        <div class="product_price">
-                                            <span class="price">$45.00</span>
-                                            <del>$55.25</del>
-                                            <div class="on_sale">
-                                                <span>35% Off</span>
-                                            </div>
-                                        </div>
-                                        <div class="rating_wrap">
-                                            <div class="rating">
-                                                <div class="product_rate" style="width:80%"></div>
-                                            </div>
-                                            <span class="rating_num">(21)</span>
-                                        </div>
-                                    </div>
-                                </div>
-                            </div>
-                            <div class="item">
-                                <div class="product">
-                                    <div class="product_img">
-                                        <a href="shop-product-detail.html">
-                                            <img src="https://images.unsplash.com/photo-1516197926525-8c6cc1f192a5?ixlib=rb-1.2.1&ixid=MnwxMjA3fDB8MHxwaG90by1wYWdlfHx8fGVufDB8fHx8&auto=format&fit=crop&w=1468&q=80" alt="product_img1" alt="product_img9">
-                                        </a>
-                                    </div>
-                                    <div class="product_info">
-                                        <h6 class="product_title"><a href="shop-product-detail.html">T-Shirt Form Girls</a></h6>
-                                        <div class="product_price">
-                                            <span class="price">$45.00</span>
-                                            <del>$55.25</del>
-                                            <div class="on_sale">
-                                                <span>35% Off</span>
-                                            </div>
-                                        </div>
-                                        <div class="rating_wrap">
-                                            <div class="rating">
-                                                <div class="product_rate" style="width:80%"></div>
-                                            </div>
-                                            <span class="rating_num">(21)</span>
-                                        </div>
-                                    </div>
-                                </div>
-                            </div>
-                            <div class="item">
-                                <div class="product">
-                                    <div class="product_img">
-                                        <a href="shop-product-detail.html">
-                                            <img src="https://images.unsplash.com/photo-1516197926525-8c6cc1f192a5?ixlib=rb-1.2.1&ixid=MnwxMjA3fDB8MHxwaG90by1wYWdlfHx8fGVufDB8fHx8&auto=format&fit=crop&w=1468&q=80" alt="product_img1" alt="product_img9">
-                                        </a>
-                                    </div>
-                                    <div class="product_info">
-                                        <h6 class="product_title"><a href="shop-product-detail.html">T-Shirt Form Girls</a></h6>
-                                        <div class="product_price">
-                                            <span class="price">$45.00</span>
-                                            <del>$55.25</del>
-                                            <div class="on_sale">
-                                                <span>35% Off</span>
-                                            </div>
-                                        </div>
-                                        <div class="rating_wrap">
-                                            <div class="rating">
-                                                <div class="product_rate" style="width:80%"></div>
-                                            </div>
-                                            <span class="rating_num">(21)</span>
-                                        </div>
-                                    </div>
-                                </div>
-                            </div>
-                            <div class="item">
-                                <div class="product">
-                                    <div class="product_img">
-                                        <a href="shop-product-detail.html">
-                                            <img src="https://images.unsplash.com/photo-1516197926525-8c6cc1f192a5?ixlib=rb-1.2.1&ixid=MnwxMjA3fDB8MHxwaG90by1wYWdlfHx8fGVufDB8fHx8&auto=format&fit=crop&w=1468&q=80" alt="product_img1" alt="product_img9">
-                                        </a>
-                                    </div>
-                                    <div class="product_info">
-                                        <h6 class="product_title"><a href="shop-product-detail.html">T-Shirt Form Girls</a></h6>
-                                        <div class="product_price">
-                                            <span class="price">$45.00</span>
-                                            <del>$55.25</del>
-                                            <div class="on_sale">
-                                                <span>35% Off</span>
-                                            </div>
-                                        </div>
-                                        <div class="rating_wrap">
-                                            <div class="rating">
-                                                <div class="product_rate" style="width:80%"></div>
-                                            </div>
-                                            <span class="rating_num">(21)</span>
-                                        </div>
-                                    </div>
-                                </div>
-                            </div>
-                        </div>
-                    </div>
-                    <div class="tab-pane fade" id="sellers" role="tabpanel" aria-labelledby="sellers-tab">
-                        <div class="product_slider carousel_slider owl-carousel owl-theme nav_style1" data-loop="true" data-dots="false" data-nav="true" data-margin="20" data-responsive='{"0":{"items": "1"}, "481":{"items": "2"}, "768":{"items": "3"}, "1199":{"items": "4"}}'>
-                            <div class="item">
-                                <div class="product">
-                                    <div class="product_img">
-                                        <a href="shop-product-detail.html">
-                                            <img src="https://images.unsplash.com/photo-1516197926525-8c6cc1f192a5?ixlib=rb-1.2.1&ixid=MnwxMjA3fDB8MHxwaG90by1wYWdlfHx8fGVufDB8fHx8&auto=format&fit=crop&w=1468&q=80" alt="product_img1" alt="product_img9">
-                                        </a>
-                                    </div>
-                                    <div class="product_info">
-                                        <h6 class="product_title"><a href="shop-product-detail.html">T-Shirt Form Girls</a></h6>
-                                        <div class="product_price">
-                                            <span class="price">$45.00</span>
-                                            <del>$55.25</del>
-                                            <div class="on_sale">
-                                                <span>35% Off</span>
-                                            </div>
-                                        </div>
-                                        <div class="rating_wrap">
-                                            <div class="rating">
-                                                <div class="product_rate" style="width:80%"></div>
-                                            </div>
-                                            <span class="rating_num">(21)</span>
-                                        </div>
-                                    </div>
-                                </div>
-                            </div>
-                        </div>
-                    </div>
-                    <div class="tab-pane fade" id="featured" role="tabpanel" aria-labelledby="featured-tab">
-                        <div class="product_slider carousel_slider owl-carousel owl-theme nav_style1" data-loop="true" data-dots="false" data-nav="true" data-margin="20" data-responsive='{"0":{"items": "1"}, "481":{"items": "2"}, "768":{"items": "3"}, "1199":{"items": "4"}}'>
-                            <div class="item">
-                                <div class="product">
-                                    <div class="product_img">
-                                        <a href="shop-product-detail.html">
-                                            <img src="https://images.unsplash.com/photo-1516197926525-8c6cc1f192a5?ixlib=rb-1.2.1&ixid=MnwxMjA3fDB8MHxwaG90by1wYWdlfHx8fGVufDB8fHx8&auto=format&fit=crop&w=1468&q=80" alt="product_img1" alt="product_img5">
-                                        </a>
-                                    </div>
-                                    <div class="product_info">
-                                        <h6 class="product_title"><a href="shop-product-detail.html">blue dress for woman</a></h6>
-                                        <div class="product_price">
-                                            <span class="price">$45.00</span>
-                                            <del>$55.25</del>
-                                            <div class="on_sale">
-                                                <span>35% Off</span>
-                                            </div>
-                                        </div>
-                                        <div class="rating_wrap">
-                                            <div class="rating">
-                                                <div class="product_rate" style="width:80%"></div>
-                                            </div>
-                                            <span class="rating_num">(21)</span>
-                                        </div>
-                                    </div>
-                                </div>
-                            </div>
-                        </div>
-                    </div>
-                    <div class="tab-pane fade" id="special" role="tabpanel" aria-labelledby="special-tab">
-                        <div class="product_slider carousel_slider owl-carousel owl-theme nav_style1" data-loop="true" data-dots="false" data-nav="true" data-margin="20" data-responsive='{"0":{"items": "1"}, "481":{"items": "2"}, "768":{"items": "3"}, "1199":{"items": "4"}}'>
-                            <div class="item">
-                                <div class="product">
-                                    <div class="product_img">
-                                        <a href="shop-product-detail.html">
-                                            <img src="https://images.unsplash.com/photo-1516197926525-8c6cc1f192a5?ixlib=rb-1.2.1&ixid=MnwxMjA3fDB8MHxwaG90by1wYWdlfHx8fGVufDB8fHx8&auto=format&fit=crop&w=1468&q=80" alt="product_img1" alt="product_img4">
-                                        </a>
-                                    </div>
-                                    <div class="product_info">
-                                        <h6 class="product_title"><a href="shop-product-detail.html">light blue Shirt</a></h6>
-                                        <div class="product_price">
-                                            <span class="price">$69.00</span>
-                                            <del>$89.00</del>
-                                            <div class="on_sale">
-                                                <span>20% Off</span>
-                                            </div>
-                                        </div>
-                                        <div class="rating_wrap">
-                                            <div class="rating">
-                                                <div class="product_rate" style="width:70%"></div>
-                                            </div>
-                                            <span class="rating_num">(22)</span>
-                                        </div>
-                                    </div>
-                                </div>
-                            </div>
-                        </div>
-                    </div>
-                </div>
-            </div>
-        </div> 
-    </div>
-</div>
-<!-- END SECTION SHOP -->
-
-
-<!-- START SECTION CATEGORIES -->
-<div class="section small_pb small_pt">
-	<div class="container">
-    	<div class="row justify-content-center">
-			<div class="col-md-6">
-                <div class="heading_s4 text-center">
-                    <h2>Top Categories</h2>
-                </div>
-                <p class="text-center leads">Lorem ipsum dolor sit amet, consectetur adipiscing elit. Phasellus blandit massa enim Nullam nunc varius.</p>
-            </div>
-		</div>
-        <div class="row align-items-center">
-            <div class="col-12">
-                <div class="cat_slider cat_style1 mt-4 mt-md-0 carousel_slider owl-carousel owl-theme nav_style5" data-loop="true" data-dots="false" data-nav="true" data-margin="30" data-responsive='{"0":{"items": "2"}, "480":{"items": "3"}, "576":{"items": "4"}, "768":{"items": "5"}, "991":{"items": "6"}, "1199":{"items": "7"}}'>
-                    <div class="item">
-                        <div class="categories_box">
-                            <a href="#">
-                                <img src="https://images.unsplash.com/photo-1516197926525-8c6cc1f192a5?ixlib=rb-1.2.1&ixid=MnwxMjA3fDB8MHxwaG90by1wYWdlfHx8fGVufDB8fHx8&auto=format&fit=crop&w=1468&q=80" alt="cat_img1"/>
-                                <span>Television</span>
-                            </a>
-                        </div>
-                    </div>
-                    <div class="item">
-                        <div class="categories_box">
-                            <a href="#">
-                                <img src="https://images.unsplash.com/photo-1516197926525-8c6cc1f192a5?ixlib=rb-1.2.1&ixid=MnwxMjA3fDB8MHxwaG90by1wYWdlfHx8fGVufDB8fHx8&auto=format&fit=crop&w=1468&q=80" alt="cat_img2"/>
-                                <span>Mobile</span>
-                            </a>
-                        </div>
-                    </div>
-                    <div class="item">
-                        <div class="categories_box">
-                            <a href="#">
-                                <img src="https://images.unsplash.com/photo-1516197926525-8c6cc1f192a5?ixlib=rb-1.2.1&ixid=MnwxMjA3fDB8MHxwaG90by1wYWdlfHx8fGVufDB8fHx8&auto=format&fit=crop&w=1468&q=80" alt="cat_img3"/>
-                                <span>Headphone</span>
-                            </a>
-                        </div>
-                    </div>
-                    <div class="item">
-                        <div class="categories_box">
-                            <a href="#">
-                                <img src="https://images.unsplash.com/photo-1516197926525-8c6cc1f192a5?ixlib=rb-1.2.1&ixid=MnwxMjA3fDB8MHxwaG90by1wYWdlfHx8fGVufDB8fHx8&auto=format&fit=crop&w=1468&q=80" alt="cat_img4"/>
-                                <span>Watch</span>
-                            </a>
-                        </div>
-                    </div>
-                    <div class="item">
-                        <div class="categories_box">
-                            <a href="#">
-                                <img src="https://images.unsplash.com/photo-1516197926525-8c6cc1f192a5?ixlib=rb-1.2.1&ixid=MnwxMjA3fDB8MHxwaG90by1wYWdlfHx8fGVufDB8fHx8&auto=format&fit=crop&w=1468&q=80" alt="cat_img5"/>
-                                <span>Game</span>
-                            </a>
-                        </div>
-                    </div>
-                    <div class="item">
-                        <div class="categories_box">
-                            <a href="#">
-                                <img src="https://images.unsplash.com/photo-1516197926525-8c6cc1f192a5?ixlib=rb-1.2.1&ixid=MnwxMjA3fDB8MHxwaG90by1wYWdlfHx8fGVufDB8fHx8&auto=format&fit=crop&w=1468&q=80" alt="cat_img6"/>
-                                <span>Camera</span>
-                            </a>
-                        </div>
-                    </div>
-                    <div class="item">
-                        <div class="categories_box">
-                            <a href="#">
-                                <img src="https://images.unsplash.com/photo-1516197926525-8c6cc1f192a5?ixlib=rb-1.2.1&ixid=MnwxMjA3fDB8MHxwaG90by1wYWdlfHx8fGVufDB8fHx8&auto=format&fit=crop&w=1468&q=80" alt="cat_img7"/>
-                                <span>Audio</span>
-                            </a>
-                        </div>
-                    </div>
-                </div>
-            </div>
-        </div>
-    </div>
-</div>
-<!-- END SECTION CATEGORIES --> 
-
-<!-- FEATURED PRODUCTS-->
-<div class="section">
-		<div class="container">
-			<div class="row justify-content-center">
-				<div class="col-md-6">
-					<div class="heading_s1 text-center">
-						<h2>Featured Products</h2>
-					</div>
-				</div>
-			</div>
-			<div class="row">
-				<div class="col-md-12">
-					<div class="product_slider carousel_slider owl-carousel owl-theme nav_style1 owl-loaded owl-drag">
-						<div class="owl-stage-outer">
-							<div class="owl-stage" style="transform: translate3d(-1130px, 0px, 0px); transition: all 0s ease 0s; width: 3673px;">
-							</div>
-						</div>
-						<div class="item">
-							<div class="product">
-								<div class="product-img">
-									<a href="shop-product-detail.html">
-										<img src="https://images.unsplash.com/photo-1516197926525-8c6cc1f192a5?ixlib=rb-1.2.1&ixid=MnwxMjA3fDB8MHxwaG90by1wYWdlfHx8fGVufDB8fHx8&auto=format&fit=crop&w=1468&q=80" alt="product_img1">
-									</a>
-								</div>
-								<div class="product_info">
-									<h6 class="product_title"><a href="shop-product-detail.html">Blue Dress For Woman</a></h6>
-									<div class="product_price">
-                                    <span class="price">$45.00</span>
-										<del>$55.25</del>
-										<div class="on_sale">
-											<span>35% Off</span>
-										</div>
-										<div class="rating_wrap">
-											<div class="rating">
-												<div class="product_rate" style="width:80%"></div>
-											</div>
-											<span class="rating_num">(21)</span>
-										</div>
-									</div>
-								</div>
-							</div>
-						</div>
-                        <div class="item">
-							<div class="product">
-								<div class="product-img">
-									<a href="shop-product-detail.html">
-										<img src="https://images.unsplash.com/photo-1516197926525-8c6cc1f192a5?ixlib=rb-1.2.1&ixid=MnwxMjA3fDB8MHxwaG90by1wYWdlfHx8fGVufDB8fHx8&auto=format&fit=crop&w=1468&q=80" alt="product_img1">
-									</a>
-								</div>
-								<div class="product_info">
-									<h6 class="product_title"><a href="shop-product-detail.html">Blue Dress For Woman</a></h6>
-									<div class="product_price">
-                                    <span class="price">$45.00</span>
-										<del>$55.25</del>
-										<div class="on_sale">
-											<span>35% Off</span>
-										</div>
-										<div class="rating_wrap">
-											<div class="rating">
-												<div class="product_rate" style="width:80%"></div>
-											</div>
-											<span class="rating_num">(21)</span>
-										</div>
-									</div>
-								</div>
-							</div>
-						</div>
-                        <div class="item">
-							<div class="product">
-								<div class="product-img">
-									<a href="shop-product-detail.html">
-										<img src="https://images.unsplash.com/photo-1516197926525-8c6cc1f192a5?ixlib=rb-1.2.1&ixid=MnwxMjA3fDB8MHxwaG90by1wYWdlfHx8fGVufDB8fHx8&auto=format&fit=crop&w=1468&q=80" alt="product_img1">
-									</a>
-								</div>
-								<div class="product_info">
-									<h6 class="product_title"><a href="shop-product-detail.html">Blue Dress For Woman</a></h6>
-									<div class="product_price">
-                                    <span class="price">$45.00</span>
-										<del>$55.25</del>
-										<div class="on_sale">
-											<span>35% Off</span>
-										</div>
-										<div class="rating_wrap">
-											<div class="rating">
-												<div class="product_rate" style="width:80%"></div>
-											</div>
-											<span class="rating_num">(21)</span>
-										</div>
-									</div>
-								</div>
-							</div>
-						</div>
-                        <div class="item">
-							<div class="product">
-								<div class="product-img">
-									<a href="shop-product-detail.html">
-										<img src="https://images.unsplash.com/photo-1516197926525-8c6cc1f192a5?ixlib=rb-1.2.1&ixid=MnwxMjA3fDB8MHxwaG90by1wYWdlfHx8fGVufDB8fHx8&auto=format&fit=crop&w=1468&q=80" alt="product_img1">
-									</a>
-								</div>
-								<div class="product_info">
-									<h6 class="product_title"><a href="shop-product-detail.html">Blue Dress For Woman</a></h6>
-									<div class="product_price">
-                                    <span class="price">$45.00</span>
-										<del>$55.25</del>
-										<div class="on_sale">
-											<span>35% Off</span>
-										</div>
-										<div class="rating_wrap">
-											<div class="rating">
-												<div class="product_rate" style="width:80%"></div>
-											</div>
-											<span class="rating_num">(21)</span>
-										</div>
-									</div>
-								</div>
-							</div>
-						</div>
-                        <div class="item">
-							<div class="product">
-								<div class="product-img">
-									<a href="shop-product-detail.html">
-										<img src="https://images.unsplash.com/photo-1516197926525-8c6cc1f192a5?ixlib=rb-1.2.1&ixid=MnwxMjA3fDB8MHxwaG90by1wYWdlfHx8fGVufDB8fHx8&auto=format&fit=crop&w=1468&q=80" alt="product_img1">
-									</a>
-								</div>
-								<div class="product_info">
-									<h6 class="product_title"><a href="shop-product-detail.html">Blue Dress For Woman</a></h6>
-									<div class="product_price">
-                                    <span class="price">$45.00</span>
-										<del>$55.25</del>
-										<div class="on_sale">
-											<span>35% Off</span>
-										</div>
-										<div class="rating_wrap">
-											<div class="rating">
-												<div class="product_rate" style="width:80%"></div>
-											</div>
-											<span class="rating_num">(21)</span>
-										</div>
-									</div>
-								</div>
-							</div>
-						</div>
-                        <div class="item">
-							<div class="product">
-								<div class="product-img">
-									<a href="shop-product-detail.html">
-										<img src="https://images.unsplash.com/photo-1516197926525-8c6cc1f192a5?ixlib=rb-1.2.1&ixid=MnwxMjA3fDB8MHxwaG90by1wYWdlfHx8fGVufDB8fHx8&auto=format&fit=crop&w=1468&q=80" alt="product_img1">
-									</a>
-								</div>
-								<div class="product_info">
-									<h6 class="product_title"><a href="shop-product-detail.html">Blue Dress For Woman</a></h6>
-									<div class="product_price">
-                                    <span class="price">$45.00</span>
-										<del>$55.25</del>
-										<div class="on_sale">
-											<span>35% Off</span>
-										</div>
-										<div class="rating_wrap">
-											<div class="rating">
-												<div class="product_rate" style="width:80%"></div>
-											</div>
-											<span class="rating_num">(21)</span>
-										</div>
-									</div>
-								</div>
-							</div>
-						</div>
-					</div>
-				</div>
-			</div>
-		</div>
-	</div>
-</div>
-<!-- END FEATURED PRODUCTS -->
-<!-- END main content-->
-<!-- START FOOTER -->
-<footer class="footer_dark">
-	<div class="footer_top">
-        <div class="container">
-            <div class="row">
-                <div class="col-lg-3 col-md-6 col-sm-12">
-                	<div class="widget">
-                        <div class="footer_logo">
-                            <a href="#"><img src="assets/images/logo_light.png" alt="logo"/></a>
-                        </div>
-                        <p>If you are going to use of Lorem Ipsum need to be sure there isn't hidden of text</p>
-                    </div>
-                    <div class="widget">
-                        <ul class="social_icons social_white">
-                            <li><a href="#"><i class="ion-social-facebook"></i></a></li>
-                            <li><a href="#"><i class="ion-social-twitter"></i></a></li>
-                            <li><a href="#"><i class="ion-social-googleplus"></i></a></li>
-                            <li><a href="#"><i class="ion-social-youtube-outline"></i></a></li>
-                            <li><a href="#"><i class="ion-social-instagram-outline"></i></a></li>
-                        </ul>
-                    </div>
-        		</div>
-                <div class="col-lg-2 col-md-3 col-sm-6">
-                	<div class="widget">
-                        <h6 class="widget_title">Useful Links</h6>
-                        <ul class="widget_links">
-                            <li><a href="#">About Us</a></li>
-                            <li><a href="#">FAQ</a></li>
-                            <li><a href="#">Location</a></li>
-                        </ul>
-                    </div>
-                </div>
-                <div class="col-lg-2 col-md-3 col-sm-6">
-                	<div class="widget">
-                        <h6 class="widget_title">Category</h6>
-                        <ul class="widget_links">
-                            <li><a href="#">Men</a></li>
-                            <li><a href="#">Woman</a></li>
-                            <li><a href="#">Kids</a></li>
-                            <li><a href="#">Best Saller</a></li>
-                            <li><a href="#">New Arrivals</a></li>
-                        </ul>
-                    </div>
-                </div>
-                <div class="col-lg-2 col-md-4 col-sm-6">
-                    <div class="widget">
-                        <h6 class="widget_title">Information</h6>
-                        <ul class="widget_links">
-                            <li><a href="#">Term Of Service</a></li>
-                            <li><a href="#">Privacy Policy</a></li>
-                        </ul>
-                    </div>
-                </div>
-                <div class="col-lg-3 col-md-4 col-sm-6">
-                	<div class="widget">
-                        <h6 class="widget_title">Contact Info</h6>
-                        <ul class="contact_info contact_info_light">
-                            <li>
-                                <i class="ti-location-pin"></i>
-                                <p>123 Street, Old Trafford, New South London , UK</p>
-                            </li>
-                            <li>
-                                <i class="ti-email"></i>
-                                <a href="mailto:info@sitename.com">info@sitename.com</a>
-                            </li>
-                            <li>
-                                <i class="ti-mobile"></i>
-                                <p>+ 457 789 789 65</p>
-                            </li>
-                        </ul>
-                    </div>
-                </div>
-            </div>
-        </div>
-    </div>
-</footer>
-<!-- END FOOTER -->
+<script>
+    $('.nav-link').click(function(){
+    console.log($(this).attr('href'))
+	})
+    $('.nav-<?php echo isset($_GET['page']) ? $_GET['page'] : '' ?>').addClass('active');
+</script>
