@@ -118,7 +118,7 @@
                             </form>
                         </div><div class="search_overlay"></div>
                     </li>
-                    <li><a href="#" class="nav-link wish_list"><span class="lnr lnr-heart cart"><span class="wishlist_count">0</span></a></li>
+                    <li><a href="index.php?page=wishlist_page" class="nav-link wish_list nav-wishlist_page"><span class="lnr lnr-heart cart"><span class="wishlist_count">0</span></a></li>
                     <li class="dropdown cart_dropdown"><a class="nav-link cart_trigger" href="#" data-toggle="dropdown"><span class="lnr lnr-cart cart"></span><span class="cart_count">2</span></a>
                         <div class="cart_box dropdown-menu dropdown-menu-right">
                             <ul class="cart_list">
