@@ -10,7 +10,7 @@
             </div>
             <div class="col-md-6">
                 <ol class="breadcrumb justify-content-md-end">
-                    <li class="breadcrumb-item"><a href="#">Home</a></li>
+                    <li class="breadcrumb-item"><a href="index.php?page=home_page">Home</a></li>
                     <li class="breadcrumb-item"><a href="#">Pages</a></li>
                     <li class="breadcrumb-item active">Shopping Cart</li>
                 </ol>
@@ -45,11 +45,13 @@
                             	<td class="product-thumbnail"><a href="#"><img src="https://images.unsplash.com/photo-1516197926525-8c6cc1f192a5?ixlib=rb-1.2.1&ixid=MnwxMjA3fDB8MHxwaG90by1wYWdlfHx8fGVufDB8fHx8&auto=format&fit=crop&w=1468&q=80" alt="product1"></a></td>
                                 <td class="product-name" data-title="Product"><a href="#">Blue Dress For Woman</a></td>
                                 <td class="product-price" data-title="Price">$45.00</td>
-                                <td class="product-quantity" data-title="Quantity"><div class="quantity">
-                                <input type="button" value="-" class="minus">
-                                <input type="text" name="quantity" value="2" title="Qty" class="qty" size="4">
-                                <input type="button" value="+" class="plus">
-                              </div></td>
+                                <td class="product-quantity" data-title="Quantity">
+                                    <div class="quantity">
+                                        <input type="button" value="-" class="minus">
+                                        <input type="text" name="quantity" value="2" title="Qty" class="qty" size="4">
+                                        <input type="button" value="+" class="plus">
+                                    </div>
+                                </td>
                               	<td class="product-subtotal" data-title="Total">$90.00</td>
                                 <td class="product-remove" data-title="Remove"><a href="#"><i class="ti-close"></i></a></td>
                             </tr>
