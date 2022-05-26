@@ -14,7 +14,7 @@
             <div class="text-center text-md-right">
                 <ul class="header_list">
                     <li><a href="wishlist.html"><i class="ti-heart"></i><span>Wishlist</span></a></li>
-                    <li><a href="login.html"><i class="ti-user"></i><span>Login</span></a></li>
+                    <li><a class="nav-login_page" href="index.php?page=login_page"><i class="ti-user"></i><span>Login</span></a></li>
                 </ul>
             </div>
             </div>
@@ -47,13 +47,13 @@
                             </div>   
                         </li>
                         <li class="dropdown">
-                            <a class="dropdown-toggle nav-link" href="#" data-toggle="dropdown">Pages</a>
+                            <a class="dropdown-toggle nav-link nav-register_page nav-login_page" href="#" data-toggle="dropdown">Pages</a>
                             <div class="dropdown-menu">
                                 <ul> 
                                     <li><a class="dropdown-item nav-link nav_item" href="about.html">About Us</a></li> 
                                     <li><a class="dropdown-item nav-link nav_item" href="contact.html">Contact Us</a></li> 
-                                    <li><a class="dropdown-item nav-link nav_item" href="login.html">Login</a></li>
-                                    <li><a class="dropdown-item nav-link nav_item" href="signup.html">Register</a></li>
+                                    <li><a class="dropdown-item nav-link nav_item nav-login_page" href="index.php?page=login_page">Login</a></li>
+                                    <li><a class="dropdown-item nav-link nav_item nav-register_page" href="index.php?page=register_page">Register</a></li>
                                     <li><a class="dropdown-item nav-link nav_item" href="term-condition.html">Terms and Conditions</a></li>
                                 </ul>
                             </div>
