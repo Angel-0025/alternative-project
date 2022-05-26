@@ -304,6 +304,15 @@ $('.cat_slider').owlCarousel({
         }
     }
 })
-
+	/*===================================*
+	25. Cart Page Payment option
+	*===================================*/	
+	$(document).ready(function () {
+		$('[name="payment_option"]').on('change', function() {
+			var $value = $(this).attr('value');
+			$('.payment-text').slideUp();
+			$('[data-method="'+$value+'"]').slideDown();
+		});
+	});
 	
 })(jQuery);
