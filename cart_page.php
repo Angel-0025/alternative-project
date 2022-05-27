@@ -91,7 +91,7 @@
                             </tbody>
                         </table>
                     </div>
-                    <a href="#" class="btn btn-fill-out">Proceed To CheckOut</a>
+                    <a href="index.php?page=checkout_page" class="btn btn-fill-out">Proceed To CheckOut</a>
                 </div>
             </div>
         </div>

@@ -54,6 +54,7 @@
                                     <li><a class="dropdown-item nav-link nav_item" href="contact.html">Contact Us</a></li> 
                                     <li><a class="dropdown-item nav-link nav_item nav-login_page" href="index.php?page=login_page">Login</a></li>
                                     <li><a class="dropdown-item nav-link nav_item nav-register_page" href="index.php?page=register_page">Register</a></li>
+                                    <li><a class="dropdown-item nav-link nav_item nav-account_page" href="index.php?page=account_page">Account</a></li>
                                     <li><a class="dropdown-item nav-link nav_item" href="term-condition.html">Terms and Conditions</a></li>
                                 </ul>
                             </div>

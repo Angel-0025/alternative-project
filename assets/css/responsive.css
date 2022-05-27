@@ -1,8 +1,8 @@
 /* -------------------------------------------------
   (min-width: 1680px)
 ---------------------------------------------------*/
-@media only screen and (min-width: 1680px) {
-
+  @media only screen and (min-width: 1680px) {
+  
   }
   
   /* -------------------------------------------------
@@ -15,6 +15,13 @@
   .nav_style1.owl-theme .owl-nav .owl-prev {
     left: -40px;
   }
+ 
+  }
+  @media only screen and (min-width: 1200px) and (max-width: 1365px) {
+   
+    .custome-radio input[type="radio"] + .form-check-label::after {
+      top: 7px !important;
+    }
   }
   
   /* -------------------------------------------------
@@ -25,7 +32,7 @@
     font-size: 14px;
     padding: 5px 10px;
   }
-
+  
   }
   
   /* -------------------------------------------------
@@ -1160,6 +1167,7 @@
   .popup_content {
     padding: 25px;
   }
+
   }
   
   /* -------------------------------------------------
