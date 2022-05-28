@@ -39,7 +39,7 @@
                                 <ul> 
                                     <li><a class="dropdown-item nav-link nav_item nav-home_page" href="index.php?page=home_page">Fashion 1</a></li>
                                     <li><a class="dropdown-item nav-link nav_item" href="#">Fashion 2</a></li>
-                                    <li><a class="dropdown-item nav-link nav_item" href="#">Furniture 1</a></li>
+                                    <li><a class="dropdown-item nav-link nav_item  nav-product_search" href="index.php?page=product_search">Furniture 1</a></li>
                                     <li><a class="dropdown-item nav-link nav_item" href="#">Furniture 2</a></li>
                                     <li><a class="dropdown-item nav-link nav_item" href="#">Electronics 1</a></li>
                                     <li><a class="dropdown-item nav-link nav_item" href="#">Electronics 2</a></li>
@@ -50,12 +50,12 @@
                             <a class="dropdown-toggle nav-link nav-register_page nav-login_page" href="#" data-toggle="dropdown">Pages</a>
                             <div class="dropdown-menu">
                                 <ul> 
-                                    <li><a class="dropdown-item nav-link nav_item" href="about.html">About Us</a></li> 
                                     <li><a class="dropdown-item nav-link nav_item" href="contact.html">Contact Us</a></li> 
                                     <li><a class="dropdown-item nav-link nav_item nav-login_page" href="index.php?page=login_page">Login</a></li>
                                     <li><a class="dropdown-item nav-link nav_item nav-register_page" href="index.php?page=register_page">Register</a></li>
                                     <li><a class="dropdown-item nav-link nav_item nav-account_page" href="index.php?page=account_page">Account</a></li>
-                                    <li><a class="dropdown-item nav-link nav_item" href="term-condition.html">Terms and Conditions</a></li>
+                                    <li><a class="dropdown-item nav-link nav_item nav-tnc_page" href="index.php?page=tnc_page">Terms and Conditions</a></li>
+                                    <li><a class="dropdown-item nav-link nav_item nav-cOrder_page" href="index.php?page=cOrder_page">Order Complete</a></li>
                                 </ul>
                             </div>
                         </li>
@@ -106,7 +106,7 @@
                                 </ul>
                             </div>
                         </li>                        
-                        <li><a class="nav-link nav_item nav-product_search" href="index.php?page=product_search">Contact Us</a></li> 
+                        <li><a class="nav-link nav_item nav-contact_page" href="index.php?page=contact_page">Contact Us</a></li> 
                     </ul>
                 </div>
                 <ul class="navbar-nav attr-nav align-items-center">
