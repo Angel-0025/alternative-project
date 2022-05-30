@@ -189,42 +189,61 @@ $(window).on('scroll', function() {
 		removeClass = true;
 	});
 	
-$('.slick-slider').slick({
-  dots: true,
-  infinite: true,
-  speed: 300,
-  slidesToShow: 3,
-  slidesToScroll: 4,
-  navText: ['<i class="ion-ios-arrow-left"></i>', '<i class="ion-ios-arrow-right"></i>'],
-  responsive: [
-    {
-      breakpoint: 1024,
-      settings: {
-        slidesToShow: 3,
-        slidesToScroll: 3,
-        infinite: true,
-        dots: true
-      }
-    },
-    {
-      breakpoint: 600,
-      settings: {
-        slidesToShow: 2,
-        slidesToScroll: 2
-      }
-    },
-    {
-      breakpoint: 480,
-      settings: {
-        slidesToShow: 1,
-        slidesToScroll: 1
-      }
-    }
-    // You can unslick at a given breakpoint now by adding:
-    // settings: "unslick"
-    // instead of a settings object
-  ]
-});	
+	function slick_slider() {
+		$('.slick_slider').each( function() {
+			var $slick_carousel = $(this);
+			$slick_carousel.slick({
+				arrows: $slick_carousel.data("arrows"),
+				dots: $slick_carousel.data("dots"),
+				infinite: $slick_carousel.data("infinite"),
+				centerMode: $slick_carousel.data("center-mode"),
+				vertical: $slick_carousel.data("vertical"),
+				fade: $slick_carousel.data("fade"),
+				cssEase: $slick_carousel.data("css-ease"),
+				autoplay: $slick_carousel.data("autoplay"),
+				verticalSwiping: $slick_carousel.data("vertical-swiping"),
+				autoplaySpeed: $slick_carousel.data("autoplay-speed"),
+				speed: $slick_carousel.data("speed"),
+				pauseOnHover: $slick_carousel.data("pause-on-hover"),
+				draggable: $slick_carousel.data("draggable"),
+				slidesToShow: $slick_carousel.data("slides-to-show"),
+				slidesToScroll: $slick_carousel.data("slides-to-scroll"),
+				asNavFor: $slick_carousel.data("as-nav-for"),
+				focusOnSelect: $slick_carousel.data("focus-on-select"),
+				responsive: $slick_carousel.data("responsive")
+			});	
+		});
+	}
+	function carousel_slider() {
+		$('.carousel_slider').each( function() {
+			var $carousel = $(this);
+			$carousel.owlCarousel({
+				dots : $carousel.data("dots"),
+				loop : $carousel.data("loop"),
+				items: $carousel.data("items"),
+				margin: $carousel.data("margin"),
+				mouseDrag: $carousel.data("mouse-drag"),
+				touchDrag: $carousel.data("touch-drag"),
+				autoHeight: $carousel.data("autoheight"),
+				center: $carousel.data("center"),
+				nav: $carousel.data("nav"),
+				rewind: $carousel.data("rewind"),
+				navText: ['<i class="ion-ios-arrow-left"></i>', '<i class="ion-ios-arrow-right"></i>'],
+				autoplay : $carousel.data("autoplay"),
+				animateIn : $carousel.data("animate-in"),
+				animateOut: $carousel.data("animate-out"),
+				autoplayTimeout : $carousel.data("autoplay-timeout"),
+				smartSpeed: $carousel.data("smart-speed"),
+				responsive: $carousel.data("responsive")
+			});	
+		});
+	}
+	
+	
+	$(document).ready(function () {
+		carousel_slider();
+		slick_slider();
+	});	
 
 $('.product_slider').owlCarousel({
     loop:true,
@@ -304,6 +323,8 @@ $('.cat_slider').owlCarousel({
         }
     }
 })
+
+
 	/*===================================*
 	25. Cart Page Payment option
 	*===================================*/	
@@ -316,7 +337,55 @@ $('.cat_slider').owlCarousel({
 	});
 
 	//Plus minus
-
+/*===================================*
+	21. QUICKVIEW POPUP + ZOOM IMAGE + PRODUCT SLIDER JS
+	*===================================*/
+	var image = $('#product_img');
+	//var zoomConfig = {};
+	var zoomActive = false;
+	
+    zoomActive = !zoomActive;
+	if(zoomActive) {
+		if ($(image).length > 0){
+			$(image).elevateZoom({
+				cursor: "crosshair",
+				easing : true, 
+				gallery:'pr_item_gallery',
+				zoomType: "none",
+				galleryActiveClass: "active"
+			}); 
+		}
+	}
+	else {
+		$.removeData(image, 'elevateZoom');//remove zoom instance from image
+		$('.zoomContainer:last-child').remove();// remove zoom container from DOM
+	}
+	
+	// Set up gallery on click
+	var galleryZoom = $('#pr_item_gallery');
+	galleryZoom.magnificPopup({
+		delegate: 'a',
+		type: 'image',
+		gallery:{
+			enabled: true
+		},
+		callbacks: {
+			elementParse: function(item) {
+				item.src = item.el.attr('data-zoom-image');
+			}
+		}
+	});
+	
+	// Zoom image when click on icon
+	$('.product_img_zoom').on('click', function(){
+		var atual = $('#pr_item_gallery a').attr('data-zoom-image');
+		$('body').addClass('zoom_gallery_image');
+		$('#pr_item_gallery .item').each(function(){
+			if( atual == $(this).find('.product_gallery_item').attr('data-zoom-image') ) {
+				return galleryZoom.magnificPopup('open', $(this).index());
+			}
+		});
+	});
 	$('.plus').on('click', function() {
 		if ($(this).prev().val()) {
 			$(this).prev().val(+$(this).prev().val() + 1);
@@ -327,5 +396,41 @@ $('.cat_slider').owlCarousel({
 			if ($(this).next().val() > 1) $(this).next().val(+$(this).next().val() - 1);
 		}
 	});
-	
+	$('.product_color_switch span,.product_size_switch span').on("click", function() {
+		$(this).siblings(this).removeClass('active').end().addClass('active');
+	});
+
+	/*===================================*
+	23. RATING STAR JS
+	*===================================*/
+	$(document).ready(function () {
+		$('.star_rating span').on('click', function(){
+			  var onStar = parseFloat($(this).data('value'), 10); // The star currently selected
+			  var stars = $(this).parent().children('.star_rating span');
+			  for (var i = 0; i < stars.length; i++) {
+				  $(stars[i]).removeClass('selected');
+			  }
+			  for (i = 0; i < onStar; i++) {
+				  $(stars[i]).addClass('selected');
+			  }
+		  });
+	  });
+	/*===================================*
+	18. List Grid JS
+	*===================================*/
+	$('.shorting_icon').on('click',function() {
+		if ($(this).hasClass('grid')) {
+			$('.shop_container').removeClass('list').addClass('grid');
+			$(this).addClass('active').siblings().removeClass('active');
+		}
+		else if($(this).hasClass('list')) {
+			$('.shop_container').removeClass('grid').addClass('list');
+			$(this).addClass('active').siblings().removeClass('active');
+		}
+		$(".shop_container").append('<div class="loading_pr"><div class="mfp-preloader"></div></div>');
+		setTimeout(function(){
+			$('.loading_pr').remove();
+			$container.isotope('layout');
+		}, 800);
+	});
 })(jQuery);

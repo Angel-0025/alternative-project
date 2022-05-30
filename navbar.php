@@ -38,7 +38,7 @@
                             <div class="dropdown-menu">
                                 <ul> 
                                     <li><a class="dropdown-item nav-link nav_item nav-home_page" href="index.php?page=home_page">Fashion 1</a></li>
-                                    <li><a class="dropdown-item nav-link nav_item" href="#">Fashion 2</a></li>
+                                    <li><a class="dropdown-item nav-link nav_item nav-product_detail"  href="index.php?page=product_detail">Fashion 2</a></li>
                                     <li><a class="dropdown-item nav-link nav_item  nav-product_search" href="index.php?page=product_search">Furniture 1</a></li>
                                     <li><a class="dropdown-item nav-link nav_item" href="#">Furniture 2</a></li>
                                     <li><a class="dropdown-item nav-link nav_item" href="#">Electronics 1</a></li>
