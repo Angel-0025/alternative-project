@@ -45,13 +45,16 @@ $(document).ready(function() {
 
   /*======== 3. SIDEBAR MENU ========*/
   $(".sidebar .nav > .has-sub > a").click(function(){
+    $(".has-sub").removeClass("active" , "expand");
     $(this).parent().siblings().removeClass('expand')
     $(this).parent().toggleClass('expand')
+    $(this).parent().toggleClass('active')
   })
 
   $(".sidebar .nav > .has-sub .has-sub > a").click(function(){
     $(this).parent().toggleClass('expand')
   })
+
 
 
   /*======== 4. SIDEBAR TOGGLE FOR MOBILE ========*/
@@ -217,8 +220,5 @@ $(document).ready(function() {
   })
 
 
-
- /*========  ========*/
-	//Hide Navbar Dropdown After Click On Links
 
 });
