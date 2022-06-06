@@ -73,8 +73,8 @@
                   <span class="nav-text">Order Tables</span>
                 </a>
               </li>
-              <li class="#">
-                <a class="sidenav-item-link " href="#">
+              <li class="nav-order_history">
+                <a class="sidenav-item-link " href="index.php?page=order_history">
                   <span class="nav-text">Order Histories</span>
                 </a>
               </li>
