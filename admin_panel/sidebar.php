@@ -68,8 +68,8 @@
           </a>
           <ul class="collapse"  id="orders" data-parent="#sidebar-menu">
             <div class="sub-menu">
-              <li class="#">
-                <a class="sidenav-item-link " href="#">
+              <li class="nav-order_table">
+                <a class="sidenav-item-link " href="index.php?page=order_table">
                   <span class="nav-text">Order Tables</span>
                 </a>
               </li>
@@ -88,18 +88,13 @@
           </a>
           <ul  class="collapse"  id="pages" data-parent="#sidebar-menu">
             <div class="sub-menu">
-              <li class="nav-user_profile">
-                <a class="sidenav-item-link" href="index.php?page=user_profile">
-                  <span class="nav-text">User Profile</span>
-                </a>
-              </li>
-              <li class="#">
-                <a class="sidenav-item-link" href="#">
+              <li class="nav-edit_info">
+                <a class="sidenav-item-link" href="index.php?page=edit_info">
                   <span class="nav-text">Edit Account</span>
                 </a>
               </li>
-              <li class="#">
-                <a class="sidenav-item-link" href="#">
+              <li class="nav-create_account">
+                <a class="sidenav-item-link" href="index.php?page=create_account">
                   <span class="nav-text">Create Account</span>
                 </a>
               </li>
