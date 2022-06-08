@@ -48,13 +48,13 @@
           </a>
           <ul class="collapse"  id="products" data-parent="#sidebar-menu">
             <div class="sub-menu">
-              <li class="#">
-                <a class="sidenav-item-link " href="#">
+              <li class="nav-upload_product">
+                <a class="sidenav-item-link " href="index.php?page=upload_product">
                   <span class="nav-text">Upload New Product</span>
                 </a>
               </li>
-              <li class="#">
-                <a class="sidenav-item-link " href="#">
+              <li class="nav-product_list">
+                <a class="sidenav-item-link " href="index.php?page=product_list">
                   <span class="nav-text">Product List</span>
                 </a>
               </li>
