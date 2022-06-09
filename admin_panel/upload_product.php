@@ -7,7 +7,7 @@
     </div>
     <form action="">
         <div class="row">
-            <div class="col-12">
+            <div class="col-8">
                 <div class="card card-table-border-none" id="product-info">
                     <div class="card-body pt-4 pb-5">
                         <div class="row">
@@ -23,9 +23,32 @@
                     </div>
                 </div>
             </div>
+            <div class="col-4">
+                <div class="card card-table-border-none" id="product-info">
+                    <div class="card-header justify-content-between">
+                        <h2>Organization</h2>
+                    </div>
+                    <div class="card-body pt-4 pb-5">
+                        <div class="row">
+                            <div class="form-group col-md-12 mb-3">
+                                <label for="product-type">Product Type</label>
+                                <select class="form-control form-control-md input-md" name="" id="product-type">
+                                    <option value="">Select Product Type</option>
+                                </select>
+                            </div>
+                            <div class="form-group col-md-12 mb-4">
+                                <label for="product-vendor">Vendor</label>
+                                <select class="form-control form-control-md input-md" name="" id="product-vendor">
+                                    <option value="">Select Vendor</option>
+                                </select>
+                            </div>
+                        </div>
+                    </div>
+                </div>
+            </div>
         </div>
         <div class="row">
-            <div class="col-12">
+            <div class="col-8">
                 <div class="card card-table-border-none" id="product-info">
                     <div class="card-header justify-content-between">
                         <h2>Images</h2>
@@ -46,7 +69,7 @@
             </div>
         </div>
         <div class="row">
-            <div class="col-12">
+            <div class="col-8">
                 <div class="card card-table-border-none" id="product-info">
                     <div class="card-header justify-content-between">
                         <h2>Pricing</h2>
@@ -73,7 +96,7 @@
             </div>
         </div>
         <div class="row">
-            <div class="col-12">
+            <div class="col-8">
                 <div class="card card-table-border-none" id="product-info">
                     <div class="card-header justify-content-between">
                         <h2>Inventory</h2>
