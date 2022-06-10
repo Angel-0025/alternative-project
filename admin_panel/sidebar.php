@@ -33,8 +33,8 @@
                   <span class="nav-text">Analytics</span>
                 </a>
               </li>
-              <li class="#">
-                <a class="sidenav-item-link " href="#">
+              <li class="nav-test">
+                <a class="sidenav-item-link " href="index.php?page=test">
                   <span class="nav-text">Invoice</span>
                 </a>
               </li>
