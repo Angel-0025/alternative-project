@@ -171,6 +171,34 @@
                                 <label for="product-title">Product Stocks</label>
                                 <input type="number" class="form-control form-control-md input-md" id="product-stock" placeholder="Product Stock">
                             </div>
+                            <div class="form-group col-md-6 mb-3">
+                                <label for="product-status">Product Status</label>
+                                <select class="form-control form-control-md input-md" name="" id="product-status">
+                                    <option value="">Select Status</option>
+                                </select>
+                            </div>
+                        </div>
+                    </div>
+                </div>
+            </div>
+        </div>
+        <!-- Variants -->
+        <div class="row">
+            <div class="col-8">
+                <div class="card card-table-border-none" id="">
+                    <div class="card-header justify-content-between">
+                        <h2>Variants</h2>
+                    </div>
+                    <div class="card-body pt-4 pb-5">
+                        <div class="row">
+                            <div class="form-group col-md-6 mb-3">
+                                <label for="product-size">Product Size</label>
+                                <select class="js-example-tokenizer form-control select2-hidden-accessible" id="" multiple="multiple"></select>
+                            </div>
+                            <div class="form-group col-md-6 mb-3">
+                                <label for="product-color">Product Color</label>
+                                <select class="js-example-tokenizer form-control select2-hidden-accessible" id="" multiple="multiple"></select>
+                            </div>
                         </div>
                     </div>
                 </div>

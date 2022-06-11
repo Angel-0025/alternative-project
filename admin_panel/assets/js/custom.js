@@ -194,8 +194,11 @@ $(document).ready(function() {
   }
 
   /*======== 7. MULTIPLE SELECT ========*/
-  $(".js-example-basic-multiple").select2();
-
+  $(".js-example-tokenizer").select2({
+    tags: true,
+    tokenSeparators: [',', ' ']
+  })
+  
   /*======== 8. LOADING BUTTON ========*/
   /* 8.1. BIND NORMAL BUTTONS */
   Ladda.bind(".ladda-button", {
