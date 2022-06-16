@@ -14,6 +14,7 @@
     <link href="assets/plugins/ladda/ladda.min.css" rel="stylesheet" />
     <link href="assets/plugins/select2/css/select2.min.css" rel="stylesheet" />
     <link href="assets/plugins/daterangepicker/daterangepicker.css" rel="stylesheet" />
+    <link rel="stylesheet" href="//code.jquery.com/ui/1.12.1/themes/base/jquery-ui.css">
 
     <!-- SLEEK CSS -->
     <link id="sleek-css" rel="stylesheet" href="assets/css/sleek.css" />
@@ -28,7 +29,7 @@
     <!-- JS -->
     <script src="https://cdnjs.cloudflare.com/ajax/libs/jquery/3.6.0/jquery.min.js" crossorigin="anonymous"></script>
     <script src="https://cdnjs.cloudflare.com/ajax/libs/twitter-bootstrap/4.6.0/js/bootstrap.bundle.min.js" crossorigin="anonymous"></script>
-    <script type="text/javascript" src="assets/plugins/imagesloader/jquery.imagesloader-1.0.1.js"></script>
+<script src="https://code.jquery.com/ui/1.12.1/jquery-ui.js"></script>
     <script type="text/javascript" src="assets/plugins/toaster/toastr.min.js"></script>
     <script type="text/javascript" src="assets/plugins/slimscrollbar/jquery.slimscroll.min.js"></script>
     <script type="text/javascript" src="assets/plugins/charts/Chart.min.js"></script>

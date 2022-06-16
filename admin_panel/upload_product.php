@@ -1,12 +1,13 @@
 <!-- New Product -->
 <div class="content">
-<span id="success_message"></span>
+
     <div class="row">
         <div class="col-12 pb-3">
             <h2>Add Product</h2>
         </div>
     </div>
-    <form method="post" id="product_info">
+    <span id="success_message"></span>
+    
         <!-- Title/Description and Organization -->
         <div class="row">
             <div class="col-8">
@@ -43,7 +44,7 @@
                                 <label for="product-vendor">Vendor</label>
                                 <select class="form-control form-control-md input-md" name="product_vendor" id="product_vendor">
                                     <option value="">Select Vendor</option>
-                                    <option value="">Nike</option>
+                                    <option value="Nike">Nike</option>
                                 </select>
                             </div>
                         </div>
@@ -51,7 +52,24 @@
                 </div>
             </div>
         </div>
-       
+        <!-- Upload Images -->
+        <form method="post" id="product_info" enctype="multipart/form-data">
+        <div class="row">
+            <div class="col-8">
+                <div class="card card-table-border-none" id="product-info">
+                    <div class="card-header justify-content-between">
+                        <h2>Images</h2>
+                    </div>
+                    <div class="card-body pt-4 pb-5 ">
+                        <div id="drag-drop-area"></div>
+
+                    </div>
+                </div>
+            </div>
+        </div>
+        <input type="submit" name="submit" id="submit" class="btn btn-info" value="Submit" />
+        </form>
+
         <!-- Pricing -->
         <div class="row">
             <div class="col-8">
@@ -127,36 +145,31 @@
                 </div>
             </div>
         </div>
-        <input type="submit" name="submit" id="submit" class="btn btn-info" value="Submit" />
-    </form>
+        
+  
    
 </div>
 <script>
-  $(document).ready(function () {
+$(document).ready(function () {  
+    var uppy = new Uppy.Core()
+        .use(Uppy.Dashboard, {
+            inline: true,
+            width: 750,
+            height: 350,
+            hideUploadButton: true,
+            target: '#drag-drop-area'
+        })
+        .use(Uppy.Tus, {endpoint: 'https://tusd.tusdemo.net/files/'})
 
-    $('#product_info').on('submit', function(event){
-        var form_data = $(this).serialize();
-        $('#submit').attr("disabled","disabled");
-        $.ajax({
-            url:"admin_class.php",
-            method:"POST",
-            data: form_data,
-            beforeSend:function(){
-            $('#submit').val('Submitting...');
-            },
-            success:function(data){
-                if(data != '')
-                {
-                    $('#success_message').html(data);
-                    $('#submit').attr("disabled", false);
-                    $('#submit').val('Submit');
-                }
-            }
-        });
-        setInterval(function(){
-            $('#success_message').html('');
-        }, 5000)
-    });
+     
+    uppy.on('complete', (result) => {
+        console.log('Upload complete! We’ve uploaded these files:', result.successful)
+    })
 
-  });
+
+
+
+});
+
+
 </script>
