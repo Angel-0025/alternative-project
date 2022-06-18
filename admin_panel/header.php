@@ -3,9 +3,6 @@
     <link href="https://cdn.materialdesignicons.com/3.0.39/css/materialdesignicons.min.css" rel="stylesheet" />
 
 
-    <!-- Format Images loader CSS -->
-    <link rel="stylesheet" href="assets/plugins/imagesloader/jquery.imagesloader.css">
-
     <!-- PLUGINS CSS STYLE -->
     <link href="assets/plugins/toaster/toastr.min.css" rel="stylesheet" />
     <link href="assets/plugins/nprogress/nprogress.css" rel="stylesheet" />
@@ -29,7 +26,7 @@
     <!-- JS -->
     <script src="https://cdnjs.cloudflare.com/ajax/libs/jquery/3.6.0/jquery.min.js" crossorigin="anonymous"></script>
     <script src="https://cdnjs.cloudflare.com/ajax/libs/twitter-bootstrap/4.6.0/js/bootstrap.bundle.min.js" crossorigin="anonymous"></script>
-<script src="https://code.jquery.com/ui/1.12.1/jquery-ui.js"></script>
+    <script src="https://code.jquery.com/ui/1.12.1/jquery-ui.js"></script>
     <script type="text/javascript" src="assets/plugins/toaster/toastr.min.js"></script>
     <script type="text/javascript" src="assets/plugins/slimscrollbar/jquery.slimscroll.min.js"></script>
     <script type="text/javascript" src="assets/plugins/charts/Chart.min.js"></script>
