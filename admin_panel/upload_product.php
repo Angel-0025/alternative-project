@@ -78,7 +78,6 @@
             </div>
         </div>
         <span id="success_message"></span>
-        
             <!-- Title/Description and Organization -->
             <div class="row">
                 <div class="col-8">
@@ -91,7 +90,19 @@
                                 </div>
                                 <div class="form-group col-md-12 mb-4">
                                     <label for="product-description">Product Description</label>
-                                    <textarea class="form-control" name="product-desc" name="product_desc"  id="product_desc" cols="30" rows="5"></textarea>
+                                    <textarea class="form-control" name="product_desc" id="product_desc" cols="30" rows="5"></textarea>
+                                </div>
+                                <div class="form-group col-md-12 mb-4">
+                                    <label for="product-description">Materials</label>
+                                    <input type="text" class="form-control form-control-md input-md" name="product_materials"  id="product_materials" placeholder="Enter Product Materials">
+                                </div>
+                                <div class="form-group col-md-12 mb-4">
+                                    <label for="product-description">Style</label>
+                                    <input type="text" class="form-control form-control-md input-md" name="product_style"  id="product_style" placeholder="Enter Product Style">
+                                </div>
+                                <div class="form-group col-md-12 mb-4">
+                                    <label for="product-description">Color Shown</label>
+                                    <input type="text" class="form-control form-control-md input-md" name="product_cShown"  id="product_cShown" placeholder="Enter Color Shown">
                                 </div>
                             </div>
                         </div>
@@ -106,16 +117,30 @@
                             <div class="row">
                                 <div class="form-group col-md-12 mb-3">
                                     <label for="product-type">Product Type</label>
-                                    <select class="form-control form-control-md input-md" name="product_type" id="product_type">
+                                    <select class="form-control form-control-md input-md prd_type select2-hidden-accessible" name="prt_type" id="prt_type">
                                         <option value="">Select Product Type</option>
-                                        <option value="">Sport Shoe</option>
+                                        <option value="running shoes">Running Shoes</option>
+                                        <option value="basketball shoes">Basketball Shoes</option>
+                                    </select>
+                                </div> 
+                                <div class="form-group col-md-12 mb-3">
+                                    <label for="product-vendor">Product User</label>
+                                    <select class="form-control form-control-md prd_ppl select2-hidden-accessible" name="product_user" id="product_user">
+                                        <option value="">Select Product User</option>
+                                        <option value="Men">Men</option>
+                                        <option value="Women">Women</option>
+                                        <option value="Boy">Boy</option>
+                                        <option value="Girl">Girl</option>
+                                        <option value="Unisex">Unisex</option>
                                     </select>
                                 </div>
-                                <div class="form-group col-md-12 mb-4">
+                                <div class="form-group col-md-12 mb-3">
                                     <label for="product-vendor">Vendor</label>
-                                    <select class="form-control form-control-md input-md" name="product_vendor" id="product_vendor">
-                                        <option value="">Select Vendor</option>
-                                        <option value="Nike">Nike</option>
+                                    <select class="form-control form-control-md prd_vendor select2-hidden-accessible" name="product_vendor" id="product_vendor">
+                                        <option value="">Select Product Type</option>
+                                        <option value="adidas">Adidas</option>
+                                        <option value="nike">Nike</option>
+                                        <option value="reebok">Reebok</option>
                                     </select>
                                 </div>
                             </div>
@@ -129,12 +154,11 @@
                     <div class="card card-table-border-none" id="product-info">
                         <div class="card-header justify-content-between">
                             <h2>Images</h2>
+                            <a href="javascript:void(0)" onclick="$('#image').click()">Upload Image</a>
                         </div>
                         <div class="card-body pt-4 pb-5 ">
-                            <fieldset class="form-group">
-                                <a href="javascript:void(0)" onclick="$('#image').click()">Upload Image</a>
-
-                                <input type="file" name="image[]" id="image"  style="display: none;" class="form-control" multiple accept=".jpg, .png, .gif" />
+                            <fieldset class="form-group" style="margin-bottom: 0px !important;">
+                                <input type="file" name="image[]" id="image"  style="display: none;" class="form-control" multiple accept=".jpg, .png, .gif"/>
                             </fieldset>
                             <div class="preview-images-zone">
                                             
@@ -143,7 +167,6 @@
                     </div>
                 </div>
             </div>
-        
             <!-- Pricing -->
             <div class="row">
                 <div class="col-8">
@@ -187,9 +210,11 @@
                                 </div>
                                 <div class="form-group col-md-6 mb-3">
                                     <label for="product-status">Product Status</label>
-                                    <select class="form-control form-control-md input-md" name="product_status" id="product_status">
-                                        <option value="">Select Status</option>
-                                        <option value="">New</option>
+                                    <select class="form-control form-control-md prd_vendor select2-hidden-accessible" name="product_status" id="product_status">
+                                        <option value="">Select Product Type</option>
+                                        <option value="adidas">Adidas</option>
+                                        <option value="nike">Nike</option>
+                                        <option value="reebok">Reebok</option>
                                     </select>
                                 </div>
                             </div>
@@ -208,12 +233,26 @@
                             <div class="row">
                                 <div class="form-group col-md-6 mb-3">
                                     <label for="product-size">Product Size</label>
-                                    <select class="js-example-tokenizer form-control select2-hidden-accessible" name="product_size" id="product_size" multiple="multiple"></select>
+                                    <select class="js-example-tokenizer form-control form-control-md input-md select2-hidden-accessible" name="product_size[]" id="product_size" multiple="multiple">
+                                        <option value="">Select Product Size</option>
+                                        <option value="1">1</option>
+                                        <option value="2">2</option>
+                                        <option value="3">3</option>
+                                        <option value="4">4</option>
+                                        <option value="5">5</option>
+                                        <option value="6">6</option>
+                                        <option value="7">7</option>
+                                        <option value="8">8</option>
+                                        <option value="9">9</option>
+                                        <option value="10">10</option>
+                                        <option value="11">11</option>
+                                        <option value="12">12</option>
+                                        <option value="13">13</option>
+                                        <option value="14">14</option>
+                                        <option value="15">15</option>
+                                    </select>
                                 </div>
-                                <div class="form-group col-md-6 mb-3">
-                                    <label for="product-color">Product Color</label>
-                                    <select class="js-example-tokenizer form-control select2-hidden-accessible" name="product_color[]" id="product_color" multiple="multiple"></select>
-                                </div>
+                                
                             </div>
                         </div>
                     </div>
@@ -226,7 +265,6 @@
 $(document).ready(function () {  
     $('#product_info').on('submit', function(event){
         event.preventDefault();
-
             $('#submit').attr("disabled","disabled");
             $.ajax({
                 url:"admin_class.php",

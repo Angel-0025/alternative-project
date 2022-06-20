@@ -198,7 +198,14 @@ $(document).ready(function() {
     tags: true,
     tokenSeparators: [',', ' ']
   })
-  
+  $('.prd_type').select2({
+  });
+  $('.prd_vendor').select2({
+  });
+  $('.prd_ppl').select2({
+  });
+  $('.product_status').select2({
+  });
   /*======== 8. LOADING BUTTON ========*/
   /* 8.1. BIND NORMAL BUTTONS */
   Ladda.bind(".ladda-button", {
