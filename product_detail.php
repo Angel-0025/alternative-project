@@ -1,17 +1,34 @@
-
+<?php
+// Check to make sure the id parameter is specified in the URL
+if (isset($_GET['id'])) {
+    $connect = new PDO("mysql:host=localhost;dbname=alternative_project", "root", "");
+    // Prepare statement and execute, prevents SQL injection
+    $stmt = $connect->prepare('SELECT * FROM product WHERE product_id = ?');
+    $stmt->execute([$_GET['id']]);
+    // Fetch the product from the database and return the result as an Array
+    $product = $stmt->fetch(PDO::FETCH_ASSOC);
+    // Check if the product exists (array is not empty)
+    if (!$product) {
+        // Simple error to display if the id for the product doesn't exists (array is empty)
+        exit('Product does not exist!');
+    }
+} else {
+    // Simple error to display if the id wasn't specified
+    exit('Product does not exist!');
+}
+?>
 <!-- START SECTION BREADCRUMB -->
 <div class="breadcrumb_section bg_gray page-title-mini">
     <div class="container"><!-- STRART CONTAINER -->
         <div class="row align-items-center">
         	<div class="col-md-6">
                 <div class="page-title">
-            		<h1>Product Detail</h1>
+            		<h1><?=$product['name']?></h1>
                 </div>
             </div>
             <div class="col-md-6">
                 <ol class="breadcrumb justify-content-md-end">
                     <li class="breadcrumb-item"><a href="#">Home</a></li>
-                    <li class="breadcrumb-item"><a href="#">Pages</a></li>
                     <li class="breadcrumb-item active">Product Detail</li>
                 </ol>
             </div>
@@ -28,63 +45,59 @@
 	<div class="container">
 		<div class="row">
             <div class="col-lg-6 col-md-6 mb-4 mb-md-0">
-            <div class="product-image">
+                <div class="product-image">
+                    <?php 
+                        $connect = new PDO("mysql:host=localhost;dbname=alternative_project", "root", "");
+                        // Prepare statement and execute, prevents SQL injection
+                        $stmt = $connect->prepare('SELECT * FROM product_image WHERE product_id = ? LIMIT 1');
+                        $stmt->execute([$_GET['id']]);
+                        // Fetch the product from the database and return the result as an Array
+                        $row = $stmt->fetch();
+                            
+                    ?>
                     <div class="product_img_box">
-                        <img id="product_img" src='assets/images/product_img1.jpg' data-zoom-image="assets/images/product_img1.jpg" alt="product_img1" />
+                        <img id="product_img" src='data:image/jpeg;base64, <?=base64_encode( $row['images'] );?>' data-zoom-image="data:image/jpeg;base64, <?=base64_encode( $row['images'] );?>" alt="product_img1" />
                         <a href="#" class="product_img_zoom" title="Zoom">
                             <span class="lnr lnr-magnifier"></span>
                         </a>
                     </div>
                     <div id="pr_item_gallery" class="product_gallery_item slick_slider" data-slides-to-show="4" data-slides-to-scroll="1" data-infinite="false">
+                        <?php 
+                        $connect = new PDO("mysql:host=localhost;dbname=alternative_project", "root", "");
+                        // Prepare statement and execute, prevents SQL injection
+                        $stmt = $connect->prepare('SELECT * FROM product_image WHERE product_id = ?');
+                        $stmt->execute([$_GET['id']]);
+                        // Fetch the product from the database and return the result as an Array
+                        while ($img= $stmt->fetch(PDO::FETCH_ASSOC)) {
+                            
+                        ?>
                         <div class="item">
-                            <a href="#" class="product_gallery_item active" data-image="assets/images/product_img1.jpg" data-zoom-image="assets/images/product_img1.jpg">
-                                <img src="assets/images/product_small_img1.jpg" alt="product_small_img1" />
+                            <a href="#" class="product_gallery_item" data-image="data:image/jpeg;base64, <?=base64_encode( $img['images'] );?>" data-zoom-image="data:image/jpeg;base64, <?=base64_encode( $img['images'] );?>">
+                                <img src="data:image/jpeg;base64, <?=base64_encode( $img['images'] );?>" alt="product_small_img1" />
                             </a>
                         </div>
-                        <div class="item">
-                            <a href="#" class="product_gallery_item" data-image="assets/images/product_img1-2.jpg" data-zoom-image="assets/images/product_small_img2.jpg">
-                                <img src="assets/images/product_small_img2.jpg" alt="product_small_img2" />
-                            </a>
-                        </div>
-                        <div class="item">
-                            <a href="#" class="product_gallery_item" data-image="assets/images/product_img1-3.jpg" data-zoom-image="assets/images/product_small_img3.jpg">
-                                <img src="assets/images/product_small_img3.jpg" alt="product_small_img3" />
-                            </a>
-                        </div>
-                        <div class="item">
-                            <a href="#" class="product_gallery_item" data-image="assets/images/product_img1-4.jpg" data-zoom-image="assets/images/product_small_img4.jpg">
-                                <img src="assets/images/product_small_img4.jpg" alt="product_small_img4" />
-                            </a>
-                        </div>
-                        <div class="item">
-                            <a href="#" class="product_gallery_item" data-image="assets/images/product_img1-2.jpg" data-zoom-image="assets/images/product_zoom_img2.jpg">
-                                <img src="assets/images/product_small_img2.jpg" alt="product_small_img2" />
-                            </a>
-                        </div>
-                        <div class="item">
-                            <a href="#" class="product_gallery_item" data-image="assets/images/product_img1-3.jpg" data-zoom-image="assets/images/product_zoom_img3.jpg">
-                                <img src="assets/images/product_small_img3.jpg" alt="product_small_img3" />
-                            </a>
-                        </div>
+                        <?php }?>
                     </div>
                 </div>
+                
             </div>
+            <!-- Product Details -->
             <div class="col-lg-6 col-md-6">
                 <div class="pr_detail">
                     <div class="product_description">
-                        <h4 class="product_title"><a href="#">Blue Dress For Woman</a></h4>
+                        <h4 class="product_title"><?=$product['name']?></h4>
                         <div class="product_price">
-                            <span class="price">$45.00</span>
-                            <del>$55.25</del>
+                            <span class="price"><?=$product['price']?></span>
+                            <del></del>
                             <div class="on_sale">
-                                <span>35% Off</span>
+                                <span><?=$product['discount']?></span>
                             </div>
                         </div>
                         <div class="rating_wrap">
                                 <div class="rating">
-                                    <div class="product_rate" style="width:80%"></div>
+                                    <div class="product_rate" style="width:0%"></div>
                                 </div>
-                                <span class="rating_num">(21)</span>
+                                <span class="rating_num">(0)</span>
                             </div>
                         <div class="pr_desc">
                             <p>Lorem ipsum dolor sit amet, consectetur adipiscing elit. Phasellus blandit massa enim. Nullam id varius nunc id varius nunc.</p>
@@ -162,26 +175,25 @@
                     </ul>
                 	<div class="tab-content shop_info_tab">
                       	<div class="tab-pane fade show active" id="Description" role="tabpanel" aria-labelledby="Description-tab">
-                        	<p>Contrary to popular belief, Lorem Ipsum is not simply random text. It has roots in a piece of classical Latin literature from 45 BC, making it over 2000 years old. Vivamus bibendum magna Lorem ipsum dolor sit amet, consectetur adipiscing elit.Contrary to popular belief, Lorem Ipsum is not simply random text. It has roots in a piece of classical Latin literature from 45 BC, making it over 2000 years old.</p>
-                        	<p>At vero eos et accusamus et iusto odio dignissimos ducimus qui blanditiis praesentium voluptatum deleniti atque corrupti quos dolores et quas molestias excepturi sint occaecati cupiditate non provident, similique sunt in culpa qui officia deserunt mollitia animi, id est laborum et dolorum fuga. Et harum quidem rerum facilis est et expedita distinctio.</p>
+                        	<p><?=$product['prt_desc']?></p>
                       	</div>
                       	<div class="tab-pane fade" id="Additional-info" role="tabpanel" aria-labelledby="Additional-info-tab">
                         	<table class="table table-bordered">
                             	<tr>
-                                	<td>Capacity</td>
-                                	<td>5 Kg</td>
+                                	<td>Materials</td>
+                                	<td><?=$product['materials']?></td>
                             	</tr>
                                 <tr>
-                                    <td>Color</td>
-                                    <td>Black, Brown, Red,</td>
+                                    <td>Style</td>
+                                    <td><?=$product['style']?></td>
                                 </tr>
                                 <tr>
-                                    <td>Water Resistant</td>
-                                    <td>Yes</td>
+                                    <td>Color Shown</td>
+                                    <td><?=$product['color_shown']?></td>
                                 </tr>
                                 <tr>
-                                    <td>Material</td>
-                                    <td>Artificial Leather</td>
+                                    <td>Shoe Type</td>
+                                    <td><?=$product['type']?></td>
                                 </tr>
                         	</table>
                       	</div>

@@ -260,6 +260,14 @@
             </div>
         <input type="submit" name="submit" id="submit" class="btn btn-info" value="Submit" />
     </form>   
+
+    <!-- 
+        NOTE:
+    
+        Make validation for inputting products
+    
+    
+    -->
 </div>
 <script>
 $(document).ready(function () {  

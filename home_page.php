@@ -118,106 +118,7 @@
                                         </div>
                                     </div>
                                 </div>
-                                <div class="item">
-                                    <div class="product">
-                                        <div class="product_img">
-                                            <a href="shop-product-detail.html">
-                                                <img src="https://images.unsplash.com/photo-1516197926525-8c6cc1f192a5?ixlib=rb-1.2.1&ixid=MnwxMjA3fDB8MHxwaG90by1wYWdlfHx8fGVufDB8fHx8&auto=format&fit=crop&w=1468&q=80" alt="product_img1" alt="product_img9">
-                                            </a>
-                                        </div>
-                                        <div class="product_info">
-                                            <h6 class="product_title"><a href="shop-product-detail.html">T-Shirt Form Girls</a></h6>
-                                            <div class="product_price">
-                                                <span class="price">$45.00</span>
-                                                <del>$55.25</del>
-                                                <div class="on_sale">
-                                                    <span>35% Off</span>
-                                                </div>
-                                            </div>
-                                            <div class="rating_wrap">
-                                                <div class="rating">
-                                                    <div class="product_rate" style="width:80%"></div>
-                                                </div>
-                                                <span class="rating_num">(21)</span>
-                                            </div>
-                                        </div>
-                                    </div>
-                                </div>
-                                <div class="item">
-                                    <div class="product">
-                                        <div class="product_img">
-                                            <a href="shop-product-detail.html">
-                                                <img src="https://images.unsplash.com/photo-1516197926525-8c6cc1f192a5?ixlib=rb-1.2.1&ixid=MnwxMjA3fDB8MHxwaG90by1wYWdlfHx8fGVufDB8fHx8&auto=format&fit=crop&w=1468&q=80" alt="product_img1" alt="product_img9">
-                                            </a>
-                                        </div>
-                                        <div class="product_info">
-                                            <h6 class="product_title"><a href="shop-product-detail.html">T-Shirt Form Girls</a></h6>
-                                            <div class="product_price">
-                                                <span class="price">$45.00</span>
-                                                <del>$55.25</del>
-                                                <div class="on_sale">
-                                                    <span>35% Off</span>
-                                                </div>
-                                            </div>
-                                            <div class="rating_wrap">
-                                                <div class="rating">
-                                                    <div class="product_rate" style="width:80%"></div>
-                                                </div>
-                                                <span class="rating_num">(21)</span>
-                                            </div>
-                                        </div>
-                                    </div>
-                                </div>
-                                <div class="item">
-                                    <div class="product">
-                                        <div class="product_img">
-                                            <a href="shop-product-detail.html">
-                                                <img src="https://images.unsplash.com/photo-1516197926525-8c6cc1f192a5?ixlib=rb-1.2.1&ixid=MnwxMjA3fDB8MHxwaG90by1wYWdlfHx8fGVufDB8fHx8&auto=format&fit=crop&w=1468&q=80" alt="product_img1" alt="product_img9">
-                                            </a>
-                                        </div>
-                                        <div class="product_info">
-                                            <h6 class="product_title"><a href="shop-product-detail.html">T-Shirt Form Girls</a></h6>
-                                            <div class="product_price">
-                                                <span class="price">$45.00</span>
-                                                <del>$55.25</del>
-                                                <div class="on_sale">
-                                                    <span>35% Off</span>
-                                                </div>
-                                            </div>
-                                            <div class="rating_wrap">
-                                                <div class="rating">
-                                                    <div class="product_rate" style="width:80%"></div>
-                                                </div>
-                                                <span class="rating_num">(21)</span>
-                                            </div>
-                                        </div>
-                                    </div>
-                                </div>
-                                <div class="item">
-                                    <div class="product">
-                                        <div class="product_img">
-                                            <a href="shop-product-detail.html">
-                                                <img src="https://images.unsplash.com/photo-1516197926525-8c6cc1f192a5?ixlib=rb-1.2.1&ixid=MnwxMjA3fDB8MHxwaG90by1wYWdlfHx8fGVufDB8fHx8&auto=format&fit=crop&w=1468&q=80" alt="product_img1" alt="product_img9">
-                                            </a>
-                                        </div>
-                                        <div class="product_info">
-                                            <h6 class="product_title"><a href="shop-product-detail.html">T-Shirt Form Girls</a></h6>
-                                            <div class="product_price">
-                                                <span class="price">$45.00</span>
-                                                <del>$55.25</del>
-                                                <div class="on_sale">
-                                                    <span>35% Off</span>
-                                                </div>
-                                            </div>
-                                            <div class="rating_wrap">
-                                                <div class="rating">
-                                                    <div class="product_rate" style="width:80%"></div>
-                                                </div>
-                                                <span class="rating_num">(21)</span>
-                                            </div>
-                                        </div>
-                                    </div>
-                                </div>
+
                             </div>
                         </div>
                         <div class="tab-pane fade" id="sellers" role="tabpanel" aria-labelledby="sellers-tab">
@@ -409,31 +310,46 @@
 							<div class="owl-stage" style="transform: translate3d(-1130px, 0px, 0px); transition: all 0s ease 0s; width: 3673px;">
 							</div>
 						</div>
+                        <?php
+                            include 'db_connect.php';
+                            $sql = mysqli_query($con, "SELECT * FROM product");
+                            while ($row = mysqli_fetch_array($sql)) {
+                                $prd_id = $row['product_id'];
+                               
+                        ?>
 						<div class="item">
 							<div class="product">
 								<div class="product-img">
-									<a href="shop-product-detail.html">
-										<img src="https://images.unsplash.com/photo-1516197926525-8c6cc1f192a5?ixlib=rb-1.2.1&ixid=MnwxMjA3fDB8MHxwaG90by1wYWdlfHx8fGVufDB8fHx8&auto=format&fit=crop&w=1468&q=80" alt="product_img1">
+                                    <?php
+                                        include 'db_connect.php';
+                                        $query = 'SELECT * FROM product_image where product_id = '. $prd_id .' and image_number = '. 0 .'';
+                                        $result = $con->query($query);
+                                        $followingdata = $result->fetch_assoc();  
+                                    ?>
+                                    <a href="index.php?page=product_detail&id=<?=$row['product_id']?>"  class="pdt_id">
+										<img src="data:image/jpeg;base64, <?=base64_encode( $followingdata['images'] );?>" alt="product_img1" />
 									</a>
 								</div>
+                                <?php ?>
 								<div class="product_info">
-									<h6 class="product_title"><a href="shop-product-detail.html">Blue Dress For Woman</a></h6>
+									<h6 class="product_title"><a href="shop-product-detail.html"><?=$row['name'];?> </a></h6>
 									<div class="product_price">
-                                    <span class="price">$45.00</span>
-										<del>$55.25</del>
+                                    <span class="price"><?=$row['price'];?> </span>
+										<del></del>
 										<div class="on_sale">
-											<span>35% Off</span>
+											<span><?=$row['discount'];?> </span>
 										</div>
 										<div class="rating_wrap">
 											<div class="rating">
-												<div class="product_rate" style="width:80%"></div>
+												<div class="product_rate" style="width:0%"></div>
 											</div>
-											<span class="rating_num">(21)</span>
+											<span class="rating_num">(0)</span>
 										</div>
 									</div>
 								</div>
 							</div>
 						</div>
+                        <?php }?>
                         <div class="item">
 							<div class="product">
 								<div class="product-img">
