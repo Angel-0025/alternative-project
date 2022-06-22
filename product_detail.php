@@ -17,6 +17,19 @@ if (isset($_GET['id'])) {
     exit('Product does not exist!');
 }
 ?>
+<style>
+    /* Chrome, Safari, Edge, Opera */
+input::-webkit-outer-spin-button,
+input::-webkit-inner-spin-button {
+  -webkit-appearance: none;
+  margin: 0;
+}
+
+/* Firefox */
+input[type=number] {
+  -moz-appearance: textfield;
+}
+</style>
 <!-- START SECTION BREADCRUMB -->
 <div class="breadcrumb_section bg_gray page-title-mini">
     <div class="container"><!-- STRART CONTAINER -->
@@ -79,80 +92,98 @@ if (isset($_GET['id'])) {
                         <?php }?>
                     </div>
                 </div>
-                
             </div>
             <!-- Product Details -->
+
             <div class="col-lg-6 col-md-6">
-                <div class="pr_detail">
-                    <div class="product_description">
-                        <h4 class="product_title"><?=$product['name']?></h4>
-                        <div class="product_price">
-                            <span class="price"><?=$product['price']?></span>
-                            <del></del>
-                            <div class="on_sale">
-                                <span><?=$product['discount']?></span>
-                            </div>
-                        </div>
-                        <div class="rating_wrap">
-                                <div class="rating">
-                                    <div class="product_rate" style="width:0%"></div>
+                <form method="post" id="addtocart" enctype="multipart/form-data">
+                    <div class="pr_detail">
+                        <div class="product_description">
+                            <h4 class="product_title"><?=$product['name']?></h4>
+                            <div class="product_price">
+                                <span class="price"><span>&#8369; </span><?=$product['price']?></span>
+                                <del></del>
+                                <div class="on_sale">
+                                    <span><?=$product['discount']?></span>
                                 </div>
-                                <span class="rating_num">(0)</span>
                             </div>
-                        <div class="pr_desc">
-                            <p>Lorem ipsum dolor sit amet, consectetur adipiscing elit. Phasellus blandit massa enim. Nullam id varius nunc id varius nunc.</p>
+                            <div class="rating_wrap">
+                                    <div class="rating">
+                                        <div class="product_rate" style="width:0%"></div>
+                                    </div>
+                                    <span class="rating_num">(0)</span>
+                                </div>
+                            <div class="pr_desc">
+                                <p>Lorem ipsum dolor sit amet, consectetur adipiscing elit. Phasellus blandit massa enim. Nullam id varius nunc id varius nunc.</p>
+                            </div>
+                            <div class="product_sort_info">
+                                <ul>
+                                    <li><i class="lnr lnr-checkmark-circle"></i> 1 Year AL Jazeera Brand Warranty</li>
+                                    <li><i class="lnr lnr-sync"></i> 30 Day Return Policy</li>
+                                    <li><i class="lnr lnr-rocket"></i> Cash on Delivery available</li>
+                                </ul>
+                            </div>
+                            <!-- Product Size -->
+                            <div class="form-group row">
+                                <label for="" class="col-sm-1 col-form-label switch_lable" style="padding-top: calc(0.375rem + 5px) !important;">Size</label>
+                                <div class="col-sm-4">
+                                    <?php 
+                                        include 'db_connect.php';
+                                        $size = $con->query("SELECT size FROM product WHERE product_id = ". $_GET['id'] ." ");
+                                        while ($row = $size->fetch_assoc()) {
+
+                                            $my_array1 = explode(",", $row['size']);
+                                    ?>
+                                    <select class="form-control form-control-sm" name="psize" id="psize" >
+                                        <option value="">Select Size</option>
+                                        <?php 
+                                        foreach($my_array1 as $item){
+                                            echo "<option value='$item'>$item</option>";
+                                        }
+                                        ?>
+                                    </select>
+                                    <?php }?>
+                                </div>
+                            </div>
                         </div>
-                        <div class="product_sort_info">
-                            <ul>
-                                <li><i class="lnr lnr-checkmark-circle"></i> 1 Year AL Jazeera Brand Warranty</li>
-                                <li><i class="lnr lnr-sync"></i> 30 Day Return Policy</li>
-                                <li><i class="lnr lnr-rocket"></i> Cash on Delivery available</li>
+                        <hr />
+                        <!-- Quantity -->
+                        <div class="cart_extra">
+                            <div class="cart-product-quantity">
+                                <div class="quantity">
+                                    <input type="button" value="-" class="minus">
+                                    <input type="number" name="quantity" id="quantity" value="1" min="1" max="<?=$product['stocks']?>" title="Qty" class="qty" size ="4" required>
+                                    <input type="button" value="+" class="plus">
+                                </div>
+                            </div>
+                            <div class="cart_btn">
+                                <input type="hidden" id="pid" name="pid" value="<?=$product['product_id']?>">
+                                <input type="hidden" id="pprice" name="pprice" value="<?=$product['price']?>">
+                                <input type="submit" name="submit" id="submit" class="btn btn-info" value="Submit" />
+    
+                                <a class="add_wishlist" href="#"><i class="icon-heart"></i></a>
+                            </div>
+                        </div>
+                        <hr />
+                        <ul class="product-meta">
+                            <li>SKU: <a href="#">BE45VGRT</a></li>
+                            <li>Category: <a href="#">Clothing</a></li>
+                            <li>Tags: <a href="#" rel="tag">Cloth</a>, <a href="#" rel="tag">printed</a> </li>
+                        </ul> 
+                        <div class="product_share">
+                            <span>Share:</span>
+                            <ul class="social_icons">
+                                <li><a href="#"><i class="ion-social-facebook"></i></a></li>
+                                <li><a href="#"><i class="ion-social-twitter"></i></a></li>
+                                <li><a href="#"><i class="ion-social-googleplus"></i></a></li>
+                                <li><a href="#"><i class="ion-social-youtube-outline"></i></a></li>
+                                <li><a href="#"><i class="ion-social-instagram-outline"></i></a></li>
                             </ul>
                         </div>
-                        <div class="pr_switch_wrap">
-                            <span class="switch_lable">Size</span>
-                            <div class="product_size_switch">
-                                <span>xs</span>
-                                <span>s</span>
-                                <span>m</span>
-                                <span>l</span>
-                                <span>xl</span>
-                            </div>
-                        </div>
-                    </div>
-                    <hr />
-                    <div class="cart_extra">
-                        <div class="cart-product-quantity">
-                            <div class="quantity">
-                                <input type="button" value="-" class="minus">
-                                <input type="text" name="quantity" value="1" title="Qty" class="qty" size="4">
-                                <input type="button" value="+" class="plus">
-                            </div>
-                        </div>
-                        <div class="cart_btn">
-                            <button class="btn btn-fill-out btn-addtocart" type="button"><i class="icon-basket-loaded"></i> Add to cart</button>
-                            <a class="add_wishlist" href="#"><i class="icon-heart"></i></a>
-                        </div>
-                    </div>
-                    <hr />
-                    <ul class="product-meta">
-                        <li>SKU: <a href="#">BE45VGRT</a></li>
-                        <li>Category: <a href="#">Clothing</a></li>
-                        <li>Tags: <a href="#" rel="tag">Cloth</a>, <a href="#" rel="tag">printed</a> </li>
-                    </ul>
-                    
-                    <div class="product_share">
-                        <span>Share:</span>
-                        <ul class="social_icons">
-                            <li><a href="#"><i class="ion-social-facebook"></i></a></li>
-                            <li><a href="#"><i class="ion-social-twitter"></i></a></li>
-                            <li><a href="#"><i class="ion-social-googleplus"></i></a></li>
-                            <li><a href="#"><i class="ion-social-youtube-outline"></i></a></li>
-                            <li><a href="#"><i class="ion-social-instagram-outline"></i></a></li>
-                        </ul>
-                    </div>
-                </div>
+                    </div>            
+                </form>
             </div>
+
         </div>
         <div class="row">
         	<div class="col-12">
@@ -320,3 +351,31 @@ if (isset($_GET['id'])) {
     </div>
 </div>
 <!-- END SECTION SHOP -->
+<script>
+    $(document).ready(function () {  
+    $('#addtocart').on('submit', function(event){
+        event.preventDefault();
+            $('#submit').attr("disabled","disabled");
+            $.ajax({
+                url:"action.php",
+                method:"POST",
+                data: new FormData(this),
+                contentType:false,
+                cache:false,
+                processData:false,
+                beforeSend:function(){
+                $('#submit').val('Submitting...');
+                },
+                success:function(data){
+                    if(data != '')
+                    {
+                        $('#success_message').html(data);
+                        $('#submit').attr("disabled", false);
+                        $('#submit').val('Submit');
+                    }
+                }
+            });
+          
+    });
+});
+</script>

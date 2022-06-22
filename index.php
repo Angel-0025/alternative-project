@@ -10,6 +10,7 @@
     <?php include 'header.php' ?>
 	<?php include 'navbar.php' ?>
     <main id="main_content" >
+    <div class="alert-message"></div>
         <?php $page = isset($_GET['page']) ? $_GET['page'] : 'home_page'; ?>
         <?php include $page.'.php' ?>
     </main>
