@@ -119,8 +119,15 @@
                             </form>
                         </div><div class="search_overlay"></div>
                     </li>
-                    <li><a href="index.php?page=wishlist_page" class="nav-link wish_list nav-wishlist_page"><span class="lnr lnr-heart cart"><span class="wishlist_count">0</span></a></li>
-                    <li><a href="index.php?page=cart_page" class="nav-link cart_trigger nav-cart_page"><span class="lnr lnr-cart cart"><span class="cart_count">0</span></a></li>
+                    <?php
+                      $connect = new PDO("mysql:host=localhost;dbname=alternative_project", "root", "");
+                      $select_stmt = "SELECT * from cart_table";
+                      $select_stmt = $connect->prepare($select_stmt);
+                      $select_stmt -> execute();
+                      $row = $select_stmt ->rowCount();
+                    ?>
+                    <li><a href="index.php?page=wishlist_page" class="nav-link wish_list nav-wishlist_page"><span class="lnr lnr-heart cart"><span class="wishlist_count" name="wishlistItem" id="wishlistItem">0</span></a></li>
+                    <li><a href="index.php?page=cart_page" class="nav-link cart_trigger nav-cart_page"><span class="lnr lnr-cart cart"><span class="cart_count" name="cartITem" id="cartItem"></span></a></li>
                 </ul>
             </nav>
         </div>

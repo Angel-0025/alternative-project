@@ -14,5 +14,12 @@
       ':quantity'  => $_POST["quantity"]
       )
     );
+    echo '<div class="alert alert-success alert-dismissible mt-2">
+          <button type="button" class="close" data-dismiss="alert">x</button>
+          <strong>Item already added to your cart!</strong>
+          </div>';
+
+
+   
 ?>
 

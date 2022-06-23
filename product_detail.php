@@ -1,3 +1,8 @@
+<style>
+    .active{
+        color:red !important;
+    }
+</style>
 <?php
 // Check to make sure the id parameter is specified in the URL
 if (isset($_GET['id'])) {
@@ -42,7 +47,7 @@ input[type=number] {
             <div class="col-md-6">
                 <ol class="breadcrumb justify-content-md-end">
                     <li class="breadcrumb-item"><a href="#">Home</a></li>
-                    <li class="breadcrumb-item active">Product Detail</li>
+                    <li class="breadcrumb-item">Product Detail</li>
                 </ol>
             </div>
         </div>
@@ -96,7 +101,7 @@ input[type=number] {
             <!-- Product Details -->
 
             <div class="col-lg-6 col-md-6">
-                <form method="post" id="addtocart" enctype="multipart/form-data">
+                <form method="post" id="addtocart" class="addTowl" enctype="multipart/form-data">
                     <div class="pr_detail">
                         <div class="product_description">
                             <h4 class="product_title"><?=$product['name']?></h4>
@@ -157,11 +162,10 @@ input[type=number] {
                                 </div>
                             </div>
                             <div class="cart_btn">
-                                <input type="hidden" id="pid" name="pid" value="<?=$product['product_id']?>">
+                                <input type="hidden" id="pid" name="pid" class="pID" value="<?=$product['product_id']?>">
                                 <input type="hidden" id="pprice" name="pprice" value="<?=$product['price']?>">
-                                <input type="submit" name="submit" id="submit" class="btn btn-info" value="Submit" />
-    
-                                <a class="add_wishlist" href="#"><i class="icon-heart"></i></a>
+                                <button type="submit" name="submit" id="submit" class="btn btn-fill-out" id="pid" name="pid"><i class="icon-basket-loaded"></i> Add to cart</button>
+                                <a class="add_wishlist" id="addwl" href='#'><i class="icon-heart whishstate"></i></a>
                             </div>
                         </div>
                         <hr />
@@ -351,31 +355,3 @@ input[type=number] {
     </div>
 </div>
 <!-- END SECTION SHOP -->
-<script>
-    $(document).ready(function () {  
-    $('#addtocart').on('submit', function(event){
-        event.preventDefault();
-            $('#submit').attr("disabled","disabled");
-            $.ajax({
-                url:"action.php",
-                method:"POST",
-                data: new FormData(this),
-                contentType:false,
-                cache:false,
-                processData:false,
-                beforeSend:function(){
-                $('#submit').val('Submitting...');
-                },
-                success:function(data){
-                    if(data != '')
-                    {
-                        $('#success_message').html(data);
-                        $('#submit').attr("disabled", false);
-                        $('#submit').val('Submit');
-                    }
-                }
-            });
-          
-    });
-});
-</script>

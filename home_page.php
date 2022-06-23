@@ -332,7 +332,7 @@
 								</div>
                                 <?php ?>
 								<div class="product_info">
-									<h6 class="product_title"><a href="shop-product-detail.html"><?=$row['name'];?> </a></h6>
+									<h6 class="product_title"><a href="index.php?page=product_detail&id=<?=$row['product_id']?>"><?=$row['name'];?> </a></h6>
 									<div class="product_price">
                                     <span class="price"><?=$row['price'];?> </span>
 										<del></del>
