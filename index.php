@@ -29,6 +29,7 @@
 <script src="assets/Js/script.js"></script>
 <script type="text/javascript">
 $(document).ready(function () {  
+    load_cart_item_number();
     $('#addtocart').on('submit', function(event){
         event.preventDefault();
         $('#submit').attr("disabled","disabled");
@@ -49,8 +50,6 @@ $(document).ready(function () {
             }
         });  
     });
-    load_cart_item_number();
-
     function load_cart_item_number(){
         $.ajax({
             url:"admin_class.php",
@@ -62,6 +61,7 @@ $(document).ready(function () {
         });
     }
 
+    load_wishlist_list_number();
     
     $(document).on('click','#addwl', function(e) {
         e.preventDefault();
@@ -72,16 +72,31 @@ $(document).ready(function () {
             type: "POST",
             data: {pID:id},
             success: function(data) {
-               if(data == '1')
-               {
-                  $('a.add_wishlist> i.whishstate').addClass("active");
-               }
-               else{
-                   $('a.add_wishlist> i.whishstate').removeClass("active");
-               }
+                load_wishlist_list_number();
+               
           }   
        });   
     }); 
+
+    function load_wishlist_list_number(){
+        $.ajax({
+            url:"admin_class.php",
+            method: "get",
+            data: {wishlist_item:"wishlistItem"},
+            success:function(response){
+                $("#wishlistItem").html(response);
+                if(response == '1')
+                {
+
+                    $('a.add_wishlist> i.whishstate').addClass("active");
+                }
+                else{
+                    $('a.add_wishlist> i.whishstate').removeClass("active"); 
+               }
+            }
+        });
+    }
+ 
 });
 </script>
 </html>

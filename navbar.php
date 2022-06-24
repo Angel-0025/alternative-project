@@ -126,7 +126,7 @@
                       $select_stmt -> execute();
                       $row = $select_stmt ->rowCount();
                     ?>
-                    <li><a href="index.php?page=wishlist_page" class="nav-link wish_list nav-wishlist_page"><span class="lnr lnr-heart cart"><span class="wishlist_count" name="wishlistItem" id="wishlistItem">0</span></a></li>
+                    <li><a href="index.php?page=wishlist_page" class="nav-link wish_list nav-wishlist_page"><span class="lnr lnr-heart cart"><span class="wishlist_count" name="wishlistItem" id="wishlistItem"></span></a></li>
                     <li><a href="index.php?page=cart_page" class="nav-link cart_trigger nav-cart_page"><span class="lnr lnr-cart cart"><span class="cart_count" name="cartITem" id="cartItem"></span></a></li>
                 </ul>
             </nav>
