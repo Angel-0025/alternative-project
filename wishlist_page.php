@@ -39,16 +39,42 @@
                                 <th class="product-remove">Remove</th>
                             </tr>
                         </thead>
+                        <?php
+                            $connect = new PDO("mysql:host=localhost;dbname=alternative_project", "root", "");
+                            $stmt = $connect->prepare('SELECT * FROM wishlist_table');
+                            $stmt->execute();
+                            while ($prid= $stmt->fetch(PDO::FETCH_ASSOC)) {
+                                $pr = $connect->prepare('SELECT * FROM product WHERE product_id = ?');
+                                $pr->execute([$prid['pr_id']]);
+                                while ($product= $pr->fetch(PDO::FETCH_ASSOC)) {
+                        ?>
                         <tbody>
                         	<tr>
-                            	<td class="product-thumbnail"><a href="#"><img src="https://images.unsplash.com/photo-1516197926525-8c6cc1f192a5?ixlib=rb-1.2.1&ixid=MnwxMjA3fDB8MHxwaG90by1wYWdlfHx8fGVufDB8fHx8&auto=format&fit=crop&w=1468&q=80" alt="product1"></a></td>
-                                <td class="product-name" data-title="Product"><a href="#">Blue Dress For Woman</a></td>
-                                <td class="product-price" data-title="Price">$45.00</td>
-                              	<td class="product-stock-status" data-title="Stock Status"><span class="badge badge-pill badge-success">In Stock</span></td>
-                                <td class="product-add-to-cart"><a href="#" class="btn btn-fill-out"><i class="icon-basket-loaded"></i> Add to Cart</a></td>
-                                <td class="product-remove" data-title="Remove"><a href="#"><i class="ti-close"></i></a></td>
+                                <?php
+
+                                        $pr_img = $connect->prepare('SELECT * FROM product_image WHERE product_id = ? LIMIT 1');
+                                        $pr_img->execute([$prid['pr_id']]);
+                                        while ($img= $pr_img->fetch(PDO::FETCH_ASSOC)) {
+                                ?>
+                            	<td class="product-thumbnail"><a href="#"><img src="data:image/jpeg;base64, <?=base64_encode( $img['images'] );?>" alt="product_small_img1" /></a></td>
+                                <?php   
+                                    }
+                                ?>
+                                <form method="post" class="delete_wl" id="del" enctype="multipart/form-data">
+                                    <td class="product-name" data-title="Product"><a href="#"><?=$product['name']?></a></td>
+                                    <td class="product-price" data-title="Price"><span>&#8369; </span><?=$product['price']?></td>
+                                    <td class="product-stock-status" data-title="Stock Status"><span class="badge badge-pill badge-success">In Stock</span></td>
+
+                                    <td class="product-add-to-cart"><a href="index.php?page=product_detail&id=<?=$product['product_id']?>" 
+                                    class="btn btn-fill-out"><i class="icon-basket-loaded"></i> Add to Cart</a></td>
+                                    <td class="product-remove" data-title="Remove" ><a type="button" name="remove" class="remove" id="<?=$product['product_id']?>"><i class="ti-close"></i></a></td>
+                                </form>
                             </tr>
                         </tbody>
+                        <?php
+                                }
+                            }
+                        ?>
                     </table>
                 </div>
             </div>
@@ -56,3 +82,7 @@
     </div>
 </div>
 <!-- END SECTION SHOP -->
+<script>
+    
+
+</script>

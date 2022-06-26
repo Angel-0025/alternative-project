@@ -1,7 +1,6 @@
 <?php
     $connect = new PDO("mysql:host=localhost;dbname=alternative_project", "root", "");
 
-
     if(isset($_POST['pID'])) {  
         $addproductid = $_POST['pID'];
 

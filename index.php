@@ -62,7 +62,7 @@ $(document).ready(function () {
     }
 
     load_wishlist_list_number();
-    
+
     $(document).on('click','#addwl', function(e) {
         e.preventDefault();
         var form = $(this).closest('.addTowl');
@@ -71,9 +71,15 @@ $(document).ready(function () {
             url: 'addtowishlist.php',
             type: "POST",
             data: {pID:id},
-            success: function(data) {
-                load_wishlist_list_number();
-               
+            success:function(response) {
+            load_wishlist_list_number();  
+            if(response == '1')
+                {                    
+                    $('a.add_wishlist> i.whishstate').addClass("active");
+               }
+                else{
+                    $('a.add_wishlist> i.whishstate').removeClass("active");   
+                }
           }   
        });   
     }); 
@@ -85,18 +91,28 @@ $(document).ready(function () {
             data: {wishlist_item:"wishlistItem"},
             success:function(response){
                 $("#wishlistItem").html(response);
-                if(response == '1')
-                {
-
-                    $('a.add_wishlist> i.whishstate').addClass("active");
-                }
-                else{
-                    $('a.add_wishlist> i.whishstate').removeClass("active"); 
-               }
             }
         });
     }
- 
+
+    $(document).on('click', '.remove', function(){
+        var del_id= $(this).attr('id');
+        var $ele = $(this).parent().parent();
+        $.ajax({
+            type: "POST",
+            url: 'del_wl.php',
+            data: {del_id:del_id},
+            success:function(data) {
+                if(data=="YES"){
+                 $ele.fadeOut().remove();
+                 load_wishlist_list_number();  
+                }else{
+                    alert("can't delete the row")
+                }
+          }   
+       });  
+    });
+    
 });
 </script>
 </html>

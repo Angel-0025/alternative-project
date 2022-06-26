@@ -9,8 +9,7 @@
   //
   $new_qty;
   $new_price;
-//
-
+  //
 
   $select_stmt = $connect->prepare("SELECT * from cart_table WHERE pr_id = '$product_id' and pr_size='$product_size'");
   $select_stmt->execute();
