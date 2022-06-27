@@ -29,7 +29,9 @@
 <script src="assets/Js/script.js"></script>
 <script type="text/javascript">
 $(document).ready(function () {  
+    //Display the item inside the cart
     load_cart_item_number();
+    //Add to cart function
     $('#addtocart').on('submit', function(event){
         event.preventDefault();
         $('#submit').attr("disabled","disabled");
@@ -50,6 +52,7 @@ $(document).ready(function () {
             }
         });  
     });
+    //function for counting the item in cart
     function load_cart_item_number(){
         $.ajax({
             url:"admin_class.php",
@@ -60,9 +63,9 @@ $(document).ready(function () {
             }
         });
     }
-
+    //Display the item inside the wishlist
     load_wishlist_list_number();
-
+    //Add and remove wishlist function
     $(document).on('click','#addwl', function(e) {
         e.preventDefault();
         var form = $(this).closest('.addTowl');
@@ -83,7 +86,7 @@ $(document).ready(function () {
           }   
        });   
     }); 
-
+    //function for counting the item in wishlist
     function load_wishlist_list_number(){
         $.ajax({
             url:"admin_class.php",
@@ -94,7 +97,7 @@ $(document).ready(function () {
             }
         });
     }
-
+    //Removing the item display in the wishlist table
     $(document).on('click', '.remove', function(){
         var del_id= $(this).attr('id');
         var $ele = $(this).parent().parent();
@@ -112,7 +115,39 @@ $(document).ready(function () {
           }   
        });  
     });
-    
+    //Removing the item inside the cart
+    $(document).on('click', '.cart_remove', function(){  
+        var delct_id= $(this).attr('id');
+        var $ele = $(this).parent().parent();
+        $.ajax({
+            type: "POST",
+            url: 'del_itemcart.php',
+            data: {delct_id:delct_id},
+            success:function(data) {
+                if(data=="YES"){
+                 $ele.fadeOut().remove();
+                 load_cart_item_number();
+                 load_total_cart();
+                }else{
+                    alert("can't delete the row")
+                }
+          }   
+       });  
+    });
+    load_total_cart();
+    function load_total_cart(){
+        $.ajax({
+            url:"admin_class.php",
+            method: "get",
+            data: {carttotal:"cart_subtotal"},
+            success:function(response){
+                $("#cart_subtotal").html(response);
+                $("#cart_total").html(response);
+
+            }
+        });
+    }
+
 });
 </script>
 </html>

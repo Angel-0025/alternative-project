@@ -34,26 +34,45 @@
                         	<tr>
                             	<th class="product-thumbnail">&nbsp;</th>
                                 <th class="product-name">Product</th>
-                                <th class="product-price">Price</th>
                                 <th class="product-quantity">Quantity</th>
-                                <th class="product-subtotal">Total</th>
+                                <th class="product-size">Size</th>
+                                <th class="product-price">Price</th>
                                 <th class="product-remove">Remove</th>
                             </tr>
                         </thead>
                         <tbody>
+                            <?php
+                                $connect = new PDO("mysql:host=localhost;dbname=alternative_project", "root", "");
+                                $stmt = $connect->prepare('SELECT * FROM cart_table');
+                                $stmt->execute();
+                                while ($prid= $stmt->fetch(PDO::FETCH_ASSOC)) {
+                            ?>
                         	<tr>
-                            	<td class="product-thumbnail"><a href="#"><img src="https://images.unsplash.com/photo-1516197926525-8c6cc1f192a5?ixlib=rb-1.2.1&ixid=MnwxMjA3fDB8MHxwaG90by1wYWdlfHx8fGVufDB8fHx8&auto=format&fit=crop&w=1468&q=80" alt="product1"></a></td>
-                                <td class="product-name" data-title="Product"><a href="#">Blue Dress For Woman</a></td>
-                                <td class="product-price" data-title="Price">$45.00</td>
+                            <form method="post" class="delete_ItCart" id="del_cart" enctype="multipart/form-data">
+                                <?php
+                                    $pr = $connect->prepare('SELECT * FROM product WHERE product_id = ?');
+                                    $pr->execute([$prid['pr_id']]);
+                                    while ($product= $pr->fetch(PDO::FETCH_ASSOC)) {
+                                        $pr_img = $connect->prepare('SELECT * FROM product_image WHERE product_id = ? LIMIT 1');
+                                        $pr_img->execute([$prid['pr_id']]);
+                                        while ($img= $pr_img->fetch(PDO::FETCH_ASSOC)) {
+                                ?>
+                            	<td class="product-thumbnail"><a href="#"><img src="data:image/jpeg;base64, <?=base64_encode( $img['images'] );?>" alt="product_small_img1" /></a></td>
+                                    <?php } ?>
+                                <td class="product-name" data-title="Product" style="font-weight: 600;"><a href="index.php?page=product_detail&id=<?=$product['product_id']?>"><?=$product['name']?></a></td>
+                                <?php }?>
                                 <td class="product-quantity" data-title="Quantity">
                                     <div class="quantity">
                                         <input type="button" value="-" class="minus">
-                                        <input type="text" name="quantity" value="2" title="Qty" class="qty" size="4">
+                                        <input type="text" name="quantity" value="<?=$prid['pr_quantity']?>" title="Qty" class="qty" size="4">
                                         <input type="button" value="+" class="plus">
                                     </div>
                                 </td>
-                              	<td class="product-subtotal" data-title="Total">$90.00</td>
-                                <td class="product-remove" data-title="Remove"><a href="#"><i class="ti-close"></i></a></td>
+                                <td class="product-size" data-title="Size" style="font-weight: 600;"><?=$prid['pr_size']?></td>
+                                <td class="product-price" data-title="Price"><span>&#8369; </span><?=$prid['pr_price']?></td>
+                                <td class="product-remove" data-title="Remove"><a type="button" name="cart_remove" class="cart_remove" id="<?=$prid['pr_id']?>"><i class="ti-close"></i></a></td>
+                                <?php }?>
+                            </form>
                             </tr>
                         </tbody>
                     </table>
@@ -78,7 +97,7 @@
                             <tbody>
                                 <tr>
                                     <td class="cart_total_label">Cart Subtotal</td>
-                                    <td class="cart_total_amount">$349.00</td>
+                                    <td class="cart_total_amount"><strong><span>&#8369; </span><span name="cart_subtotal" id="cart_subtotal" ></span></strong></td>
                                 </tr>
                                 <tr>
                                     <td class="cart_total_label">Shipping</td>
@@ -86,7 +105,7 @@
                                 </tr>
                                 <tr>
                                     <td class="cart_total_label">Total</td>
-                                    <td class="cart_total_amount"><strong>$349.00</strong></td>
+                                    <td class="cart_total_amount"><strong><span>&#8369; </span><span name="cart_total" id="cart_total" style="font-weight: 600;"></span></strong></td>
                                 </tr>
                             </tbody>
                         </table>
@@ -98,3 +117,7 @@
     </div>
 </div>
 <!-- END SECTION SHOP -->
+<script>
+   
+    
+</script>

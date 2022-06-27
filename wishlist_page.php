@@ -51,7 +51,6 @@
                         <tbody>
                         	<tr>
                                 <?php
-
                                         $pr_img = $connect->prepare('SELECT * FROM product_image WHERE product_id = ? LIMIT 1');
                                         $pr_img->execute([$prid['pr_id']]);
                                         while ($img= $pr_img->fetch(PDO::FETCH_ASSOC)) {
@@ -61,7 +60,7 @@
                                     }
                                 ?>
                                 <form method="post" class="delete_wl" id="del" enctype="multipart/form-data">
-                                    <td class="product-name" data-title="Product"><a href="#"><?=$product['name']?></a></td>
+                                    <td class="product-name" data-title="Product"><a href="index.php?page=product_detail&id=<?=$product['product_id']?>"><?=$product['name']?></a></td>
                                     <td class="product-price" data-title="Price"><span>&#8369; </span><?=$product['price']?></td>
                                     <td class="product-stock-status" data-title="Stock Status"><span class="badge badge-pill badge-success">In Stock</span></td>
 

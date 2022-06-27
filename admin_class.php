@@ -14,6 +14,15 @@
         echo $row;
       
     }
-   
+    if(isset($_GET["carttotal"]) && isset($_GET["carttotal"])== "cart_subtotal"){
+        $subtotal = $connect->prepare("SELECT * from cart_table");
+        $subtotal->execute();
+        $total = 0.0;
+        while ($prtotal= $subtotal->fetch(PDO::FETCH_ASSOC)) {
+            $total += $prtotal['pr_price'];
+        }
+        echo  number_format($total, 2);
+      
+    }
     
 ?>
