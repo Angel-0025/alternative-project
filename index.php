@@ -143,7 +143,8 @@ $(document).ready(function () {
             success:function(response){
                 $("#cart_subtotal").html(response);
                 $("#cart_total").html(response);
-
+                $("#subtotal_checkout").html(response);
+                $("#total_checkout").html(response);
             }
         });
     }

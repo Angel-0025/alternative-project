@@ -17,23 +17,27 @@
                                 </tr>
                             </thead>
                             <tbody>
+                                <?php
+                                    $connect = new PDO("mysql:host=localhost;dbname=alternative_project", "root", "");
+                                    $stmt = $connect->prepare('SELECT * FROM cart_table');
+                                    $stmt->execute();
+                                    while ($prid= $stmt->fetch(PDO::FETCH_ASSOC)) {
+                                ?>
                                 <tr>
-                                    <td>Blue Dress For Woman <span class="product-qty">x 2</span></td>
-                                    <td>$90.00</td>
+                                    <?php
+                                      $pr = $connect->prepare('SELECT * FROM product WHERE product_id = ?');
+                                      $pr->execute([$prid['pr_id']]);
+                                      while ($product= $pr->fetch(PDO::FETCH_ASSOC)) {
+                                    ?>
+                                    <td><?=$product['name']?> <?php }?><span class="product-qty">x <?=$prid['pr_quantity']?> | size:  <?=$prid['pr_size']?></span></td>
+                                    <td><span>&#8369; </span><?=$prid['pr_price']?></td>
                                 </tr>
-                                <tr>
-                                    <td>Lether Gray Tuxedo <span class="product-qty">x 1</span></td>
-                                    <td>$55.00</td>
-                                </tr>
-                                <tr>
-                                    <td>woman full sliv dress <span class="product-qty">x 3</span></td>
-                                    <td>$204.00</td>
-                                </tr>
+                                <?php }?>
                             </tbody>
                             <tfoot>
                                 <tr>
                                     <th>SubTotal</th>
-                                    <td class="product-subtotal">$349.00</td>
+                                    <td class="product-subtotal"><span>&#8369; </span><span id="subtotal_checkout" name="subtotal_checkout">&#8369; </span></td>
                                 </tr>
                                 <tr>
                                     <th>Shipping</th>
@@ -41,7 +45,7 @@
                                 </tr>
                                 <tr>
                                     <th>Total</th>
-                                    <td class="product-subtotal">$349.00</td>
+                                    <td class="product-subtotal"><span>&#8369; </span><span id="total_checkout" name="total_checkout"></span></td>
                                 </tr>
                             </tfoot>
                         </table>
@@ -53,19 +57,9 @@
                         <div class="payment_option">
                             <div class="custome-radio">
                                 <input class="form-check-input" required="" type="radio" name="payment_option" id="exampleRadios3" value="option3" checked="">
-                                <label class="form-check-label" for="exampleRadios3">Direct Bank Transfer</label>
+                                <label class="form-check-label" for="exampleRadios3">Cash on Delivery</label>
                                 <p data-method="option3" class="payment-text">There are many variations of passages of Lorem Ipsum available, but the majority have suffered alteration. </p>
-                            </div>
-                            <div class="custome-radio">
-                                <input class="form-check-input" type="radio" name="payment_option" id="exampleRadios4" value="option4">
-                                <label class="form-check-label" for="exampleRadios4">Check Payment</label>
-                                <p data-method="option4" class="payment-text">Please send your cheque to Store Name, Store Street, Store Town, Store State / County, Store Postcode.</p>
-                            </div>
-                            <div class="custome-radio">
-                                <input class="form-check-input" type="radio" name="payment_option" id="exampleRadios5" value="option5">
-                                <label class="form-check-label" for="exampleRadios5">Paypal</label>
-                                <p data-method="option5" class="payment-text">Pay via PayPal; you can pay with your credit card if you don't have a PayPal account.</p>
-                            </div>
+                            </div>  
                         </div>
                     </div>
                     <a href="#" class="btn btn-fill-out btn-block">Place Order</a>

@@ -19,9 +19,7 @@
   }
   @media only screen and (min-width: 1200px) and (max-width: 1365px) {
    
-    .custome-radio input[type="radio"] + .form-check-label::after {
-      top: 7px !important;
-    }
+   
   }
   
   /* -------------------------------------------------
@@ -53,6 +51,7 @@
     (min-width: 767px) and (max-width: 991px)
   ---------------------------------------------------*/
   @media only screen and (min-width: 767px) and (max-width: 991px) {
+
   }
   
   /* -------------------------------------------------
@@ -405,6 +404,7 @@
   .pr_search_icon {
     display: none;
   }
+
   }
   /* -------------------------------------------------
     max-width: 991px
@@ -1446,6 +1446,7 @@
   .newsletter_form button {
     padding: 9px 25px;
   }
+
   }
   
   /* -------------------------------------------------
@@ -1805,9 +1806,7 @@
   .login_form .panel-body, .coupon_form .panel-body {
     padding: 15px;
   }
-  .custome-radio input[type="radio"] + .form-check-label::after {
-    top: 7px;
-  }
+
   }
   
   /* -------------------------------------------------
