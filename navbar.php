@@ -119,16 +119,28 @@
                             </form>
                         </div><div class="search_overlay"></div>
                     </li>
-                    <li><a href="index.php?page=wishlist_page" class="nav-link wish_list nav-wishlist_page"><span class="lnr lnr-heart cart">
-                    <?php 
-                    if($_SESSION["id"] == NULL){
+                    <li>
+                    <?php
+                        if(isset($_SESSION["userID"]) == NULL){
                         ?>
-                         <span class="wishlist_count" name="wishlistItem" id="wishlistItem" hidden="hidden">
+                        <a href="index.php?page=login_page" class="nav-link wish_list nav-wishlist_page">
+                            <span class="lnr lnr-heart cart"><span class="wishlist_count" name="wishlistItem" id="wishlistItem" hidden="hidden"><? $_SESSION["id"]?></span>
+                        </a>
                         <?php
-                    }?>
-                       
-                    <?php ?></span></a></li>
-                    <li><a href="index.php?page=cart_page" class="nav-link cart_trigger nav-cart_page"><span class="lnr lnr-cart cart"><span class="cart_count" name="cartITem" id="cartItem"></span></a></li>
+                        }else{
+                        ?>
+                        <a href="index.php?page=wishlist_page" class="nav-link wish_list nav-wishlist_page">
+                            <span class="lnr lnr-heart cart"><span class="wishlist_count" name="wishlistItem" id="wishlistItem"></span>
+                        </a>
+                        <?php
+                        }
+                        ?>
+                    </li>
+                    <li>
+                        <a href="index.php?page=cart_page" class="nav-link cart_trigger nav-cart_page">
+                            <span class="lnr lnr-cart cart"><span class="cart_count" name="cartITem" id="cartItem"></span></span>
+                        </a>
+                    </li>
                 </ul>
             </nav>
         </div>

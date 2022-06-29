@@ -8,7 +8,7 @@
         if(($pass ==  $cpass)){
             $country = "Philippines";
     
-            $query = "INSERT INTO product_user(email, password, first_name, last_name, mobile_num, address, city, province, country, zip_code) VALUES(:user_email, :cpassword, :first_name, :last_name, :mobileNum, :address, :city, :province, :country, :zcode )";
+            $query = "INSERT INTO product_user(user_email, pass, first_name, last_name, mobile_num, address, city, province, country, zip_code) VALUES(:user_email, :cpassword, :first_name, :last_name, :mobileNum, :address, :city, :province, :country, :zcode )";
             $statement = $connect->prepare($query);
             $statement->execute(
                 array(

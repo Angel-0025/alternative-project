@@ -1,6 +1,11 @@
 <?php
 session_start();
-    $_SESSION["id"];
+if(isset($_SESSION['userID']) && !empty($_SESSION['userID'])) {
+    echo 'Set and not empty, and no undefined index error!';
+ }
+
+
+ 
 ?>
 <!DOCTYPE html>
 <html lang="en">
@@ -11,9 +16,11 @@ session_start();
     <title>Home Page</title>
 </head>
 <body>
+
     <?php include 'header.php' ?>
 	<?php include 'navbar.php' ?>
     <main id="main_content" >
+
     <div class="alert-message"></div>
         <?php $page = isset($_GET['page']) ? $_GET['page'] : 'home_page'; ?>
         <?php include $page.'.php' ?>

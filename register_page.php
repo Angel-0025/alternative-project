@@ -35,10 +35,11 @@
                 <div class="login_wrap">
             		<div class="padding_eight_all bg-white">
                         <div class="heading_s1">
+                            <div class="register-message"></div>
                             <h3>Create an Account</h3>
                         </div>
                         <form method="post" id="createAcc" enctype="multipart/form-data">
-                        <div class="form-row">
+                            <div class="form-row">
                                 <div class="form-group col-md-6">
                                     <label for="first_name">First Name</label>
                                     <input type="text" required="" class="form-control form-control-sm" id="first_name" name="first_name" placeholder="Enter Your First Name">
@@ -135,18 +136,18 @@
             },
             success:function(response){
                 if(response == 1){
-                    $(".alert-message").html('<div class="alert alert-success alert-dismissible mt-2"><button type="button" class="close" data-dismiss="alert">x</button> <strong>Account is now registered</strong></div>');
+                    $(".register-message").html('<div class="alert alert-success alert-dismissible mt-2"><button type="button" class="close" data-dismiss="alert">x</button> <strong>Account is now registered</strong></div>');
                     $('#register').removeAttr("disabled","disabled");
                     $('#createAcc')[0].reset();
                     window.scrollTo(0,0);
                 }
                 if(response == 2){
-                    $(".alert-message").html('<div class="alert alert-danger alert-dismissible mt-2"><button type="button" class="close" data-dismiss="alert">x</button> <strong>Password not match</strong></div>');
+                    $(".register-message").html('<div class="alert alert-danger alert-dismissible mt-2"><button type="button" class="close" data-dismiss="alert">x</button> <strong>Password not match</strong></div>');
                     $('#register').removeAttr("disabled","disabled");
                     window.scrollTo(0,0);
                 }
                 if(response == 3){
-                    $(".alert-message").html('<div class="alert alert-danger alert-dismissible mt-2"><button type="button" class="close" data-dismiss="alert">x</button> <strong>Please be sure to mark the terms & policy</strong></div>');
+                    $(".register-message").html('<div class="alert alert-danger alert-dismissible mt-2"><button type="button" class="close" data-dismiss="alert">x</button> <strong>Please be sure to mark the terms & policy</strong></div>');
                     $('#register').removeAttr("disabled","disabled");
                     window.scrollTo(0,0);
                 }
@@ -154,7 +155,7 @@
             }
         }); 
         setInterval(function(){
-                $('.alert-message').html('');
+                $('.register-message').html('');
             }, 9999) 
     });
     
