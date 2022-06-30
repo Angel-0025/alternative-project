@@ -120,25 +120,57 @@
                         </div><div class="search_overlay"></div>
                     </li>
                     <li>
-                    <?php
-                        if(isset($_SESSION["userID"]) == NULL){
-                        ?>
-                        <a href="index.php?page=login_page" class="nav-link wish_list nav-wishlist_page">
-                            <span class="lnr lnr-heart cart"><span class="wishlist_count" name="wishlistItem" id="wishlistItem" hidden="hidden"><? $_SESSION["id"]?></span>
-                        </a>
+                        <a 
                         <?php
-                        }else{
+                        $connect = new PDO("mysql:host=localhost;dbname=alternative_project", "root", "");
+                        $select_stmt = $connect->prepare("SELECT * from wishlist_table WHERE user_id = ?");
+                        $select_stmt->execute([isset($_SESSION["userID"])]);
+                        $product = $select_stmt->fetch();
+                        $row=$select_stmt->rowCount();
+                        if(($row > 0) && (isset($_SESSION["userID"]) != "")){
                         ?>
-                        <a href="index.php?page=wishlist_page" class="nav-link wish_list nav-wishlist_page">
-                            <span class="lnr lnr-heart cart"><span class="wishlist_count" name="wishlistItem" id="wishlistItem"></span>
-                        </a>
+                            href="index.php?page=wishlist_page" 
+                        <?php }
+                        if((isset($_SESSION["userID"]) == "")){
+                        ?>
+                            href="index.php?page=login_page" 
                         <?php
                         }
                         ?>
+                        class="nav-link wish_list nav-wishlist_page">
+                            <span class="lnr lnr-heart cart"><span class="wishlist_count" name="wishlistItem" id="wishlistItem" 
+                            <?php
+                             if((isset($_SESSION["userID"]) == "")){
+                            ?>
+                            hidden="hidden"
+                            <?php }?>></span>
+                        </a>
                     </li>
                     <li>
-                        <a href="index.php?page=cart_page" class="nav-link cart_trigger nav-cart_page">
-                            <span class="lnr lnr-cart cart"><span class="cart_count" name="cartITem" id="cartItem"></span></span>
+                        <a  <?php
+                        $connect = new PDO("mysql:host=localhost;dbname=alternative_project", "root", "");
+                        $select_stmt = $connect->prepare("SELECT * from cart_table WHERE user_id = ?");
+                        $select_stmt->execute([isset($_SESSION["userID"])]);
+                        $row=$select_stmt->rowCount();
+                        if(($row > 0) && (isset($_SESSION["userID"]) != "")){
+                        ?>
+                        href="index.php?page=cart_page" 
+                        <?php
+                        }
+                        if((isset($_SESSION["userID"]) == "")){
+                        ?>
+                          href="index.php?page=login_page" 
+                        <?php
+                        }
+                        ?>
+                        class="nav-link cart_trigger nav-cart_page">
+                            <span class="lnr lnr-cart cart"><span class="cart_count" name="cartITem" id="cartItem" 
+                            <?php
+                             if((isset($_SESSION["userID"]) == "")){
+                            ?>
+                            hidden="hidden"
+                            <?php }?>
+                            ></span></span>
                         </a>
                     </li>
                 </ul>

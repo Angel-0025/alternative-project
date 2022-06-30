@@ -1,11 +1,9 @@
 <?php
 session_start();
 if(isset($_SESSION['userID']) && !empty($_SESSION['userID'])) {
-    echo 'Set and not empty, and no undefined index error!';
+    echo $_SESSION['userID'];
  }
 
-
- 
 ?>
 <!DOCTYPE html>
 <html lang="en">
@@ -16,7 +14,6 @@ if(isset($_SESSION['userID']) && !empty($_SESSION['userID'])) {
     <title>Home Page</title>
 </head>
 <body>
-
     <?php include 'header.php' ?>
 	<?php include 'navbar.php' ?>
     <main id="main_content" >
@@ -126,21 +123,37 @@ $(document).ready(function () {
           }   
        });  
     });
+    
+    load_total_cart();
+    function load_total_cart(){
+        $.ajax({
+            url:"admin_class.php",
+            method: "get",
+            data: {carttotal:"cart_subtotal"},
+            success:function(response){
+                $("#cart_subtotal").html(response);
+                $("#cart_total").html(response);
+                $("#subtotal_checkout").html(response);
+                $("#total_checkout").html(response);
+            }
+        });
+    }
     //Removing the item inside the cart
     $(document).on('click', '.cart_remove', function(){  
         var delct_id= $(this).attr('id');
+        var delct_size= $(this).attr('name');
         var $ele = $(this).parent().parent();
         $.ajax({
             type: "POST",
             url: 'del_itemcart.php',
-            data: {delct_id:delct_id},
+            data: {delct_id:delct_id, delct_size:delct_size},
             success:function(data) {
                 if(data=="YES"){
                  $ele.fadeOut().remove();
                  load_cart_item_number();
                  load_total_cart();
                 }else{
-                    alert("can't delete the row")
+                    alert("can't delete the row");
                 }
           }   
        });  

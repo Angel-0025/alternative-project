@@ -40,8 +40,9 @@
                             </tr>
                         </thead>
                         <?php
+                        if(isset($_SESSION["userID"])){
                             $connect = new PDO("mysql:host=localhost;dbname=alternative_project", "root", "");
-                            $stmt = $connect->prepare('SELECT * FROM wishlist_table');
+                            $stmt = $connect->prepare('SELECT * FROM wishlist_table where user_id='. $_SESSION["userID"] .'');
                             $stmt->execute();
                             while ($prid= $stmt->fetch(PDO::FETCH_ASSOC)) {
                                 $pr = $connect->prepare('SELECT * FROM product WHERE product_id = ?');
@@ -73,6 +74,7 @@
                         <?php
                                 }
                             }
+                        }
                         ?>
                     </table>
                 </div>

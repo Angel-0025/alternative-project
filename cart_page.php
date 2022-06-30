@@ -42,9 +42,10 @@
                         </thead>
                         <tbody>
                             <?php
+                            if(isset($_SESSION["userID"])){
                                 $connect = new PDO("mysql:host=localhost;dbname=alternative_project", "root", "");
-                                $stmt = $connect->prepare('SELECT * FROM cart_table');
-                                $stmt->execute();
+                                $stmt = $connect->prepare('SELECT * FROM cart_table where user_id = ?');
+                                $stmt->execute([$_SESSION["userID"]]);
                                 while ($prid= $stmt->fetch(PDO::FETCH_ASSOC)) {
                             ?>
                         	<tr>
@@ -61,17 +62,13 @@
                                     <?php } ?>
                                 <td class="product-name" data-title="Product" style="font-weight: 600;"><a href="index.php?page=product_detail&id=<?=$product['product_id']?>"><?=$product['name']?></a></td>
                                 <?php }?>
-                                <td class="product-quantity" data-title="Quantity">
-                                    <div class="quantity">
-                                        <input type="button" value="-" class="minus">
-                                        <input type="text" name="quantity" value="<?=$prid['pr_quantity']?>" title="Qty" class="qty" size="4">
-                                        <input type="button" value="+" class="plus">
-                                    </div>
-                                </td>
+                                <td class="product-quantity" data-title="Quantity" style="font-weight: 600;"><?=$prid['pr_quantity']?></td>
                                 <td class="product-size" data-title="Size" style="font-weight: 600;"><?=$prid['pr_size']?></td>
                                 <td class="product-price" data-title="Price"><span>&#8369; </span><?=$prid['pr_price']?></td>
-                                <td class="product-remove" data-title="Remove"><a type="button" name="cart_remove" class="cart_remove" id="<?=$prid['pr_id']?>"><i class="ti-close"></i></a></td>
-                                <?php }?>
+                                <td class="product-remove" data-title="Remove"><a type="button" name="<?=$prid['pr_size']?>" class="cart_remove" id="<?=$prid['pr_id']?>"><i class="ti-close"></i></a></td>
+                                <?php 
+                                }
+                                }?>
                             </form>
                             </tr>
                         </tbody>

@@ -18,9 +18,10 @@
                             </thead>
                             <tbody>
                                 <?php
+                                if(isset($_SESSION["userID"])){
                                     $connect = new PDO("mysql:host=localhost;dbname=alternative_project", "root", "");
-                                    $stmt = $connect->prepare('SELECT * FROM cart_table');
-                                    $stmt->execute();
+                                    $stmt = $connect->prepare('SELECT * FROM cart_table where user_id = ?');
+                                    $stmt->execute([$_SESSION["userID"]]);
                                     while ($prid= $stmt->fetch(PDO::FETCH_ASSOC)) {
                                 ?>
                                 <tr>
@@ -32,7 +33,9 @@
                                     <td><?=$product['name']?> <?php }?><span class="product-qty">x <?=$prid['pr_quantity']?> | size:  <?=$prid['pr_size']?></span></td>
                                     <td><span>&#8369; </span><?=$prid['pr_price']?></td>
                                 </tr>
-                                <?php }?>
+                                <?php 
+                                    }
+                                }?>
                             </tbody>
                             <tfoot>
                                 <tr>

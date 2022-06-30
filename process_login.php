@@ -11,8 +11,7 @@
         $fetch_pass = $fetch['pass'];
         if($user_password == $fetch_pass){
             if($row = $fetch){
-
-                $_SESSION['userID'] = $row['id'];
+                $_SESSION['userID'] = $row['user_id'];
                 $_SESSION['user_email'] = $row['user_email'];
                 $_SESSION['name'] = $row['first_name'];
 
