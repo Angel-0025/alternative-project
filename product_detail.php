@@ -21,6 +21,7 @@ if (isset($_GET['id'])) {
     // Simple error to display if the id wasn't specified
     exit('Product does not exist!');
 }
+
 ?>
 <style>
     /* Chrome, Safari, Edge, Opera */
@@ -164,22 +165,34 @@ input[type=number] {
                             <div class="cart_btn">
                                 <input type="hidden" id="pid" name="pid" class="pID" value="<?=$product['product_id']?>">
                                 <input type="hidden" id="pprice" name="pprice" value="<?=$product['price']?>">
-                                <button type="submit" name="submit" id="submit" class="btn btn-fill-out" ><i class="icon-basket-loaded"></i> Add to cart</button>
-                                <?php
-                                  $select_stmt = $connect->prepare("SELECT * from wishlist_table WHERE pr_id = " . $product['product_id'] ."");
-                                  $select_stmt->execute();
-                                  $row=$select_stmt->rowCount();
-                                 if($row == 1){
-                                ?>
-                                 <a class="add_wishlist" id="addwl" href='#'><i class="icon-heart whishstate active"></i></a>
-                                <?php }
-                                else {
-                                ?>
-                                 <a class="add_wishlist" id="addwl" href='#'><i class="icon-heart whishstate"></i></a>
-                                <?php
+                                <button type="submit" name="submit" id="submit" class="btn btn-fill-out" 
+                                <?php 
+                                if(!isset($_SESSION['userID']) && empty($_SESSION['userID'])) {
+                                    ?>
+                                    disabled
+                                    <?php
                                 }
                                 ?>
-                               
+                                ><i class="icon-basket-loaded"></i> Add to cart</button>
+                                <a class="add_wishlist" id="addwl" href='#'><i class="icon-heart whishstate 
+                                    <?php  
+                                    if(isset($_SESSION["userID"])) {  
+                                        $select_stmt = $connect->prepare("SELECT * from wishlist_table WHERE pr_id = ? AND user_id= ?");
+                                        $select_stmt->execute([$product['product_id'] , $_SESSION["userID"]]);
+                                        $row=$select_stmt->rowCount();
+                                        if(($row > 0) && ($_SESSION["userID"]) != ""){
+                                    ?>  
+                                    active
+                                    <?php 
+                                    }
+                                    if(($_SESSION["userID"] == "")){
+                                    ?>   
+                                        
+                                    <?php
+                                    }
+                                }
+                                ?>
+                                "></i></a>
                             </div>
                         </div>
                         <hr />

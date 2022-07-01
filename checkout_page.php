@@ -65,10 +65,60 @@
                             </div>  
                         </div>
                     </div>
-                    <a href="#" class="btn btn-fill-out btn-block">Place Order</a>
+                    <form method="post" id="placeOrder" enctype="multipart/form-data">
+                        <?php
+                        if (isset($_SESSION["userID"])) {
+                            $connect = new PDO("mysql:host=localhost;dbname=alternative_project", "root", "");
+                            // Prepare statement and execute, prevents SQL injection
+                            $stmt = $connect->prepare('SELECT * FROM cart_table where user_id = ?');
+                            $stmt->execute([$_SESSION["userID"]]);
+                            // Fetch the product from the database and return the result as an Array
+                            $product = $stmt->fetch(PDO::FETCH_ASSOC);
+                            // Check if the product exists (array is not empty)
+                            if (!$product) {
+                                // Simple error to display if the id for the product doesn't exists (array is empty)
+                                exit('Product does not exist!');
+                            }
+                        }
+                        ?>
+                        <input type="hidden" id="userID" name="userID" class="uid" value="<?=$product['user_id']?>">
+                        <button type="submit" name="checkout" id="checkout" class="btn btn-fill-out btn-block">Place Order</button>
+                    </form>
                 </div>
             </div>
         </div>
     </div>
 </div>
 <!-- END SECTION SHOP -->
+<script>
+    $(document).ready(function () { 
+        $('#placeOrder').on('submit', function(event){
+        event.preventDefault();
+        $('#checkout').attr("disabled","disabled");
+        $.ajax({
+            url:"process_checkout.php",
+            method:"POST",
+            data: new FormData(this),
+            contentType:false,
+            cache:false,
+            processData:false,
+            beforeSend:function(){
+            $('#checkout').val('Placing Order...');
+            },
+            success:function(response){
+                if(response == 1){
+                    window.location.href="index.php?page=cOrder_page";   
+                }
+                if(response == 2){
+                    $(".alert-message").html('<div class="alert alert-danger alert-dismissible mt-2"><button type="button" class="close" data-dismiss="alert">x</button> <strong>Sorry, something went wrong</strong></div>');
+                    $('#checkout').removeAttr("disabled","disabled");
+                }
+                if(response == 3){
+                    $(".alert-message").html('<div class="alert alert-danger alert-dismissible mt-2"><button type="button" class="close" data-dismiss="alert">x</button> <strong>Sorry, something went wrong</strong></div>');
+                    $('#checkout').removeAttr("disabled","disabled");
+                }
+            }
+        });  
+    });
+    });
+</script>
