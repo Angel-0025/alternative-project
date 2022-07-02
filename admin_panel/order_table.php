@@ -16,64 +16,46 @@
                             <tr>
                                 <th>Order ID</th>
                                 <th>Product Name</th>
-                                <th class="d-none d-md-table-cell">Units</th>
+                                <th class="d-none d-md-table-cell">Size</th>
+                                <th class="d-none d-md-table-cell">Quantity</th>
                                 <th class="d-none d-md-table-cell">Order Date</th>
                                 <th class="d-none d-md-table-cell">Order Cost</th>
                                 <th>Status</th>
-                                <th></th>
+                                <th>Action</th>
                             </tr>
                         </thead>
                         <tbody>
+                            <?php
+                                $connect = new PDO("mysql:host=localhost;dbname=alternative_project", "root", "");
+
+                                $order_list = $connect->prepare("SELECT * from order_table");
+                                $order_list->execute();
+                                while ($order = $order_list->fetch(PDO::FETCH_ASSOC)) {
+                                    $dateTimeFromMysql = $order['order_at'];
+                                    $time = strtotime($dateTimeFromMysql); 
+                                    $myFormatForView = date("d M Y", $time); 
+                            ?>
                             <tr>
-                                <td >24541</td>
+                                <td ><?=$order['order_ref_num']?></td>
                                 <td >
-                                <a class="text-dark" href=""> Coach Swagger</a>
+                                <a class="text-dark" href=""><?=$order['pr_name']?></a>
                                 </td>
-                                <td class="d-none d-md-table-cell">1 Unit</td>
-                                <td class="d-none d-md-table-cell">Oct 20, 2018</td>
-                                <td class="d-none d-md-table-cell">$230</td>
+                                <td class="d-none d-md-table-cell"><?=$order['pr_size']?></td>
+                                <td class="d-none d-md-table-cell"><?=$order['pr_qty']?></td>
+                                <td class="d-none d-md-table-cell"><?=$myFormatForView?></td>
+                                <td class="d-none d-md-table-cell"><span>&#8369; </span><?=$order['pr_price']?></td>
                                 <td >
                                 <span class="badge badge-success">Completed</span>
                                 </td>
-                                <td class="text-right">
-                                <div class="dropdown show d-inline-block widget-dropdown">
-                                    <a class="dropdown-toggle icon-burger-mini" href="" role="button" id="dropdown-recent-order1" data-toggle="dropdown" aria-haspopup="true" aria-expanded="false" data-display="static"></a>
-                                    <ul class="dropdown-menu dropdown-menu-right" aria-labelledby="dropdown-recent-order1">
-                                    <li class="dropdown-item">
-                                        <a href="#">View</a>
-                                    </li>
-                                    <li class="dropdown-item">
-                                        <a href="#">Remove</a>
-                                    </li>
-                                    </ul>
-                                </div>
+                                <td >
+                                <button type="button" class="mb-1 btn btn-success btn-sm">Process</button>
+                                <button type="button" class="mb-1 btn btn-danger btn-sm">Cancel</button>
                                 </td>
                             </tr>
-                            <tr>
-                                <td >24541</td>
-                                <td >
-                                    <a class="text-dark" href=""> Toddler Shoes, Gucci Watch</a>
-                                </td>
-                                <td class="d-none d-md-table-cell">2 Units</td>
-                                <td class="d-none d-md-table-cell">Nov 15, 2018</td>
-                                <td class="d-none d-md-table-cell">$550</td>
-                                <td >
-                                <span class="badge badge-warning">Delayed</span>
-                                </td>
-                                <td class="text-right">
-                                <div class="dropdown show d-inline-block widget-dropdown">
-                                    <a class="dropdown-toggle icon-burger-mini" href="#" role="button" id="dropdown-recent-order2" data-toggle="dropdown" aria-haspopup="true" aria-expanded="false" data-display="static"></a>
-                                    <ul class="dropdown-menu dropdown-menu-right" aria-labelledby="dropdown-recent-order2">
-                                        <li class="dropdown-item">
-                                        <a href="#">View</a>
-                                        </li>
-                                        <li class="dropdown-item">
-                                        <a href="#">Remove</a>
-                                        </li>
-                                    </ul>
-                                </div>
-                                </td>
-                            </tr>
+                            <?php 
+                                } 
+                            ?>
+
                         </tbody>
                     </table>
                 </div>
@@ -81,3 +63,4 @@
         </div>
     </div>
 </div>
+
