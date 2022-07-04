@@ -1,3 +1,10 @@
+<?php
+use Phppot\Order;
+
+require_once __DIR__ . '/Model/Order.php';
+$orderModel = new Order();
+$orderResult = $orderModel->getAllOrders();
+?>
 <div class="content">
     <!-- Order History -->
     <div class="row">
@@ -15,47 +22,29 @@
                         <thead>
                             <tr>
                                 <th>Order ID</th>
-                                <th>Product Name</th>
-                                <th class="d-none d-md-table-cell">Size</th>
-                                <th class="d-none d-md-table-cell">Quantity</th>
-                                <th class="d-none d-md-table-cell">Order Date</th>
-                                <th class="d-none d-md-table-cell">Order Cost</th>
-                                <th>Status</th>
+                                <th class="d-none d-md-table-cell">Amount</th>
+                                <th class="d-none d-md-table-cell">Status</th>
+                                <th>Receipt</th>
                                 <th>Action</th>
                             </tr>
                         </thead>
                         <tbody>
-                            <?php
-                                $connect = new PDO("mysql:host=localhost;dbname=alternative_project", "root", "");
-
-                                $order_list = $connect->prepare("SELECT * from order_table");
-                                $order_list->execute();
-                                while ($order = $order_list->fetch(PDO::FETCH_ASSOC)) {
-                                    $dateTimeFromMysql = $order['order_at'];
-                                    $time = strtotime($dateTimeFromMysql); 
-                                    $myFormatForView = date("d M Y", $time); 
-                            ?>
+                        <?php foreach ($orderResult as $k => $v) { ?>
                             <tr>
-                                <td ><?=$order['order_ref_num']?></td>
-                                <td >
-                                <a class="text-dark" href=""><?=$order['pr_name']?></a>
+                                <td class="d-none d-md-table-cell"><?php echo $orderResult[$k]["ref_num"];?></td>
+                                <td class="d-none d-md-table-cell"><?php echo $orderResult[$k]["amount"];?></td>
+                                <td>
+                                <span class="badge badge-warning"><?php echo $orderResult[$k]["order_status"];?></span>
                                 </td>
-                                <td class="d-none d-md-table-cell"><?=$order['pr_size']?></td>
-                                <td class="d-none d-md-table-cell"><?=$order['pr_qty']?></td>
-                                <td class="d-none d-md-table-cell"><?=$myFormatForView?></td>
-                                <td class="d-none d-md-table-cell"><span>&#8369; </span><?=$order['pr_price']?></td>
-                                <td >
-                                <span class="badge badge-success">Completed</span>
+                                <td class="d-none d-md-table-cell">
+                                <a target="_blank" title="Generate Invoice" style="" href="./invoice.php?id=<?php echo $orderResult[$k]["id"];?>">Print Receipt</a>
                                 </td>
                                 <td >
-                                <button type="button" class="mb-1 btn btn-success btn-sm">Process</button>
+                                <a class="mb-1 btn btn-primary btn-sm"  href="index.php?page=order_process&id=<?php echo $orderResult[$k]["id"];?>">Process</a>
                                 <button type="button" class="mb-1 btn btn-danger btn-sm">Cancel</button>
                                 </td>
                             </tr>
-                            <?php 
-                                } 
-                            ?>
-
+                            <?php }?>
                         </tbody>
                     </table>
                 </div>
