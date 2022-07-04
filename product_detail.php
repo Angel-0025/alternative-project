@@ -71,8 +71,7 @@ input[type=number] {
                         $stmt = $connect->prepare('SELECT * FROM product_image WHERE product_id = ? LIMIT 1');
                         $stmt->execute([$_GET['id']]);
                         // Fetch the product from the database and return the result as an Array
-                        $row = $stmt->fetch();
-                            
+                        $row = $stmt->fetch();                            
                     ?>
                     <div class="product_img_box">
                         <img id="product_img" src='data:image/jpeg;base64, <?=base64_encode( $row['images'] );?>' data-zoom-image="data:image/jpeg;base64, <?=base64_encode( $row['images'] );?>" alt="product_img1" />
