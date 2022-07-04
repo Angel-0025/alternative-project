@@ -1,3 +1,15 @@
+<?php
+use Phppot\Order;
+
+require_once __DIR__ . '/Model/Order.php';
+$orderModel = new Order();
+$orderResult = $orderModel->getAllOrdersArchive();
+?>
+<style>
+a .noHover:hover {
+  background-color: white!important;
+}
+</style>
 <div class="content">
     <!-- Order History -->
     <div class="row">
@@ -15,65 +27,27 @@
                         <thead>
                             <tr>
                                 <th>Order ID</th>
-                                <th>Product Name</th>
-                                <th class="d-none d-md-table-cell">Units</th>
-                                <th class="d-none d-md-table-cell">Order Date</th>
-                                <th class="d-none d-md-table-cell">Order Cost</th>
+                                <th class="d-none d-md-table-cell">Amount</th>
+                                <th class="d-none d-md-table-cell">Date</th>
                                 <th>Status</th>
-                                <th></th>
+                                <th>Action</th>
                             </tr>
                         </thead>
                         <tbody>
+                            <?php foreach ($orderResult as $k => $v) { ?>
                             <tr>
-                                <td >24541</td>
-                                <td >
-                                <a class="text-dark" href=""> Coach Swagger</a>
+                                <td class="d-none d-md-table-cell"><?php echo $orderResult[$k]["ref_num"];?></td>
+                                <td class="d-none d-md-table-cell"><span>&#8369; </span><?php echo  number_format($orderResult[$k]["amount"], 2);?></td>
+                                <td class="d-none d-md-table-cell"><?php echo date('d F Y', strtotime($orderResult[$k]["order_at"]));?></td>
+                                <td class="d-none d-md-table-cell">
+                                <span class="badge badge-warning"><?php echo $orderResult[$k]["order_status"];?></span>
                                 </td>
-                                <td class="d-none d-md-table-cell">1 Unit</td>
-                                <td class="d-none d-md-table-cell">Oct 20, 2018</td>
-                                <td class="d-none d-md-table-cell">$230</td>
                                 <td >
-                                <span class="badge badge-success">Completed</span>
-                                </td>
-                                <td class="text-right">
-                                <div class="dropdown show d-inline-block widget-dropdown">
-                                    <a class="dropdown-toggle icon-burger-mini" href="" role="button" id="dropdown-recent-order1" data-toggle="dropdown" aria-haspopup="true" aria-expanded="false" data-display="static"></a>
-                                    <ul class="dropdown-menu dropdown-menu-right" aria-labelledby="dropdown-recent-order1">
-                                    <li class="dropdown-item">
-                                        <a href="#">View</a>
-                                    </li>
-                                    <li class="dropdown-item">
-                                        <a href="#">Remove</a>
-                                    </li>
-                                    </ul>
-                                </div>
+                                <a target="_blank" title="Generate Invoice" class="mb-1 btn btn-success btn-sm noHover" style="color: white;" href="./invoice_archive.php?id=<?php echo $orderResult[$k]["id"];?>">Print Receipt</a>
+                                <a class="mb-1 btn btn-primary btn-sm"  href="index.php?page=order_archive_view&id=<?php echo $orderResult[$k]["id"];?>">View</a>
                                 </td>
                             </tr>
-                            <tr>
-                                <td >24541</td>
-                                <td >
-                                    <a class="text-dark" href=""> Toddler Shoes, Gucci Watch</a>
-                                </td>
-                                <td class="d-none d-md-table-cell">2 Units</td>
-                                <td class="d-none d-md-table-cell">Nov 15, 2018</td>
-                                <td class="d-none d-md-table-cell">$550</td>
-                                <td >
-                                <span class="badge badge-warning">Delayed</span>
-                                </td>
-                                <td class="text-right">
-                                <div class="dropdown show d-inline-block widget-dropdown">
-                                    <a class="dropdown-toggle icon-burger-mini" href="#" role="button" id="dropdown-recent-order2" data-toggle="dropdown" aria-haspopup="true" aria-expanded="false" data-display="static"></a>
-                                    <ul class="dropdown-menu dropdown-menu-right" aria-labelledby="dropdown-recent-order2">
-                                        <li class="dropdown-item">
-                                        <a href="#">View</a>
-                                        </li>
-                                        <li class="dropdown-item">
-                                        <a href="#">Remove</a>
-                                        </li>
-                                    </ul>
-                                </div>
-                                </td>
-                            </tr>
+                            <?php }?>
                         </tbody>
                     </table>
                 </div>

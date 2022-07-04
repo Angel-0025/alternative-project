@@ -91,8 +91,8 @@
 </div>
 <!-- END SECTION SHOP -->
 <script>
-    $(document).ready(function () { 
-        $('#placeOrder').on('submit', function(event){
+$(document).ready(function () { 
+    $('#placeOrder').on('submit', function(event){
         event.preventDefault();
         $('#checkout').attr("disabled","disabled");
         $.ajax({
@@ -120,5 +120,5 @@
             }
         });  
     });
-    });
+});
 </script>

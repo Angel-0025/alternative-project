@@ -29,11 +29,12 @@
             $total += $prtotal['pr_price'];
         }
         //Insert the user info in table order
-        $query = "INSERT INTO order_table(ref_num, customer_fname, customer_lname, customer_address, amount, order_status) VALUES(:refnum, :cfname, :clname, :caddress,:total_amount, :ostatus)";
+        $query = "INSERT INTO order_table(ref_num, user_id,customer_fname, customer_lname, customer_address, amount, order_status) VALUES(:refnum, :userid, :cfname, :clname, :caddress,:total_amount, :ostatus)";
         $statement = $connect->prepare($query);
         $statement->execute(
         array(
             ':refnum'  => $ref_num,
+            ':userid'  => $user_id,
             ':cfname'  => $fname,
             ':clname'  =>  $lname,
             ':caddress'  =>  $user_address,
@@ -55,11 +56,12 @@
                     $pr_size= $product['pr_size'];
                     $pr_qty= $product['pr_quantity'];
 
-                    $query = "INSERT INTO order_table_item(order_id, product_id, item_price, quantity, size) VALUES(:orid, :pid, :iprice, :qty, :size)";
+                    $query = "INSERT INTO order_table_item(order_id, user_id,product_id, item_price, quantity, size) VALUES(:orid, usrid,:pid, :iprice, :qty, :size)";
                     $statement = $connect->prepare($query);
                     $statement->execute(
                     array(
                         ':orid'  => $order_id,
+                        ':usrid'  => $$user_id,
                         ':pid'  =>  $pr_id,
                         ':iprice'  =>  $pr_price,
                         ':qty'  =>  $pr_qty,

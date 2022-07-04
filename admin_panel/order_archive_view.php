@@ -8,7 +8,7 @@
 if (isset($_GET['id'])) {
     $connect = new PDO("mysql:host=localhost;dbname=alternative_project", "root", "");
     // Prepare statement and execute, prevents SQL injection
-    $stmt = $connect->prepare('SELECT * FROM order_table WHERE id = ?');
+    $stmt = $connect->prepare('SELECT * FROM order_archive WHERE order_id = ?');
     $stmt->execute([$_GET['id']]);
     // Fetch the product from the database and return the result as an Array
     $order = $stmt->fetch(PDO::FETCH_ASSOC);
@@ -72,7 +72,7 @@ print_r($order['id']);
                         <tfoot>
                             <?php
                                 $connect = new PDO("mysql:host=localhost;dbname=alternative_project", "root", "");
-                                $stmt = $connect->prepare('SELECT * FROM order_table where id = ?');
+                                $stmt = $connect->prepare('SELECT * FROM order_archive where order_id = ?');
                                 $stmt->execute([$_GET['id']]);
                                 $order = $stmt->fetch(PDO::FETCH_ASSOC)
                             ?>
@@ -85,60 +85,15 @@ print_r($order['id']);
                             </tr>
                         </tfoot>
                     </table>
-                    <form method="post" id="updateProcess" enctype="multipart/form-data">
-                        <div class="form-group row">
-                            <div class="col-sm-8">
-                                <label for="process_status">Process</label>
-                                <select class="form-control form-control-md input-md" id="process_status" name="process_status">
-                                    <option><?=$order['order_status']?></option>
-                                    <option>Order Placed</option>
-                                    <option>On Delivery</option>
-                                    <option>Received</option>
-                                </select>
-                            </div>
-                            <input type="hidden" id="orderID" name="orderID" class="orid" value="<?=$order['id']?>">
-                            <div class="col-sm-4 mt-4 pt-3">
-                                <label for="exampleFormControlSelect12"></label>
-                                <a target="_blank" title="Generate Invoice" class="mb-1 btn btn-primary btn-sm" style="" href="./invoice.php?id=<?php echo $_GET['id'];?>">Print Receipt</a>
-                                <button type="submit" name="update" id="update" class="mb-1 btn btn-success btn-sm" style="color: white;">Update Process</button>
-                                <a type="button" href="index.php?page=order_table" class="mb-1 btn btn-danger btn-sm">Back</a>
-                            </div>
+                    <div class="form-group row ">
+                        <div class="col-sm-4 mt-4 pt-3 ml-auto">
+                            <label for="exampleFormControlSelect12"></label>
+                            <a target="_blank" title="Generate Invoice" class="mb-1 btn btn-primary btn-md" style="" href="./invoice_archive.php?id=<?php echo $_GET['id'];?>">Print Receipt</a>
+                            <a type="button" href="index.php?page=order_history" class="mb-1 btn btn-danger btn-md">Back</a>
                         </div>
-                    </form>
+                    </div>
                 </div>
             </div>
         </div>
     </div>
 </div>
-<script>
-    
-$(document).ready(function () { 
-    $('#updateProcess').on('submit', function(event){
-        event.preventDefault();
-        $('#update').attr("disabled","disabled");
-        $.ajax({
-            url:"process_update_order.php",
-            method:"POST",
-            data: new FormData(this),
-            contentType:false,
-            cache:false,
-            processData:false,
-            beforeSend:function(){
-            $('#update').val('Updating Order...');
-            },
-            success:function(response){
-                if(response == 1){
-                    window.location.href="index.php?page=order_table";   
-                }
-                if(response == 2){
-                    window.location.href="index.php?page=order_history";  
-                }
-                if(response == 3){
-                    $(".alert-message").html('<div class="alert alert-danger alert-dismissible mt-2"><button type="button" class="close" data-dismiss="alert">x</button> <strong>Sorry, something went wrong</strong></div>');
-                    $('#update').removeAttr("disabled","disabled");
-                }
-            }
-        });  
-    });
-});
-</script>
