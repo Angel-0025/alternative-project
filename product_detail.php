@@ -21,7 +21,6 @@ if (isset($_GET['id'])) {
     // Simple error to display if the id wasn't specified
     exit('Product does not exist!');
 }
-
 ?>
 <style>
     /* Chrome, Safari, Edge, Opera */
@@ -63,6 +62,7 @@ input[type=number] {
 <div class="section">
 	<div class="container">
 		<div class="row">
+             <!-- Product Image -->
             <div class="col-lg-6 col-md-6 mb-4 mb-md-0">
                 <div class="product-image">
                     <?php 
@@ -99,7 +99,6 @@ input[type=number] {
                 </div>
             </div>
             <!-- Product Details -->
-
             <div class="col-lg-6 col-md-6">
                 <form method="post" id="addtocart" class="addTowl" enctype="multipart/form-data">
                     <div class="pr_detail">
@@ -213,8 +212,8 @@ input[type=number] {
                     </div>            
                 </form>
             </div>
-
         </div>
+         <!-- Spacing -->
         <div class="row">
         	<div class="col-12">
             	<div class="large_divider clearfix"></div>
@@ -230,14 +229,21 @@ input[type=number] {
                       	<li class="nav-item">
                         	<a class="nav-link" id="Additional-info-tab" data-toggle="tab" href="#Additional-info" role="tab" aria-controls="Additional-info" aria-selected="false">Additional info</a>
                       	</li>
+                        <?php
+                            $connect = new PDO("mysql:host=localhost;dbname=alternative_project", "root", "");
+                            $product_review = $connect->prepare('SELECT * FROM product_review where user_id = ? and product_id =?');
+                            $product_review->execute([$_SESSION["userID"], $_GET['id']]);
+                            $row=$product_review->rowCount();
+                        ?>
                       	<li class="nav-item">
-                        	<a class="nav-link" id="Reviews-tab" data-toggle="tab" href="#Reviews" role="tab" aria-controls="Reviews" aria-selected="false">Reviews (2)</a>
+                        	<a class="nav-link" id="Reviews-tab" data-toggle="tab" href="#Reviews" role="tab" aria-controls="Reviews" aria-selected="false">Reviews (<?=$row?>)</a>
                       	</li>
                     </ul>
                 	<div class="tab-content shop_info_tab">
                       	<div class="tab-pane fade show active" id="Description" role="tabpanel" aria-labelledby="Description-tab">
                         	<p><?=$product['prt_desc']?></p>
                       	</div>
+                        <!-- Product Detail -->
                       	<div class="tab-pane fade" id="Additional-info" role="tabpanel" aria-labelledby="Additional-info-tab">
                         	<table class="table table-bordered">
                             	<tr>
@@ -263,9 +269,6 @@ input[type=number] {
                             	<h5 class="product_tab_title">2 Review For <span>Blue Dress For Woman</span></h5>
                                 <ul class="list_none comment_list mt-4">
                                     <li>
-                                        <div class="comment_img">
-                                            <img src="assets/images/user1.jpg" alt="user1"/>
-                                        </div>
                                         <div class="comment_block">
                                             <div class="rating_wrap">
                                                 <div class="rating">
@@ -281,30 +284,11 @@ input[type=number] {
                                             </div>
                                         </div>
                                     </li>
-                                    <li>
-                                        <div class="comment_img">
-                                            <img src="assets/images/user2.jpg" alt="user2"/>
-                                        </div>
-                                        <div class="comment_block">
-                                            <div class="rating_wrap">
-                                                <div class="rating">
-                                                    <div class="product_rate" style="width:60%"></div>
-                                                </div>
-                                            </div>
-                                            <p class="customer_meta">
-                                                <span class="review_author">Grace Wong</span>
-                                                <span class="comment-date">June 17, 2018</span>
-                                            </p>
-                                            <div class="description">
-                                                <p>It is a long established fact that a reader will be distracted by the readable content of a page when looking at its layout. The point of using Lorem Ipsum is that it has a more-or-less normal distribution of letters</p>
-                                            </div>
-                                        </div>
-                                    </li>
                                 </ul>
                         	</div>
                             <div class="review_form field_form">
                                 <h5>Add a review</h5>
-                                <form class="row mt-3">
+                                <form class="row mt-3" method="post" id="reveiw" enctype="multipart/form-data">
                                     <div class="form-group col-12">
                                         <div class="star_rating">
                                             <span data-value="1"><i class="far fa-star"></i></span>
@@ -314,18 +298,13 @@ input[type=number] {
                                             <span data-value="5"><i class="far fa-star"></i></span>
                                         </div>
                                     </div>
+                                    <input type="hidden" id="pid" name="pid" class="pID" value="<?=$_GET['id']?>">
+                                    <input type="hidden" id="uid" name="uid" value="<?=$_SESSION['userID']?>">
                                     <div class="form-group col-12">
-                                        <textarea required="required" placeholder="Your review *" class="form-control" name="message" rows="4"></textarea>
+                                        <textarea required="required" placeholder="Your review *" class="form-control" name="reveiwM" id="reveiwM" rows="4"></textarea>
                                     </div>
-                                    <div class="form-group col-md-6">
-                                        <input required="required" placeholder="Enter Name *" class="form-control" name="name" type="text">
-                                     </div>
-                                    <div class="form-group col-md-6">
-                                        <input required="required" placeholder="Enter Email *" class="form-control" name="email" type="email">
-                                    </div>
-                                   
                                     <div class="form-group col-12">
-                                        <button type="submit" class="btn btn-fill-out" name="submit" value="Submit">Submit Review</button>
+                                        <button type="submit" class="btn btn-fill-out" name="submitReveiw" id="submitReveiw" value="Submit">Submit Review</button>
                                     </div>
                                 </form>
                             </div>
@@ -381,3 +360,64 @@ input[type=number] {
     </div>
 </div>
 <!-- END SECTION SHOP -->
+<script>
+    $star_val = 0;
+$(document).ready(function () {
+	$('.star_rating span').on('click', function(){
+		var onStar = parseFloat($(this).data('value'), 10); // The star currently selected
+		var stars = $(this).parent().children('.star_rating span');
+		for (var i = 0; i < stars.length; i++) {
+			$(stars[i]).removeClass('selected');
+		}
+    	for (i = 0; i < onStar; i++) {
+		    $(stars[i]).addClass('selected');
+	    }
+        $star_val = onStar;
+	});
+
+
+    $('#submitReveiw').on('click', function() {
+
+        var pr_id = $('#pid').val();
+        var user_id = $('#uid').val();
+        var review = $('#reveiwM').val();
+        var star_val = $star_val;
+  
+        $('#submitReveiw').attr("disabled","disabled");
+        if(pr_id!="" && user_id!="" && review!="" && star_val!=0){
+            $.ajax({
+                url: "./assets/php/product_review.php",
+                type: "POST",
+                data: {
+                    pr_id: pr_id ,
+                    user_id: user_id,	
+                    review: review ,
+                    star_val: star_val		
+                },
+                cache: false,
+                beforeSend:function(){
+                $('#submitReveiw').val('Submitting...');
+                },
+                success:function(response){
+                    if(response == 1){
+                        $(".update-message").html('<div class="alert alert-success alert-dismissible mt-2"><button type="button" class="close" data-dismiss="alert">x</button> <strong>Address is Updated</strong></div>');
+                        $('#updateAdd').removeAttr("disabled","disabled");
+                        window.scrollTo(0,0);
+                    }
+                    if(response == 2){
+                        $(".update-message").html('<div class="alert alert-danger alert-dismissible mt-2"><button type="button" class="close" data-dismiss="alert">x</button> <strong>Password not match</strong></div>');
+                        $('#updateAdd').removeAttr("disabled","disabled");
+                        window.scrollTo(0,0);
+                    }
+                }
+            });
+            setInterval(function(){
+                $('.update-message').html('');
+            }, 9999) 
+        }else{
+            $('#submitReveiw').removeAttr("disabled","disabled");
+            alert('Please fill all the field !');
+        }
+    });
+});
+</script>

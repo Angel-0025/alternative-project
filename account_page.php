@@ -267,6 +267,7 @@
                 $('.update-message').html('');
             }, 9999) 
     });
+    
     $('#update_info').on('submit', function(event){
         event.preventDefault();
         $('#updateInfo').attr("disabled","disabled");

@@ -1,6 +1,7 @@
 <?php
     session_start();
     $connect = new PDO("mysql:host=localhost;dbname=alternative_project", "root", "");
+    
     $address = $_POST["userAddress"];
     $city = $_POST["userCity"];
     $province = $_POST["userProvince"];
