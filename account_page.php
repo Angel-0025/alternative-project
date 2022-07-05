@@ -95,56 +95,81 @@
                   	</div>
                     <!-- Order History -->
                   	<div class="tab-pane fade " id="dashboard" role="tabpanel" aria-labelledby="dashboard-tab">
-                    	<div class="card">
+                      <div class="card">
                         	<div class="card-header">
-                                <h3>Dashboard</h3>
+                                <h3>Orders History</h3>
                             </div>
                             <div class="card-body">
-                    			<p>From your account dashboard. you can easily check &amp; view your <a href="javascript:void(0);" onclick="$('#orders-tab').trigger('click')">recent orders</a>, manage your <a href="javascript:void(0);" onclick="$('#address-tab').trigger('click')">shipping and billing addresses</a> and <a href="javascript:void(0);" onclick="$('#account-detail-tab').trigger('click')">edit your password and account details.</a></p>
+                    			<div class="table-responsive">
+                                    <table class="table">
+                                        <thead>
+                                            <tr>
+                                                <th>Order</th>
+                                                <th>Date</th>
+                                                <th>Status</th>
+                                                <th>Total</th>
+                                                <th>Actions</th>
+                                            </tr>
+                                        </thead>
+                                        <tbody>
+                                            <?php
+                                                $connect = new PDO("mysql:host=localhost;dbname=alternative_project", "root", "");
+                                                $stmt = $connect->prepare('SELECT * FROM order_archive where user_id = ?');
+                                                $stmt->execute([$_SESSION['userID']]);
+                                                while($order = $stmt->fetch(PDO::FETCH_ASSOC)){
+                                            ?>
+                                            <tr>
+                                                <td><?=$order['ref_num']?></td>
+                                                <td><?php echo date('F d, Y', strtotime($order["order_at"]));?></td>
+                                                <td><?=$order['order_status']?></td>
+                                                <td><span>&#8369; </span><?=number_format($order['amount'], 2)?></td>
+                                                <td><a href="index.php?page=view_order_archive&id=<?php echo $order["id"];?>" class="btn btn-fill-out btn-sm">View</a></td>
+                                            </tr>
+                                                <?php }?>
+                                        </tbody>
+                                    </table>
+                                </div>
                             </div>
                         </div>
                   	</div>
                     <!-- Order Address -->   	
 					<div class="tab-pane fade" id="address" role="tabpanel" aria-labelledby="address-tab">
+                        <?php 
+                            $connect = new PDO("mysql:host=localhost;dbname=alternative_project", "root", "");
+                            $uAddress = $connect->prepare('SELECT * FROM product_user where user_id = ?');
+                            $uAddress->execute([$_SESSION['userID']]);
+                            $info = $uAddress->fetch(PDO::FETCH_ASSOC)
+                        ?>
                         <div class="card">
+                            <div class="update-message"></div>
                         	<div class="card-header">
                                 <h3>Account Address</h3>
                             </div>
                             <div class="card-body">
-                    			<p>Already have an account? <a href="#">Log in instead!</a></p>
-                                <form method="post" name="enq">
-                                    <div class="row">
-                                        <div class="form-group col-md-6">
-                                        	<label>First Name <span class="required">*</span></label>
-                                            <input required="" class="form-control" name="name" type="text">
-                                         </div>
-                                         <div class="form-group col-md-6">
-                                        	<label>Last Name <span class="required">*</span></label>
-                                            <input required="" class="form-control" name="phone">
-                                        </div>
+                                <form method="post" id="update_address" enctype="multipart/form-data">
+                                    <div class="form-row">
                                         <div class="form-group col-md-12">
-                                        	<label>Display Name <span class="required">*</span></label>
-                                            <input required="" class="form-control" name="dname" type="text">
+                                            <label for="userAddress">Address</label>
+                                            <input type="text" required="" class="form-control form-control-sm" id="userAddress" name="userAddress" placeholder="Enter Your Address" value="<?=$info['address'];?>">
                                         </div>
-                                        <div class="form-group col-md-12">
-                                        	<label>Email Address <span class="required">*</span></label>
-                                            <input required="" class="form-control" name="email" type="email">
+                                    </div>
+
+                                    <div class="form-row">
+                                        <div class="form-group col-md-4">
+                                            <label for="userCity">City</label>
+                                            <input type="text" required="" class="form-control form-control-sm" id="userCity" name="userCity" placeholder="Enter Your City" value="<?=$info['city'];?>">
                                         </div>
-                                        <div class="form-group col-md-12">
-                                        	<label>Current Password <span class="required">*</span></label>
-                                            <input required="" class="form-control" name="password" type="password">
+                                        <div class="form-group col-md-4">
+                                            <label for="userProvince">Province</label>
+                                            <input type="text" required="" class="form-control form-control-sm" id="userProvince" name="userProvince" placeholder="Enter Your Province" value="<?=$info['province'];?>">
                                         </div>
-                                        <div class="form-group col-md-12">
-                                        	<label>New Password <span class="required">*</span></label>
-                                            <input required="" class="form-control" name="npassword" type="password">
+                                        <div class="form-group col-md-4">
+                                            <label for="userZcode">Zip Code</label>
+                                            <input type="number" required="" class="form-control form-control-sm" id="userZcode" name="userZcode" placeholder="Enter Your ZIP Code"  value="<?=$info['zip_code'];?>">
                                         </div>
-                                        <div class="form-group col-md-12">
-                                        	<label>Confirm Password <span class="required">*</span></label>
-                                            <input required="" class="form-control" name="cpassword" type="password">
-                                        </div>
-                                        <div class="col-md-12">
-                                            <button type="submit" class="btn btn-fill-out" name="submit" value="Submit">Save</button>
-                                        </div>
+                                    </div>
+                                    <div class="col-md-12 ">
+                                        <button type="submit" class="btn btn-fill-out float-right btn-sm" name="updateAdd" id="updateAdd" value="Submit">Update</button>
                                     </div>
                                 </form>
                             </div>
@@ -152,44 +177,54 @@
 					</div>
                     <div class="tab-pane fade" id="account-detail" role="tabpanel" aria-labelledby="account-detail-tab">
 						<div class="card">
+                            <div class="updateInfo-message"></div>
                         	<div class="card-header">
                                 <h3>Account Details</h3>
                             </div>
                             <div class="card-body">
-                    			<p>Already have an account? <a href="#">Log in instead!</a></p>
-                                <form method="post" name="enq">
-                                    <div class="row">
+                                <?php 
+                                    $connect = new PDO("mysql:host=localhost;dbname=alternative_project", "root", "");
+                                    $uinfo = $connect->prepare('SELECT * FROM product_user where user_id = ?');
+                                    $uAddress->execute([$_SESSION['userID']]);
+                                    $info = $uAddress->fetch(PDO::FETCH_ASSOC)
+                                ?>
+                                <form method="post" id="update_info" enctype="multipart/form-data">
+                                    <div class="form-row">
                                         <div class="form-group col-md-6">
-                                        	<label>First Name <span class="required">*</span></label>
-                                            <input required="" class="form-control" name="name" type="text">
-                                         </div>
-                                         <div class="form-group col-md-6">
-                                        	<label>Last Name <span class="required">*</span></label>
-                                            <input required="" class="form-control" name="phone">
+                                            <label for="user_fname">First Name</label>
+                                            <input type="text" required="" class="form-control form-control-sm" id="user_fname" name="user_fname" placeholder="Enter Your First Name" value="<?=$info['first_name'];?>">
                                         </div>
+                                        <div class="form-group col-md-6">
+                                            <label for="user_lname">Last Name</label>
+                                            <input type="text" required="" class="form-control form-control-sm" id="user_lname" name="user_lname" placeholder="Enter Your Last Name" value="<?=$info['last_name'];?>">
+                                        </div>
+                                    </div>
+                                    <div class="form-row">
                                         <div class="form-group col-md-12">
-                                        	<label>Display Name <span class="required">*</span></label>
-                                            <input required="" class="form-control" name="dname" type="text">
+                                            <label for="usermobileNum">Mobile Number</label>
+                                            <input type="number" required="" class="form-control form-control-sm" id="usermobileNum" name="usermobileNum" placeholder="+63" value="<?=$info['mobile_num'];?>">
                                         </div>
+                                    </div>
+                                    <div class="form-row">
                                         <div class="form-group col-md-12">
-                                        	<label>Email Address <span class="required">*</span></label>
-                                            <input required="" class="form-control" name="email" type="email">
+                                            <label for="email">Email</label>
+                                            <input type="email" required="" class="form-control form-control-sm" id="user_email" name="user_email" placeholder="Enter Your Email" value="<?=$info['user_email'];?>">
                                         </div>
+                                    </div>
+                                    <div class="form-row">
                                         <div class="form-group col-md-12">
-                                        	<label>Current Password <span class="required">*</span></label>
-                                            <input required="" class="form-control" name="password" type="password">
+                                            <label for="new_pass">New Password</label>
+                                            <input type="password"  class="form-control form-control-sm" id="new_pass" name="new_pass" placeholder="New Password">
                                         </div>
+                                    </div>
+                                    <div class="form-row">
                                         <div class="form-group col-md-12">
-                                        	<label>New Password <span class="required">*</span></label>
-                                            <input required="" class="form-control" name="npassword" type="password">
+                                            <label for="cnpassword">Confirm Password</label>
+                                            <input type="password"  class="form-control form-control-sm" id="cnpassword" name="cnpassword" placeholder="Confirm Password">
                                         </div>
-                                        <div class="form-group col-md-12">
-                                        	<label>Confirm Password <span class="required">*</span></label>
-                                            <input required="" class="form-control" name="cpassword" type="password">
-                                        </div>
-                                        <div class="col-md-12">
-                                            <button type="submit" class="btn btn-fill-out" name="submit" value="Submit">Save</button>
-                                        </div>
+                                    </div>
+                                    <div class="col-md-12 ">
+                                        <button type="submit" class="btn btn-fill-out float-right btn-sm" name="updateInfo" id="updateInfo" value="Submit">Update</button>
                                     </div>
                                 </form>
                             </div>
@@ -201,3 +236,70 @@
 	</div>
 </div>
 <!-- END SECTION SHOP -->
+<script>
+    $('#update_address').on('submit', function(event){
+        event.preventDefault();
+        $('#updateAdd').attr("disabled","disabled");
+        $.ajax({
+            url:"./assets/php/update_address.php",
+            method:"POST",
+            data: new FormData(this),
+            contentType:false,
+            cache:false,
+            processData:false,
+            beforeSend:function(){
+            $('#updateAdd').val('Updating...');
+            },
+            success:function(response){
+                if(response == 1){
+                    $(".update-message").html('<div class="alert alert-success alert-dismissible mt-2"><button type="button" class="close" data-dismiss="alert">x</button> <strong>Address is Updated</strong></div>');
+                    $('#updateAdd').removeAttr("disabled","disabled");
+                    window.scrollTo(0,0);
+                }
+                if(response == 2){
+                    $(".update-message").html('<div class="alert alert-danger alert-dismissible mt-2"><button type="button" class="close" data-dismiss="alert">x</button> <strong>Password not match</strong></div>');
+                    $('#updateAdd').removeAttr("disabled","disabled");
+                    window.scrollTo(0,0);
+                }
+            }
+        }); 
+        setInterval(function(){
+                $('.update-message').html('');
+            }, 9999) 
+    });
+    $('#update_info').on('submit', function(event){
+        event.preventDefault();
+        $('#updateInfo').attr("disabled","disabled");
+        $.ajax({
+            url:"./assets/php/update_info.php",
+            method:"POST",
+            data: new FormData(this),
+            contentType:false,
+            cache:false,
+            processData:false,
+            beforeSend:function(){
+            $('#updateInfo').val('Updating...');
+            },
+            success:function(response){
+                if(response == 1){
+                    $(".updateInfo-message").html('<div class="alert alert-success alert-dismissible mt-2"><button type="button" class="close" data-dismiss="alert">x</button> <strong>Information is Updated</strong></div>');
+                    $('#updateInfo').removeAttr("disabled","disabled");
+                    window.scrollTo(0,0);
+                }
+                if(response == 2){
+                    $(".updateInfo-message").html('<div class="alert alert-danger alert-dismissible mt-2"><button type="button" class="close" data-dismiss="alert">x</button> <strong>Something went wrong</strong></div>');
+                    $('#updateInfo').removeAttr("disabled","disabled");
+                    window.scrollTo(0,0);
+                }
+                if(response == 3){
+                    $(".updateInfo-message").html('<div class="alert alert-danger alert-dismissible mt-2"><button type="button" class="close" data-dismiss="alert">x</button> <strong>Password not match</strong></div>');
+                    $('#updateInfo').removeAttr("disabled","disabled");
+                    window.scrollTo(0,0);
+                }
+            }
+        }); 
+        setInterval(function(){
+                $('.updateInfo-message').html('');
+            }, 9999) 
+    });
+</script>
