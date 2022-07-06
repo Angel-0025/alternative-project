@@ -13,8 +13,36 @@
             <div class="col-md-6">
             <div class="text-center text-md-right">
                 <ul class="header_list">
-                    <li><a href="wishlist.html"><i class="ti-heart"></i><span>Wishlist</span></a></li>
-                    <li><a class="nav-login_page" href="index.php?page=login_page"><i class="ti-user"></i><span>Login</span></a></li>
+
+                    <li><a class="nav-login_page" 
+                        <?php
+                            if(isset($_SESSION["userID"]) != ""){
+                        ?>
+                            href="index.php?page=account_page" 
+                        <?php }
+                            if((isset($_SESSION["userID"]) == "")){
+                        ?>
+                            href="index.php?page=login_page" 
+                        <?php
+                            }
+                        ?>                    
+                    ><i class="ti-user"></i><span>
+                        <?php
+                            if(isset($_SESSION["userID"]) != ""){
+                                $connect = new PDO("mysql:host=localhost;dbname=alternative_project", "root", "");
+                                $user_info = $connect->prepare("SELECT * from product_user WHERE user_id=?");
+                                $user_info->execute([$_SESSION["userID"]]);
+                                $info= $user_info->fetch(PDO::FETCH_ASSOC)
+                        ?>
+                           Welcome, <?=ucwords( $info['first_name']);?>
+                        <?php }
+                            if((isset($_SESSION["userID"]) == "")){
+                        ?>
+                            Login
+                        <?php
+                            }
+                        ?>     
+                    </span></a></li>
                 </ul>
             </div>
             </div>
