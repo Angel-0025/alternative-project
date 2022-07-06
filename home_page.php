@@ -334,16 +334,19 @@
 								<div class="product_info">
 									<h6 class="product_title"><a href="index.php?page=product_detail&id=<?=$row['product_id']?>"><?=$row['name'];?> </a></h6>
 									<div class="product_price">
-                                    <span class="price"><?=$row['price'];?> </span>
+                                    <span class="price"><span>&#8369; </span><?=$row['price'];?> </span>
 										<del></del>
 										<div class="on_sale">
 											<span><?=$row['discount'];?> </span>
 										</div>
 										<div class="rating_wrap">
 											<div class="rating">
-												<div class="product_rate" style="width:0%"></div>
+												<div class="product_rate" style="width:<?php echo ($row['rating'] *20)?>%"></div>
 											</div>
-											<span class="rating_num">(0)</span>
+                                            <?php
+                                            
+                                            ?>
+											<span class="rating_num">(<span name="home_rev" id="home_rev"></span>)</span>
 										</div>
 									</div>
 								</div>

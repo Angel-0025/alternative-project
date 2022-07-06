@@ -110,63 +110,55 @@
                     </ul>
                 </div>
                 <ul class="navbar-nav attr-nav align-items-center">
-                    <li><a href="javascript:void(0);" class="nav-link search_trigger"><span class="lnr lnr-magnifier"></span></a>
+                    <li><a  class="nav-link search_trigger"><span class="lnr lnr-magnifier"></span></a>
                         <div class="search_wrap">
                             <span class="close-search"><i class="ion-ios-close-empty"></i></span>
-                            <form>
-                                <input type="text" placeholder="Search" class="form-control" id="search_input">
-                                <button type="submit" class="search_icon"><i class="ion-ios-search-strong"></i></button>
+                            <form method="post" id="search" enctype="multipart/form-data">
+                                <input type="text" placeholder="Search" class="form-control" name="search_input" id="search_input">
+                                <button type="button" class="search_icon" name="submitSearch" id="submitSearch" ><i class="ion-ios-search-strong"></i></button>
                             </form>
                         </div><div class="search_overlay"></div>
                     </li>
                     <li>
                         <a 
-                        <?php
-                        $connect = new PDO("mysql:host=localhost;dbname=alternative_project", "root", "");
-                        $select_stmt = $connect->prepare("SELECT * from wishlist_table WHERE user_id = ?");
-                        $select_stmt->execute([isset($_SESSION["userID"])]);
-                        $product = $select_stmt->fetch();
-                        $row=$select_stmt->rowCount();
-                        if(($row > 0) && (isset($_SESSION["userID"]) != "")){
-                        ?>
-                            href="index.php?page=wishlist_page" 
-                        <?php }
-                        if((isset($_SESSION["userID"]) == "")){
-                        ?>
-                            href="index.php?page=login_page" 
-                        <?php
-                        }
-                        ?>
-                        class="nav-link wish_list nav-wishlist_page">
-                            <span class="lnr lnr-heart cart"><span class="wishlist_count" name="wishlistItem" id="wishlistItem" 
                             <?php
-                             if((isset($_SESSION["userID"]) == "")){
+                                if(isset($_SESSION["userID"]) != ""){
                             ?>
-                            hidden="hidden"
+                                    href="index.php?page=wishlist_page" 
+                            <?php }
+                                if((isset($_SESSION["userID"]) == "")){
+                            ?>
+                                    href="index.php?page=login_page" 
+                            <?php
+                                }
+                            ?>
+                                    class="nav-link wish_list nav-wishlist_page">
+                                    <span class="lnr lnr-heart cart"><span class="wishlist_count" name="wishlistItem" id="wishlistItem" 
+                            <?php
+                                if((isset($_SESSION["userID"]) == "")){
+                            ?>
+                                    hidden="hidden"
                             <?php }?>></span>
                         </a>
                     </li>
                     <li>
-                        <a  <?php
-                        $connect = new PDO("mysql:host=localhost;dbname=alternative_project", "root", "");
-                        $select_stmt = $connect->prepare("SELECT * from cart_table WHERE user_id = ?");
-                        $select_stmt->execute([isset($_SESSION["userID"])]);
-                        $row=$select_stmt->rowCount();
-                        if(($row > 0) && (isset($_SESSION["userID"]) != "")){
-                        ?>
-                        href="index.php?page=cart_page" 
+                        <a  
                         <?php
-                        }
-                        if((isset($_SESSION["userID"]) == "")){
+                            if(isset($_SESSION["userID"]) != ""){
+                        ?>
+                            href="index.php?page=cart_page" 
+                        <?php
+                            }
+                            if((isset($_SESSION["userID"]) == "")){
                         ?>
                           href="index.php?page=login_page" 
                         <?php
-                        }
+                            }
                         ?>
                         class="nav-link cart_trigger nav-cart_page">
                             <span class="lnr lnr-cart cart"><span class="cart_count" name="cartITem" id="cartItem" 
                             <?php
-                             if((isset($_SESSION["userID"]) == "")){
+                                if((isset($_SESSION["userID"]) == "")){
                             ?>
                             hidden="hidden"
                             <?php }?>
@@ -180,8 +172,45 @@
 </header>
 <!-- END nav -->
 <script>
-    $('.nav-link').click(function(){
+$('.nav-link').click(function(){
     console.log($(this).attr('href'))
-	})
-    $('.nav-<?php echo isset($_GET['page']) ? $_GET['page'] : '' ?>').addClass('active');
+})
+$('.nav-<?php echo isset($_GET['page']) ? $_GET['page'] : '' ?>').addClass('active');
+
+$(document).ready(function () {  
+    $('#submitSearch').on('click', function() {
+
+        var searchInput = $('#search_input').val();
+
+        $('#submitSearch').attr("disabled","disabled");
+        if(searchInput !=""){
+            $.ajax({
+                url: "./assets/php/search.php",
+                type: "POST",
+                data: {
+                    searchInput: searchInput
+                    },
+                cache: false,
+                success:function(response){
+                    if(response == 1){
+                        window.location = 'index.php?page=product_search';
+                        $('#search')[0].reset();
+                    }
+                    if(response == 2){
+                        $('#search')[0].reset();
+                    }
+                }
+            });
+            setInterval(function(){
+                $('.update-message').html('');
+            }, 9999) ; 
+        }
+        else
+        {
+            $('#search')[0].reset();
+            $('#submitSearch').removeAttr("disabled","disabled");
+            alert('Please fill all the field !');
+        }
+    });
+});
 </script>

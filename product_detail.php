@@ -4,23 +4,25 @@
     }
 </style>
 <?php
-// Check to make sure the id parameter is specified in the URL
-if (isset($_GET['id'])) {
-    $connect = new PDO("mysql:host=localhost;dbname=alternative_project", "root", "");
-    // Prepare statement and execute, prevents SQL injection
-    $stmt = $connect->prepare('SELECT * FROM product WHERE product_id = ?');
-    $stmt->execute([$_GET['id']]);
-    // Fetch the product from the database and return the result as an Array
-    $product = $stmt->fetch(PDO::FETCH_ASSOC);
-    // Check if the product exists (array is not empty)
-    if (!$product) {
-        // Simple error to display if the id for the product doesn't exists (array is empty)
+    $_SESSION["product_id"] =  $_GET['id'];
+    // Check to make sure the id parameter is specified in the URL
+    if (isset($_GET['id'])) {
+        $connect = new PDO("mysql:host=localhost;dbname=alternative_project", "root", "");
+        // Prepare statement and execute, prevents SQL injection
+        $stmt = $connect->prepare('SELECT * FROM product WHERE product_id = ?');
+        $stmt->execute([$_GET['id']]);
+        // Fetch the product from the database and return the result as an Array
+        $product = $stmt->fetch(PDO::FETCH_ASSOC);
+        // Check if the product exists (array is not empty)
+        if (!$product) {
+            // Simple error to display if the id for the product doesn't exists (array is empty)
+            exit('Product does not exist!');
+        }
+    } else {
+        // Simple error to display if the id wasn't specified
         exit('Product does not exist!');
     }
-} else {
-    // Simple error to display if the id wasn't specified
-    exit('Product does not exist!');
-}
+    print_r($_SESSION["product_id"]);
 ?>
 <style>
     /* Chrome, Safari, Edge, Opera */
@@ -113,18 +115,18 @@ input[type=number] {
                             </div>
                             <div class="rating_wrap">
                                     <div class="rating">
-                                        <div class="product_rate" style="width:0%"></div>
+                                        <div class="product_rate" style="width:<?php echo ($product['rating'] *20)?>%"></div>
                                     </div>
-                                    <span class="rating_num">(0)</span>
+                                    <span class="rating_num">(<span name="total_rev" id="total_rev"></span>)</span>
                                 </div>
                             <div class="pr_desc">
-                                <p>Lorem ipsum dolor sit amet, consectetur adipiscing elit. Phasellus blandit massa enim. Nullam id varius nunc id varius nunc.</p>
+                                <p><?=$product['prt_desc']?></p>
                             </div>
                             <div class="product_sort_info">
                                 <ul>
                                     <li><i class="lnr lnr-checkmark-circle"></i> 1 Year AL Jazeera Brand Warranty</li>
                                     <li><i class="lnr lnr-sync"></i> 30 Day Return Policy</li>
-                                    <li><i class="lnr lnr-rocket"></i> Cash on Delivery available</li>
+                                    <li><i class="lnr lnr-rocket"></i> Cash on Delivery</li>
                                 </ul>
                             </div>
                             <!-- Product Size -->
@@ -166,14 +168,26 @@ input[type=number] {
                                 <button type="submit" name="submit" id="submit" class="btn btn-fill-out" 
                                 <?php 
                                 if(!isset($_SESSION['userID']) && empty($_SESSION['userID'])) {
-                                    ?>
+                                ?>
                                     disabled
-                                    <?php
+                                <?php
                                 }
                                 ?>
                                 ><i class="icon-basket-loaded"></i> Add to cart</button>
-                                <a class="add_wishlist" id="addwl" href='#'><i class="icon-heart whishstate 
-                                    <?php  
+                                <a class="add_wishlist" id="addwl" href='
+                                <?php 
+                                    if(!isset($_SESSION['userID']) && empty($_SESSION['userID'])) {
+                                ?>
+                                    index.php?page=login_page
+                                <?php
+                                }else{
+                                ?>
+                           
+                                <?php
+                                    }
+                                ?>
+                                '><i class="icon-heart whishstate 
+                                <?php  
                                     if(isset($_SESSION["userID"])) {  
                                         $select_stmt = $connect->prepare("SELECT * from wishlist_table WHERE pr_id = ? AND user_id= ?");
                                         $select_stmt->execute([$product['product_id'] , $_SESSION["userID"]]);
@@ -229,14 +243,9 @@ input[type=number] {
                       	<li class="nav-item">
                         	<a class="nav-link" id="Additional-info-tab" data-toggle="tab" href="#Additional-info" role="tab" aria-controls="Additional-info" aria-selected="false">Additional info</a>
                       	</li>
-                        <?php
-                            $connect = new PDO("mysql:host=localhost;dbname=alternative_project", "root", "");
-                            $product_review = $connect->prepare('SELECT * FROM product_review where user_id = ? and product_id =?');
-                            $product_review->execute([$_SESSION["userID"], $_GET['id']]);
-                            $row=$product_review->rowCount();
-                        ?>
+
                       	<li class="nav-item">
-                        	<a class="nav-link" id="Reviews-tab" data-toggle="tab" href="#Reviews" role="tab" aria-controls="Reviews" aria-selected="false">Reviews (<?=$row?>)</a>
+                        	<a class="nav-link" id="Reviews-tab" data-toggle="tab" href="#Reviews" role="tab" aria-controls="Reviews" aria-selected="false">Reviews (<span name="numrev" id="numrev"></span>)</a>
                       	</li>
                     </ul>
                 	<div class="tab-content shop_info_tab">
@@ -266,29 +275,42 @@ input[type=number] {
                       	</div>
                       	<div class="tab-pane fade" id="Reviews" role="tabpanel" aria-labelledby="Reviews-tab">
                         	<div class="comments">
-                            	<h5 class="product_tab_title">2 Review For <span>Blue Dress For Woman</span></h5>
+                            	<h5 class="product_tab_title"><span name="numrev" id="numrev1"></span> Review For <span><?=$product['name']?></span></h5>
+                                <?php
+                                $connect = new PDO("mysql:host=localhost;dbname=alternative_project", "root", "");
+                                $review = $connect->prepare("SELECT * from product_review where product_id = ? ORDER BY review_at DESC ");
+                                $review->execute([$_SESSION["product_id"]]);
+                                while($rev = $review->fetch(PDO::FETCH_ASSOC)){
+                            ?>
                                 <ul class="list_none comment_list mt-4">
                                     <li>
                                         <div class="comment_block">
                                             <div class="rating_wrap">
                                                 <div class="rating">
-                                                    <div class="product_rate" style="width:80%"></div>
+                                                    <div class="product_rate" style="width:<?php echo ($rev['rating'] * 20);?>%"></div>
                                                 </div>
                                             </div>
                                             <p class="customer_meta">
-                                                <span class="review_author">Alea Brooks</span>
-                                                <span class="comment-date">March 5, 2018</span>
+                                                <?php 
+                                                     $connect = new PDO("mysql:host=localhost;dbname=alternative_project", "root", "");
+                                                     $user = $connect->prepare("SELECT * from product_user where user_id = ?");
+                                                     $user->execute([$rev['user_id']]);
+                                                     $user_name = $user->fetch(PDO::FETCH_ASSOC)
+                                                ?>
+                                                <span class="review_author"><?=$user_name['first_name']?> <?=$user_name['last_name']?></span>
+                                                <span class="comment-date"><?=date('F d, Y', strtotime($rev["review_at"]));?></span>
                                             </p>
                                             <div class="description">
-                                                <p>Lorem Ipsumin gravida nibh vel velit auctor aliquet. Aenean sollicitudin, lorem quis bibendum auctor, nisi elit consequat ipsum, nec sagittis sem nibh id elit. Duis sed odio sit amet nibh vulputate</p>
+                                                <p><?=$rev['comment'];?></p>
                                             </div>
                                         </div>
                                     </li>
                                 </ul>
+                            <?php }?>
                         	</div>
                             <div class="review_form field_form">
                                 <h5>Add a review</h5>
-                                <form class="row mt-3" method="post" id="reveiw" enctype="multipart/form-data">
+                                <form class="row mt-3" method="post" id="review" enctype="multipart/form-data">
                                     <div class="form-group col-12">
                                         <div class="star_rating">
                                             <span data-value="1"><i class="far fa-star"></i></span>
@@ -361,63 +383,5 @@ input[type=number] {
 </div>
 <!-- END SECTION SHOP -->
 <script>
-    $star_val = 0;
-$(document).ready(function () {
-	$('.star_rating span').on('click', function(){
-		var onStar = parseFloat($(this).data('value'), 10); // The star currently selected
-		var stars = $(this).parent().children('.star_rating span');
-		for (var i = 0; i < stars.length; i++) {
-			$(stars[i]).removeClass('selected');
-		}
-    	for (i = 0; i < onStar; i++) {
-		    $(stars[i]).addClass('selected');
-	    }
-        $star_val = onStar;
-	});
 
-
-    $('#submitReveiw').on('click', function() {
-
-        var pr_id = $('#pid').val();
-        var user_id = $('#uid').val();
-        var review = $('#reveiwM').val();
-        var star_val = $star_val;
-  
-        $('#submitReveiw').attr("disabled","disabled");
-        if(pr_id!="" && user_id!="" && review!="" && star_val!=0){
-            $.ajax({
-                url: "./assets/php/product_review.php",
-                type: "POST",
-                data: {
-                    pr_id: pr_id ,
-                    user_id: user_id,	
-                    review: review ,
-                    star_val: star_val		
-                },
-                cache: false,
-                beforeSend:function(){
-                $('#submitReveiw').val('Submitting...');
-                },
-                success:function(response){
-                    if(response == 1){
-                        $(".update-message").html('<div class="alert alert-success alert-dismissible mt-2"><button type="button" class="close" data-dismiss="alert">x</button> <strong>Address is Updated</strong></div>');
-                        $('#updateAdd').removeAttr("disabled","disabled");
-                        window.scrollTo(0,0);
-                    }
-                    if(response == 2){
-                        $(".update-message").html('<div class="alert alert-danger alert-dismissible mt-2"><button type="button" class="close" data-dismiss="alert">x</button> <strong>Password not match</strong></div>');
-                        $('#updateAdd').removeAttr("disabled","disabled");
-                        window.scrollTo(0,0);
-                    }
-                }
-            });
-            setInterval(function(){
-                $('.update-message').html('');
-            }, 9999) 
-        }else{
-            $('#submitReveiw').removeAttr("disabled","disabled");
-            alert('Please fill all the field !');
-        }
-    });
-});
 </script>

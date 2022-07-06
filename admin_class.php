@@ -26,8 +26,14 @@
             while ($prtotal= $subtotal->fetch(PDO::FETCH_ASSOC)) {
                 $total += $prtotal['pr_price'];
             }
-            echo  number_format($total, 2);
+            echo number_format($total, 2);
         }
+    }
+    if(isset($_GET["numrev"]) && isset($_GET["numrev"])== "numrev"){
+            $wishlist = $connect->prepare("SELECT * from product_review where product_id = ?");
+            $wishlist->execute([$_SESSION["product_id"]]);
+            $row=$wishlist->rowCount();
+            echo $row;
     }
     
 ?>

@@ -9,7 +9,7 @@
 	width: 45px;
 	float: left;
 	text-align: center;
-	line-height: 45px;
+	line-height: 45px!important;
 	border: 1px solid #CED4DA;
 	border-radius: 4px;
 }

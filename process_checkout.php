@@ -56,18 +56,23 @@
                     $pr_size= $product['pr_size'];
                     $pr_qty= $product['pr_quantity'];
 
-                    $query = "INSERT INTO order_table_item(order_id, user_id,product_id, item_price, quantity, size) VALUES(:orid, usrid,:pid, :iprice, :qty, :size)";
+                    $query = "INSERT INTO order_table_item(order_id, user_id,product_id, item_price, quantity, size) VALUES(:orid, :usrid, :pid, :iprice, :qty, :size)";
                     $statement = $connect->prepare($query);
                     $statement->execute(
                     array(
                         ':orid'  => $order_id,
-                        ':usrid'  => $$user_id,
+                        ':usrid'  => $user_id,
                         ':pid'  =>  $pr_id,
                         ':iprice'  =>  $pr_price,
                         ':qty'  =>  $pr_qty,
                         ':size' => $pr_size,
                         )
                     );
+                    if($statement){
+                        $delete_cart_item = "DELETE FROM cart_table WHERE user_id=? AND pr_id =?";
+                        $cart_delete = $connect->prepare($delete_cart_item);
+                        $cart_delete->execute([$user_id , $pr_id]);
+                    }
                 }
                 echo 1;
             }

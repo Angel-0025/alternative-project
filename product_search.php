@@ -1,11 +1,29 @@
+<?php
+if(isset($_SESSION['search_word']) && !empty($_SESSION['search_word'])) {
+    echo $_SESSION['search_word'];
+}
+else{
+    echo 'ERROR';
+}
 
+include 'db_connect.php';
+?>
+<style>
+    .disabled {
+    pointer-events:none; 
+    opacity:0.6;   
+}
+.active1{
+        color:red !important;
+    }
+</style>
 <!-- START SECTION BREADCRUMB -->
 <div class="breadcrumb_section bg_gray page-title-mini">
     <div class="container"><!-- STRART CONTAINER -->
         <div class="row align-items-center">
         	<div class="col-md-6">
                 <div class="page-title">
-            		<h1>Shop List</h1>
+            		<h1><?=$_SESSION['search_word']?></h1>
                 </div>
             </div>
             <div class="col-md-6">
@@ -25,138 +43,122 @@
 	<div class="container">
     	<div class="row">
 			<div class="col-12">
-            	<div class="row align-items-center mb-4 pb-1">
-                    <div class="col-12">
-                        <div class="product_header">
-                            <div class="product_header_left">
-                                <div class="custom_select">
-                                    <select class="form-control form-control-sm">
-                                        <option value="order">Default sorting</option>
-                                        <option value="popularity">Sort by popularity</option>
-                                        <option value="date">Sort by newness</option>
-                                        <option value="price">Sort by price: low to high</option>
-                                        <option value="price-desc">Sort by price: high to low</option>
-                                    </select>
-                                </div>
-                            </div>
-                            <div class="product_header_right">
-                            	<div class="products_view">
-                                    <a href="javascript:Void(0);" class="shorting_icon grid"><i class="ti-view-grid"></i></a>
-                                    <a href="javascript:Void(0);" class="shorting_icon list active"><i class="ti-layout-list-thumb"></i></a>
-                                </div>
-                                <div class="custom_select">
-                                    <select class="form-control form-control-sm">
-                                        <option value="">Showing</option>
-                                        <option value="9">9</option>
-                                        <option value="12">12</option>
-                                        <option value="18">18</option>
-                                    </select>
-                                </div>
-                            </div>
-                        </div>
-                    </div>
-                </div> 
                 <div class="row shop_container list">
                     <div class="col-lg-3 col-md-4 col-6">
+                        <?php
+                        // get the search terms from the url
+                            $k = $_SESSION['search_word'];
+
+                            // create the base variables for building the search query
+                            $search_string = "SELECT * FROM product WHERE ";
+                            $display_words = "";
+                                                
+                            // format each of search keywords into the db query to be run
+                            $keywords = explode(' ', $k);			
+                            foreach ($keywords as $word){
+                                $search_string .= "name LIKE '%".$word."%' OR ";
+                                $display_words .= $word.' ';
+                            }
+                            $search_string = substr($search_string, 0, strlen($search_string)-4);
+                            $display_words = substr($display_words, 0, strlen($display_words)-1);
+
+                            // run the query in the db and search through each of the records returned
+                            $query = mysqli_query($con, $search_string);
+                            $result_count = mysqli_num_rows($query);
+                            if($result_count > 0){
+                            while ($row = mysqli_fetch_assoc($query)){
+                        ?>
                         <div class="product">
                             <div class="product_img">
-                                <a href="shop-product-detail.html">
-                                    <img src="https://images.unsplash.com/photo-1516197926525-8c6cc1f192a5?ixlib=rb-1.2.1&ixid=MnwxMjA3fDB8MHxwaG90by1wYWdlfHx8fGVufDB8fHx8&auto=format&fit=crop&w=1468&q=80" alt="product_img1">
+                                <a href="index.php?page=product_detail&id=<?=$row['product_id']?>">
+                                    <?php
+                                        $connect = new PDO("mysql:host=localhost;dbname=alternative_project", "root", "");
+                                        // Prepare statement and execute, prevents SQL injection
+                                        $stmt = $connect->prepare('SELECT * FROM product_image WHERE product_id = ? LIMIT 1');
+                                        $stmt->execute([$row['product_id']]);
+                                        // Fetch the product from the database and return the result as an Array
+                                        $pic = $stmt->fetch();    
+                                    ?>
+                                    <img src='data:image/jpeg;base64, <?=base64_encode( $pic['images'] );?>' alt="product_img1">
                                 </a>
                             </div>
                             <div class="product_info">
-                                <h6 class="product_title"><a href="shop-product-detail.html">Blue Dress For Woman</a></h6>
+                                <h6 class="product_title"><a href="index.php?page=product_detail&id=<?=$row['product_id']?>"><?php echo $row['name'];?></a></h6>
                                 <div class="product_price">
-                                    <span class="price">$45.00</span>
-                                    <del>$55.25</del>
-                                    <div class="on_sale">
-                                        <span>35% Off</span>
-                                    </div>
+                                    <span class="price"><span>&#8369; </span><?php echo $row['price'];?></span>
                                 </div>
                                 <div class="rating_wrap">
                                     <div class="rating">
-                                        <div class="product_rate" style="width:80%"></div>
+                                        <div class="product_rate" style="width:<?php echo ($row['rating'] * 20);?>%"></div>
                                     </div>
-                                    <span class="rating_num">(21)</span>
+                                    <?php 
+                                        $connect = new PDO("mysql:host=localhost;dbname=alternative_project", "root", "");
+                                        // Prepare statement and execute, prevents SQL injection
+                                        $review = $connect->prepare('SELECT * FROM product_review WHERE product_id = ?');
+                                        $review->execute([$row['product_id']]);
+                                        $review_count=$review->rowCount();
+                                    ?>
+                                    <span class="rating_num">(<?php echo $review_count;?>)</span>
                                 </div>
                                 <div class="pr_desc">
-                                    <p>Lorem ipsum dolor sit amet, consectetur adipiscing elit. Phasellus blandit massa enim. Nullam id varius nunc id varius nunc.</p>
+                                    <p><?php echo $row['prt_desc']?></p>
                                 </div>
-                                <div class="list_product_action_box">
-                                    <ul class="list_none pr_action_btn">
-                                        <li class="add-to-cart"><a href="#"><i class="icon-basket-loaded"></i> Add To Cart</a></li>
-                                        <li><a href="#"><i class="icon-heart"></i></a></li>
-                                    </ul>
-                                </div>
+                                <form method="post" id="addtocart" class="saddTowl" enctype="multipart/form-data">
+                                    <div class="list_product_action_box">
+                                        <input type="hidden" id="spid" name="spid" class="spID" value="<?=$row['product_id']?>">
+                                        <ul class="list_none pr_action_btn">
+                                            <li class="add-to-cart 
+                                            <?php 
+                                            if(!isset($_SESSION['userID']) && empty($_SESSION['userID'])) {
+                                            ?>
+                                                disabled
+                                            <?php
+                                            }
+                                            ?>"><a href="index.php?page=product_detail&id=<?=$row['product_id']?>">
+                                        <i class="icon-basket-loaded"></i> Add To Cart</a></li>
+                                            <li>
+                                            <a class="add_wishlist" id="saddwl" href="
+                                            <?php 
+                                            if(!isset($_SESSION['userID']) && empty($_SESSION['userID'])) {
+                                            ?>
+                                                index.php?page=login_page
+                                            <?php
+                                            }else{
+                                            ?>
+                                               
+                                            <?php
+                                            }
+                                            ?>"><i class="icon-heart whishstate
+                                            <?php  
+                                                if(isset($_SESSION["userID"])) {  
+                                                    $select_stmt = $connect->prepare("SELECT * from wishlist_table WHERE pr_id = ? AND user_id= ?");
+                                                    $select_stmt->execute([$row['product_id'] , $_SESSION["userID"]]);
+                                                    $row1=$select_stmt->rowCount();
+                                                    if(($row1 > 0) && ($_SESSION["userID"]) != ""){
+                                                ?>  
+                                                active1
+                                                <?php 
+                                                }
+                                                if(($_SESSION["userID"] == "")){
+                                                ?>   
+                                                    echo 'ERROR';
+                                                <?php
+                                                }
+                                            }
+                                            ?>
+                                            "></i></a></li>
+                                        </ul>
+                                    </div>
+                                </form>
                             </div>
                         </div>
+                        <?php }
+                        }
+                        else{?>
+                            <h3 style="text-align: center;"><?php echo ucwords($_SESSION['search_word']);?> doesn't exist</h3>
+                        <?php }?>
                     </div>
-                    <div class="col-lg-3 col-md-4 col-6">
-                        <div class="product">
-                            <div class="product_img">
-                                <a href="shop-product-detail.html">
-                                    <img src="https://images.unsplash.com/photo-1516197926525-8c6cc1f192a5?ixlib=rb-1.2.1&ixid=MnwxMjA3fDB8MHxwaG90by1wYWdlfHx8fGVufDB8fHx8&auto=format&fit=crop&w=1468&q=80" alt="product_img2">
-                                </a>
-                            </div>
-                            <div class="product_info">
-                                <h6 class="product_title"><a href="shop-product-detail.html">Lether Gray Tuxedo</a></h6>
-                                <div class="product_price">
-                                    <span class="price">$55.00</span>
-                                    <del>$95.00</del>
-                                    <div class="on_sale">
-                                        <span>25% Off</span>
-                                    </div>
-                                </div>
-                                <div class="rating_wrap">
-                                    <div class="rating">
-                                        <div class="product_rate" style="width:68%"></div>
-                                    </div>
-                                    <span class="rating_num">(15)</span>
-                                </div>
-                                <div class="pr_desc">
-                                    <p>Lorem ipsum dolor sit amet, consectetur adipiscing elit. Phasellus blandit massa enim. Nullam id varius nunc id varius nunc.</p>
-                                </div>
-                                <div class="list_product_action_box">
-                                    <ul class="list_none pr_action_btn">
-                                        <li class="add-to-cart"><a href="#"><i class="icon-basket-loaded"></i> Add To Cart</a></li>
-                                        <li><a href="#"><i class="icon-heart"></i></a></li>
-                                    </ul>
-                                </div>
-                            </div>
-                        </div>
-                    </div>
-                    <div class="col-lg-3 col-md-4 col-6">
-                        <div class="product">
-                            <span class="pr_flash">New</span>
-                            <div class="product_img">
-                                <a href="shop-product-detail.html">
-                                    <img src="https://images.unsplash.com/photo-1516197926525-8c6cc1f192a5?ixlib=rb-1.2.1&ixid=MnwxMjA3fDB8MHxwaG90by1wYWdlfHx8fGVufDB8fHx8&auto=format&fit=crop&w=1468&q=80" alt="product_img3">
-                                </a>
-                            </div>
-                            <div class="product_info">
-                                <h6 class="product_title"><a href="shop-product-detail.html">woman full sliv dress</a></h6>
-                                <div class="product_price">
-                                    <span class="price">$68.00</span>
-                                    <del>$99.00</del>
-                                </div>
-                                <div class="rating_wrap">
-                                    <div class="rating">
-                                        <div class="product_rate" style="width:87%"></div>
-                                    </div>
-                                    <span class="rating_num">(25)</span>
-                                </div>
-                                <div class="pr_desc">
-                                    <p>Lorem ipsum dolor sit amet, consectetur adipiscing elit. Phasellus blandit massa enim. Nullam id varius nunc id varius nunc.</p>
-                                </div>
-                                <div class="list_product_action_box">
-                                    <ul class="list_none pr_action_btn">
-                                        <li class="add-to-cart"><a href="#"><i class="icon-basket-loaded"></i> Add To Cart</a></li>
-                                        <li><a href="#"><i class="icon-heart"></i></a></li>
-                                    </ul>
-                                </div>
-                            </div>
-                        </div>
-                    </div>                    
+                                      
                 </div>
         		<div class="row">
                     <div class="col-12">
