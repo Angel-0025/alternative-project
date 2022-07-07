@@ -65,7 +65,7 @@
         event.preventDefault();
         $('#login').attr("disabled","disabled");
         $.ajax({
-            url:"process_login.php",
+            url:"./assets/php/process_login.php",
             method:"POST",
             data: new FormData(this),
             contentType:false,

@@ -96,7 +96,7 @@ $(document).ready(function () {
         event.preventDefault();
         $('#checkout').attr("disabled","disabled");
         $.ajax({
-            url:"process_checkout.php",
+            url:"./assets/php/process_checkout.php",
             method:"POST",
             data: new FormData(this),
             contentType:false,

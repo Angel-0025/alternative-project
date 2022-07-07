@@ -382,6 +382,3 @@ input[type=number] {
     </div>
 </div>
 <!-- END SECTION SHOP -->
-<script>
-
-</script>

@@ -44,7 +44,7 @@ $(document).ready(function () {
         event.preventDefault();
         $('#submit').attr("disabled","disabled");
         $.ajax({
-            url:"addTocart.php",
+            url:"./assets/php/addTocart.php",
             method:"POST",
             data: new FormData(this),
             contentType:false,
@@ -63,7 +63,7 @@ $(document).ready(function () {
     //function for counting the item in cart
     function load_cart_item_number(){
         $.ajax({
-            url:"admin_class.php",
+            url:"./assets/php/admin_class.php",
             method: "get",
             data: {cart_item:"cartItem"},
             success:function(response){
@@ -79,7 +79,7 @@ $(document).ready(function () {
         var form = $(this).closest('.addTowl');
         var id = form.find(".pID").val();
         $.ajax({
-            url: 'addtowishlist.php',
+            url: './assets/php/addtowishlist.php',
             type: "POST",
             data: {pID:id},
             success:function(response) {
@@ -118,7 +118,7 @@ $(document).ready(function () {
     //function for counting the item in wishlist
     function load_wishlist_list_number(){
         $.ajax({
-            url:"admin_class.php",
+            url:"./assets/php/admin_class.php",
             method: "get",
             data: {wishlist_item:"wishlistItem"},
             success:function(response){
@@ -132,7 +132,7 @@ $(document).ready(function () {
         var $ele = $(this).parent().parent();
         $.ajax({
             type: "POST",
-            url: 'del_wl.php',
+            url: './assets/php/del_wl.php',
             data: {del_id:del_id},
             success:function(data) {
                 if(data=="YES"){
@@ -148,7 +148,7 @@ $(document).ready(function () {
     load_total_cart();
     function load_total_cart(){
         $.ajax({
-            url:"admin_class.php",
+            url:"./assets/php/admin_class.php",
             method: "get",
             data: {carttotal:"cart_subtotal"},
             success:function(response){
@@ -166,7 +166,7 @@ $(document).ready(function () {
         var $ele = $(this).parent().parent();
         $.ajax({
             type: "POST",
-            url: 'del_itemcart.php',
+            url: './assets/php/del_itemcart.php',
             data: {delct_id:delct_id, delct_size:delct_size},
             success:function(data) {
                 if(data=="YES"){
@@ -182,7 +182,7 @@ $(document).ready(function () {
     load_total_cart();
     function load_total_cart(){
         $.ajax({
-            url:"admin_class.php",
+            url:"./assets/php/admin_class.php",
             method: "get",
             data: {carttotal:"cart_subtotal"},
             success:function(response){
@@ -198,7 +198,7 @@ $(document).ready(function () {
     load_review_number();
     function load_review_number(){
         $.ajax({
-            url:"admin_class.php",
+            url:"./assets/php/admin_class.php",
             method: "get",
             data: {numrev:"numrev"},
             success:function(response){

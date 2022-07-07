@@ -125,7 +125,7 @@
         event.preventDefault();
         $('#register').attr("disabled","disabled");
         $.ajax({
-            url:"process_register.php",
+            url:"./assets/php/process_register.php",
             method:"POST",
             data: new FormData(this),
             contentType:false,
