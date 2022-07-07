@@ -43,8 +43,8 @@ a .noHover:hover {
                                 <span class="badge badge-warning"><?php echo $orderResult[$k]["order_status"];?></span>
                                 </td>
                                 <td >
-                                <a target="_blank" title="Generate Invoice" class="mb-1 btn btn-success btn-sm noHover" style="color: white;" href="./invoice_archive.php?id=<?php echo $orderResult[$k]["id"];?>">Print Receipt</a>
-                                <a class="mb-1 btn btn-primary btn-sm"  href="index.php?page=order_archive_view&id=<?php echo $orderResult[$k]["id"];?>">View</a>
+                                <a target="_blank" title="Generate Invoice" class="mb-1 btn btn-success btn-sm noHover" style="color: white;" href="./invoice_archive.php?id=<?php echo $orderResult[$k]["order_id"];?>">Print Receipt</a>
+                                <a class="mb-1 btn btn-primary btn-sm"  href="index.php?page=order_archive_view&id=<?php echo $orderResult[$k]["order_id"];?>">View</a>
                                 </td>
                             </tr>
                             <?php }?>

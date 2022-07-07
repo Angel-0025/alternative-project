@@ -205,7 +205,6 @@ $(document).ready(function () {
                 $("#numrev").html(response);
                 $("#numrev1").html(response);
                 $("#total_rev").html(response);
-                $("#home_rev").html(response);
             }
         });
     }

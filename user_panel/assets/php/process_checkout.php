@@ -26,7 +26,7 @@
         $subtotal->execute([$_SESSION["userID"]]);
         $total = 0.0;
         while ($prtotal= $subtotal->fetch(PDO::FETCH_ASSOC)) {
-            $total += $prtotal['pr_price'];
+            $total += $prtotal['pr_price'] * $prtotal['pr_quantity'];
         }
         //Insert the user info in table order
         $query = "INSERT INTO order_table(ref_num, user_id,customer_fname, customer_lname, customer_address, amount, order_status) VALUES(:refnum, :userid, :cfname, :clname, :caddress,:total_amount, :ostatus)";

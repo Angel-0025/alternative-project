@@ -107,7 +107,7 @@ input[type=number] {
                         <div class="product_description">
                             <h4 class="product_title"><?=$product['name']?></h4>
                             <div class="product_price">
-                                <span class="price"><span>&#8369; </span><?=$product['price']?></span>
+                                <span class="price"><span>&#8369; </span><?=number_format($product['price'], 2);?></span>
                                 <del></del>
                                 <div class="on_sale">
                                     <span><?=$product['discount']?></span>

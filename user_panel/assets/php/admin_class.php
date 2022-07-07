@@ -24,7 +24,7 @@
             $subtotal->execute([$_SESSION["userID"]]);
             $total = 0.0;
             while ($prtotal= $subtotal->fetch(PDO::FETCH_ASSOC)) {
-                $total += $prtotal['pr_price'];
+                $total += $prtotal['pr_price'] * $prtotal['pr_quantity'];
             }
             echo number_format($total, 2);
         }

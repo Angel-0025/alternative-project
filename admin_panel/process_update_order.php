@@ -25,7 +25,6 @@
         }
     }
     if($order_status == "Received"){
-        print_r($order_status);
         $order_info = $connect->prepare("SELECT * from order_table WHERE id=?");
         $order_info->execute([$order_id]);
         $info = $order_info->fetch(PDO::FETCH_ASSOC);

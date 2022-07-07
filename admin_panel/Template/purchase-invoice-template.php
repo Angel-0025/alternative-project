@@ -42,8 +42,10 @@ ob_start();
                 <td style = "text-align:right;border:1px solid #cccccc;">Subtotal (<?php echo $pesos?>)</td>
             </tr>
 <?php
+
 $total = 0;
 $productModel = new Order();
+
 foreach ($orderItemResult as $k => $v) {
     $price = $orderItemResult[$k]["item_price"] * $orderItemResult[$k]["quantity"];
     $total += $price;

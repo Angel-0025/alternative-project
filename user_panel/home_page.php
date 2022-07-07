@@ -314,8 +314,7 @@
                             include 'db_connect.php';
                             $sql = mysqli_query($con, "SELECT * FROM product");
                             while ($row = mysqli_fetch_array($sql)) {
-                                $prd_id = $row['product_id'];
-                               
+                                $prd_id = $row['product_id'];   
                         ?>
 						<div class="item">
 							<div class="product">
@@ -334,7 +333,7 @@
 								<div class="product_info">
 									<h6 class="product_title"><a href="index.php?page=product_detail&id=<?=$row['product_id']?>"><?=$row['name'];?> </a></h6>
 									<div class="product_price">
-                                    <span class="price"><span>&#8369; </span><?=$row['price'];?> </span>
+                                    <span class="price"><span>&#8369; </span><?=number_format($row['price'], 2);?> </span>
 										<del></del>
 										<div class="on_sale">
 											<span><?=$row['discount'];?> </span>
@@ -344,9 +343,12 @@
 												<div class="product_rate" style="width:<?php echo ($row['rating'] *20)?>%"></div>
 											</div>
                                             <?php
-                                            
+                                                $connect = new PDO("mysql:host=localhost;dbname=alternative_project", "root", "");
+                                                $select_stmt = $connect->prepare("SELECT * from product_review where product_id = ?");
+                                                $select_stmt->execute([$row['product_id']]);
+                                                $row=$select_stmt->rowCount();
                                             ?>
-											<span class="rating_num">(<span name="home_rev" id="home_rev"></span>)</span>
+											<span class="rating_num">(<?=$row?>)</span>
 										</div>
 									</div>
 								</div>

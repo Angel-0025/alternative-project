@@ -46,93 +46,36 @@
       </div>
     </div>
   </div>
-   <!-- Sales and Sales per categories -->
+  <!-- Sales and Sales per categories -->
   <div class="row">
-	  <div class="col-xl-8 col-md-12">
-      <!-- Sales Graph -->
-      <div class="card card-default" data-scroll-height="675">
-        <div class="card-header">
-          <h2>Sales Of The Year</h2>
-        </div>
-        <div class="card-body">
-          <canvas id="linechart" class="chartjs"></canvas>
-        </div>
-        <div class="card-footer d-flex flex-wrap bg-white p-0">
-          <div class="col-6 px-0">
-            <div class="text-center p-4">
-              <h4>$6,308</h4>
-              <p class="mt-2">Total orders of this year</p>
-            </div>
-          </div>
-          <div class="col-6 px-0">
-            <div class="text-center p-4 border-left">
-              <h4>$70,506</h4>
-              <p class="mt-2">Total revenue of this year</p>
-            </div>
-          </div>
-        </div>
-      </div>
-    </div>
-	  <div class="col-xl-4 col-md-12">
-      <!-- Top Sell Table -->
-      <div class="card card-table-border-none" data-scroll-height="675">
+	  <div class="col-12"> 
+      <!-- Recent Order Table -->
+      <div class="card card-table-border-none" id="recent-orders">
         <div class="card-header justify-content-between">
-          <h2>Sold by Units</h2>
-          <div>
-            <button class="text-black-50 mr-2 font-size-20"><i class="mdi mdi-cached"></i></button>
-            <div class="dropdown show d-inline-block widget-dropdown">
-              <a class="dropdown-toggle icon-burger-mini" href="#" role="button" id="dropdown-units" data-toggle="dropdown" aria-haspopup="true" aria-expanded="false" data-display="static"></a>
-              <ul class="dropdown-menu dropdown-menu-right" aria-labelledby="dropdown-units">
-                <li class="dropdown-item"><a  href="#">Action</a></li>
-                <li class="dropdown-item"><a  href="#">Another action</a></li>
-                <li class="dropdown-item"><a  href="#">Something else here</a></li>
-              </ul>
-            </div>
+          <h2>Yearly Sales</h2>
+          <div class="date-range-report ">
+            <span></span>
           </div>
         </div>
-        <div class="card-body slim-scroll py-0">
-          <table class="table ">
-            <tbody>
-                <tr>
-                  <td class="text-dark">Backpack</td>
-                  <td class="text-center">9</td>
-                  <td class="text-right">33% <i class="mdi mdi-arrow-up-bold text-success pl-1 font-size-12"></i> </td>
-                </tr>
-                <tr>
-                  <td class="text-dark">T-Shirt</td>
-                  <td class="text-center">6</td>
-                  <td class="text-right">150% <i class="mdi mdi-arrow-up-bold text-success pl-1 font-size-12"></i> </td>
-                </tr>
-                <tr>
-                  <td class="text-dark">Coat</td>
-                  <td class="text-center">3</td>
-                  <td class="text-right">50% <i class="mdi mdi-arrow-up-bold text-success pl-1 font-size-12"></i> </td>
-                </tr>
-                <tr>
-                  <td class="text-dark">Necklace</td>
-                  <td class="text-center">7</td>
-                  <td class="text-right">150% <i class="mdi mdi-arrow-up-bold text-success pl-1 font-size-12"></i> </td>
-                </tr>
-                <tr>
-                  <td class="text-dark">Jeans Pant</td>
-                  <td class="text-center">10</td>
-                  <td class="text-right">300% <i class="mdi mdi-arrow-down-bold text-danger pl-1 font-size-12"></i> </td>
-                </tr>
-                <tr>
-                  <td class="text-dark">Shoes</td>
-                  <td class="text-center">5</td>
-                  <td class="text-right">100% <i class="mdi mdi-arrow-up-bold text-success pl-1 font-size-12"></i> </td>
-                </tr>
-                <tr>
-                  <td class="text-dark">T-Shirt</td>
-                  <td class="text-center">6</td>
-                  <td class="text-right">150% <i class="mdi mdi-arrow-up-bold text-success pl-1 font-size-12"></i> </td>
-                </tr>
-            </tbody>
+        <div class="card-body pt-0 pb-5">
+          <table id="table_id" class="display">
+              <thead>
+                  <tr>
+                      <th>Column 1</th>
+                      <th>Column 2</th>
+                  </tr>
+              </thead>
+              <tbody>
+                  <tr>
+                      <td>Row 1 Data 1</td>
+                      <td>Row 1 Data 2</td>
+                  </tr>
+                  <tr>
+                      <td>Row 2 Data 1</td>
+                      <td>Row 2 Data 2</td>
+                  </tr>
+              </tbody>
           </table>
-        </div>
-        <div class="card-footer bg-white py-4">
-          <a href="#" class="btn-link py-3 text-uppercase">View Report</a>
         </div>
       </div>
     </div>
@@ -390,6 +333,11 @@
                   </div>
     </div>
   </div>
-
 </div>
+<script>
+$(document).ready(function() {
+    $('#table_id').DataTable( {
+    } );
+} )
+</script>
 

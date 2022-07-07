@@ -16,7 +16,7 @@ if (isset($_GET['id'])) {
     // Simple error to display if the id wasn't specified
     exit('Product does not exist!');
 }
-print_r($product['amount']);
+print_r($product['user_id']);
 ?>
 <!-- START SECTION SHOP -->
 <div class="section">
@@ -39,8 +39,9 @@ print_r($product['amount']);
                                 <?php
                                 if(isset($_SESSION["userID"])){
                                     $connect = new PDO("mysql:host=localhost;dbname=alternative_project", "root", "");
-                                    $stmt = $connect->prepare('SELECT * FROM order_table_item where order_id = ?');
-                                    $stmt->execute([$product['id']]);
+
+                                    $stmt = $connect->prepare('SELECT * FROM order_table_item where order_id = ? AND user_id=?');
+                                    $stmt->execute([$product['order_id'], $product['user_id']]);
                                     while ($orderID= $stmt->fetch(PDO::FETCH_ASSOC)) {
                                 ?>
                                 <tr>
@@ -50,7 +51,7 @@ print_r($product['amount']);
                                       while ($product= $pr->fetch(PDO::FETCH_ASSOC)) {
                                     ?>
                                     <td><a href="index.php?page=product_detail&id=<?php echo $product["product_id"];?>"><?=$product['name']?> </a><?php }?><span class="product-qty">x <?=$orderID['quantity']?> | size:  <?=$orderID['size']?></span></td>
-                                    <td><span>&#8369; </span><?=$orderID['item_price']?></td>
+                                    <td><span>&#8369; </span><?=number_format($orderID['item_price'] * $orderID['quantity'],2);?></td>
                                 </tr>
                                 <?php 
                                     }

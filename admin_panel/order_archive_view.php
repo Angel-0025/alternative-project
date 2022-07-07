@@ -21,7 +21,7 @@ if (isset($_GET['id'])) {
     // Simple error to display if the id wasn't specified
     exit('Product does not exist!');
 }
-print_r($order['id']);
+echo $_GET['id'];
 ?>
 <div class="content">
     <!-- Order History -->

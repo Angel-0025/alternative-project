@@ -29,7 +29,9 @@ $orderResult = $orderModel->getAllOrders();
                             </tr>
                         </thead>
                         <tbody>
-                            <?php foreach ($orderResult as $k => $v) { ?>
+                            <?php 
+                            if($orderResult != 0){
+                                foreach ($orderResult as $k => $v) { ?>
                             <tr>
                                 <td class="d-none d-md-table-cell"><?php echo $orderResult[$k]["ref_num"];?></td>
                                 <td class="d-none d-md-table-cell"><span>&#8369; </span><?php echo number_format($orderResult[$k]["amount"], 2)?></td>
@@ -44,7 +46,7 @@ $orderResult = $orderModel->getAllOrders();
                                 <button type="button" class="mb-1 btn btn-danger btn-sm">Cancel</button>
                                 </td>
                             </tr>
-                            <?php }?>
+                            <?php }}?>
                         </tbody>
                     </table>
                 </div>

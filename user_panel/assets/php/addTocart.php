@@ -34,14 +34,13 @@
           </div>';
   }
   else {
-    $new_price = $product_price * $product_qty;
 
     $query = "INSERT INTO cart_table(pr_id, pr_price, pr_size, pr_quantity, user_id) VALUES(:pid, :pprice, :psize, :quantity, :id)";
     $statement = $connect->prepare($query);
     $statement->execute(
       array(
         ':pid'  => $product_id,
-        ':pprice'  => $new_price,
+        ':pprice'  => $product_price,
         ':psize'  =>  $product_size,
         ':quantity'  =>  $product_qty,
         ':id' => $_SESSION["userID"],
