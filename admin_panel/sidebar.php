@@ -99,7 +99,7 @@
                 </a>
               </li>
               <li class="#">
-                <a class="sidenav-item-link" href="#">
+                <a class="sidenav-item-link" href="logout.php">
                   <span class="nav-text">Logout</span>
                 </a>
               </li>

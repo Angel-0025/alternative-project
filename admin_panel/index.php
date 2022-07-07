@@ -1,5 +1,9 @@
-<?php session_start(); 
+<?php 
+session_start(); 
 
+if (!isset($_SESSION['admin_id'])) {
+    header("Location: ../admin_login/login_page.php");
+}
 ?>
 <!DOCTYPE html>
 <html lang="en" dir="ltr">

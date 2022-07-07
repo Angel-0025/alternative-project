@@ -77,7 +77,6 @@
             success:function(response){
                 if(response == 1){
                     window.location.href="index.php?page=home_page";   
-                   
                 }
                 if(response == 2){
                     $(".login-message").html('<div class="alert alert-danger alert-dismissible mt-2"><button type="button" class="close" data-dismiss="alert">x</button> <strong>Sorry, we counldn\'t an account with that email</strong></div>');
