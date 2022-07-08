@@ -1,74 +1,46 @@
-
 <style>
-        .preview-images-zone {
+    .preview-images-zone {
         width: 100%;
         border: 1px solid #ddd;
         min-height: 180px;
-        /* display: flex; */
         padding: 5px 5px 0px 5px;
         position: relative;
         overflow:auto;
-    }
-    .preview-images-zone > .preview-image:first-child {
-        height: 185px;
-        width: 185px;
-        position: relative;
-        margin-right: 5px;
-    }
-    .preview-images-zone > .preview-image {
-        height: 90px;
-        width: 90px;
-        position: relative;
-        margin-right: 5px;
-        float: left;
-        margin-bottom: 5px;
-    }
-    .preview-images-zone > .preview-image > .image-zone {
-        width: 100%;
-        height: 100%;
-    }
-    .preview-images-zone > .preview-image > .image-zone > img {
-        width: 100%;
-        height: 100%;
-    }
-    .preview-images-zone > .preview-image > .tools-edit-image {
-        position: absolute;
-        z-index: 100;
-        color: #fff;
-        bottom: 0;
-        width: 100%;
-        text-align: center;
-        margin-bottom: 10px;
-        display: none;
-    }
-    .preview-images-zone > .preview-image > .image-cancel {
-        font-size: 18px;
-        position: absolute;
-        top: 0;
-        right: 0;
-        font-weight: bold;
-        margin-right: 10px;
-        cursor: pointer;
-        display: none;
-        z-index: 100;
-    }
-    .preview-image:hover > .image-zone {
-        cursor: move;
-        opacity: .5;
-    }
-    .preview-image:hover > .tools-edit-image,
-    .preview-image:hover > .image-cancel {
-        display: block;
-    }
-    .ui-sortable-helper {
-        width: 90px !important;
-        height: 90px !important;
     }
 
     .container {
         padding-top: 50px;
     }
+
+    .flex-child {
+        display: inline-block;
+        margin-right: 5px;
+        margin-left: 5px;
+    } 
+    .product-thumbnail img {
+	max-width: 145px;
+    }
 </style>
+<?php
+// Check to make sure the id parameter is specified in the URL
+if (isset($_GET['id'])) {
+    $connect = new PDO("mysql:host=localhost;dbname=alternative_project", "root", "");
+    // Prepare statement and execute, prevents SQL injection
+    $stmt = $connect->prepare('SELECT * FROM product WHERE product_id = ?');
+    $stmt->execute([$_GET['id']]);
+    // Fetch the product from the database and return the result as an Array
+    $product = $stmt->fetch(PDO::FETCH_ASSOC);
+    // Check if the product exists (array is not empty)
+    if (!$product) {
+        // Simple error to display if the id for the product doesn't exists (array is empty)
+        exit('Product does not exist!');
+    }
+} else {
+    // Simple error to display if the id wasn't specified
+    exit('Product does not exist!');
+}
+print_r($product['product_id']);
+?>
 <!-- New Product -->
 <div class="content">
     <form method="post" id="product_info" enctype="multipart/form-data">
@@ -86,23 +58,23 @@
                             <div class="row">
                                 <div class="form-group col-md-12 mb-3">
                                     <label for="product-title">Product Title</label>
-                                    <input type="text" required="" class="form-control form-control-md input-md" id="product_name" name="product_name" placeholder="Enter Product Name">
+                                    <input type="text" required="" class="form-control form-control-md input-md" id="product_name" name="product_name" placeholder="Enter Product Name" value="<?php echo ucwords($product['name']);?>" />
                                 </div>
                                 <div class="form-group col-md-12 mb-4">
                                     <label for="product-description">Product Description</label>
-                                    <textarea class="form-control" required="" name="product_desc" id="product_desc" cols="30" rows="5"></textarea>
+                                    <textarea class="form-control" required="" name="product_desc" id="product_desc" cols="30" rows="5"> <?php echo ucwords($product['prt_desc']);?></textarea>
                                 </div>
                                 <div class="form-group col-md-12 mb-4">
                                     <label for="product-description">Materials</label>
-                                    <input type="text"required="" class="form-control form-control-md input-md" name="product_materials"  id="product_materials" placeholder="Enter Product Materials">
+                                    <input type="text"required="" class="form-control form-control-md input-md" name="product_materials"  id="product_materials" placeholder="Enter Product Materials" value="<?php echo ucwords($product['materials']);?>" />
                                 </div>
                                 <div class="form-group col-md-12 mb-4">
                                     <label for="product-description">Style</label>
-                                    <input type="text" required="" class="form-control form-control-md input-md" name="product_style"  id="product_style" placeholder="Enter Product Style">
+                                    <input type="text" required="" class="form-control form-control-md input-md" name="product_style"  id="product_style" placeholder="Enter Product Style" value="<?php echo ucwords($product['style']);?>" />
                                 </div>
                                 <div class="form-group col-md-12 mb-4">
                                     <label for="product-description">Color Shown</label>
-                                    <input type="text" required="" class="form-control form-control-md input-md" name="product_cShown"  id="product_cShown" placeholder="Enter Color Shown">
+                                    <input type="text" required="" class="form-control form-control-md input-md" name="product_cShown"  id="product_cShown" placeholder="Enter Color Shown" value="<?php echo ucwords($product['color_shown']);?>" />
                                 </div>
                             </div>
                         </div>
@@ -118,7 +90,7 @@
                                 <div class="form-group col-md-12 mb-3">
                                     <label for="product-type">Product Type</label>
                                     <select class="form-control form-control-md input-md prd_type select2-hidden-accessible" required="" name="prt_type" id="prt_type">
-                                        <option value="">Select Product Type</option>
+                                        <option value="<?php echo ucwords($product['type']);?>"><?php echo ucwords($product['type']);?></option>
                                         <option value="running shoes">Running Shoes</option>
                                         <option value="basketball shoes">Basketball Shoes</option>
                                     </select>
@@ -126,7 +98,7 @@
                                 <div class="form-group col-md-12 mb-3">
                                     <label for="product-vendor">Product User</label>
                                     <select class="form-control form-control-md prd_ppl select2-hidden-accessible" required="" name="product_user" id="product_user">
-                                        <option value="">Select Product User</option>
+                                        <option value="<?php echo ucwords($product['user_target']);?>"><?php echo ucwords($product['user_target']);?></option>
                                         <option value="Men">Men</option>
                                         <option value="Women">Women</option>
                                         <option value="Boy">Boy</option>
@@ -137,7 +109,7 @@
                                 <div class="form-group col-md-12 mb-3">
                                     <label for="product-vendor">Vendor</label>
                                     <select class="form-control form-control-md prd_vendor select2-hidden-accessible" required="" name="product_vendor" id="product_vendor">
-                                        <option value="">Select Product Type</option>
+                                        <option value="<?php echo ucwords($product['vendor']);?>"><?php echo ucwords($product['vendor']);?></option>
                                         <option value="adidas">Adidas</option>
                                         <option value="nike">Nike</option>
                                         <option value="reebok">Reebok</option>
@@ -154,14 +126,24 @@
                     <div class="card card-table-border-none" id="product-info">
                         <div class="card-header justify-content-between">
                             <h2>Images</h2>
-                            <a href="javascript:void(0)" onclick="$('#image').click()">Upload Image</a>
                         </div>
                         <div class="card-body pt-4 pb-5 ">
                             <fieldset class="form-group" style="margin-bottom: 0px !important;">
                                 <input type="file" name="image[]" id="image"  style="display: none;" class="form-control" multiple accept=".jpg, .png, .gif"/>
                             </fieldset>
                             <div class="preview-images-zone">
-                                            
+                                <?php
+                                    $connect = new PDO("mysql:host=localhost;dbname=alternative_project", "root", "");
+                                    // Prepare statement and execute, prevents SQL injection
+                                    $stmt = $connect->prepare('SELECT * FROM product_image WHERE product_id = ?');
+                                    $stmt->execute([$product['product_id']]);
+                                    // Fetch the product from the database and return the result as an Array
+                                    while($img= $stmt->fetch(PDO::FETCH_ASSOC)){
+                                ?>
+                                <div class="flex-child product-thumbnail">
+                                    <img src="data:image/jpeg;base64, <?=base64_encode( $img['images'] );?>" alt="product_small_img1" />
+                                </div>
+                                <?php }?>         
                             </div>
                         </div>
                     </div>
@@ -180,14 +162,7 @@
                                     <label for="product-title">Price</label>
                                     <div class="input-group-prepend">
                                         <div class="input-group-text">₱</div>
-                                        <input type="number" class="form-control form-control-md input-md" required="" name="product_price"  id="product_price" placeholder="Enter Product Price">
-                                    </div>
-                                </div>
-                                <div class="form-group col-sm-6 mb-3">
-                                    <label for="product-title">Discount</label>
-                                    <div class="input-group-prepend">
-                                        <div class="input-group-text">%</div>
-                                        <input type="number" class="form-control form-control-md input-md" required="" name="product_percentage"  id="product_percentage" placeholder="Enter Product Discount">
+                                        <input type="number" class="form-control form-control-md input-md" required="" name="product_price"  id="product_price" placeholder="Enter Product Price" value="<?php echo intval($product['price']);?>" />
                                     </div>
                                 </div>
                             </div>
@@ -206,15 +181,14 @@
                             <div class="row">
                                 <div class="form-group col-md-6 mb-3">
                                     <label for="product-title">Product Stocks</label>
-                                    <input type="number" class="form-control form-control-md input-md" required="" name="product_stocks"  id="product_stocks" placeholder="Product Stock">
+                                    <input type="number" class="form-control form-control-md input-md" required="" name="product_stocks"  id="product_stocks" placeholder="Product Stock" value="<?php echo ucwords($product['stocks']);?>"  />
                                 </div>
                                 <div class="form-group col-md-6 mb-3">
                                     <label for="product-status">Product Status</label>
                                     <select class="form-control form-control-md prd_vendor select2-hidden-accessible" required="" name="product_status" id="product_status">
-                                        <option value="">Select Product Type</option>
-                                        <option value="adidas">Adidas</option>
-                                        <option value="nike">Nike</option>
-                                        <option value="reebok">Reebok</option>
+                                        <option value="<?php echo ucwords($product['status']);?>"><?php echo ucwords($product['status']);?></option>
+                                        <option value="In Stock">In Stock</option>
+                                        <option value="Out of Stock">Out of Stock</option>
                                     </select>
                                 </div>
                             </div>
@@ -258,16 +232,9 @@
                     </div>
                 </div>
             </div>
-        <input type="submit" name="submit" id="submit" class="btn btn-info" value="Submit" />
+            <input type="hidden" name="pr_id"  id="pr_id" value="<?php echo $product['product_id'];?>">
+        <input type="submit" name="submit" id="submit" class="btn btn-info" value="Update" />
     </form>   
-
-    <!-- 
-        NOTE:
-    
-        Make validation for inputting products
-    
-    
-    -->
 </div>
 <script>
 $(document).ready(function () {  
@@ -275,7 +242,7 @@ $(document).ready(function () {
         event.preventDefault();
             $('#submit').attr("disabled","disabled");
             $.ajax({
-                url:"admin_class.php",
+                url:"product_update_process.php",
                 method:"POST",
                 data: new FormData(this),
                 contentType:false,
@@ -285,12 +252,14 @@ $(document).ready(function () {
                 $('#submit').val('Submitting...');
                 },
                 success:function(data){
-                    if(data != '')
+                    if(data == 1)
                     {
-                        $('#image').val('');
-                        $('#success_message').html(data);
-                        $('#submit').attr("disabled", false);
-                        $('#submit').val('Submit');
+                        $(".alert-success_message").html('<div class="alert alert-success alert-dismissible mt-2"><button type="button" class="close" data-dismiss="alert">x</button> <strong>Product is Updated!</strong></div>');
+                        $('#submit').removeAttr("disabled","disabled");
+                    }
+                    if(data == 2){
+                        $(".alert-success_message").html('<div class="alert alert-alert alert-dismissible mt-2"><button type="button" class="close" data-dismiss="alert">x</button> <strong>Something Went wrong</strong></div>');
+                        $('#submit').removeAttr("disabled","disabled");
                     }
                 }
             });
@@ -299,45 +268,6 @@ $(document).ready(function () {
             }, 5000)
           
     });
-    
-    document.getElementById('image').addEventListener('change', readImage, false);
-    
-    $( ".preview-images-zone" ).sortable();
-    
-    $(document).on('click', '.image-cancel', function() {
-        let no = $(this).data('no');
-        $(".preview-image.preview-show-"+no).remove();
-    });
+
 });
-var num = 4;
-function readImage() {
-    if (window.File && window.FileList && window.FileReader) {
-        var files = event.target.files; //FileList object
-        var output = $(".preview-images-zone");
-
-        for (let i = 0; i < files.length; i++) {
-            var file = files[i];
-            if (!file.type.match('image')) continue;
-            
-            var picReader = new FileReader();
-            
-            picReader.addEventListener('load', function (event) {
-                var picFile = event.target;
-                var html =  '<div class="preview-image preview-show-' + num + '">' +
-                            '<div class="image-cancel" data-no="' + num + '">x</div>' +
-                            '<div class="image-zone"><img id="pro-img-' + num + '" src="' + picFile.result + '"></div>' +
-                            '<a href="javascript:void(0)" data-no="' + num +
-                            '</div>';
-
-                output.append(html);
-                num = num + 1;
-            });
-
-            picReader.readAsDataURL(file);
-        }
-    } else {
-        console.log('Browser not support');
-    }
-}
-
 </script>

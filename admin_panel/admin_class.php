@@ -6,7 +6,7 @@
 
   $connect = new PDO("mysql:host=localhost;dbname=alternative_project", "root", "");
 
-  $query = "INSERT INTO product(name, prt_desc, materials, style, color_shown, type, user_target, vendor, price, discount, stocks, status, size) VALUES(:product_name, :product_desc, :product_materials, :product_style, :product_cShown,:prt_type, :product_user, :product_vendor, :product_price, :product_percentage, :product_stocks, :product_status, :product_size )";
+  $query = "INSERT INTO product(name, prt_desc, materials, style, color_shown, type, user_target, vendor, price, discount, stocks, status, size) VALUES(:product_name, :product_desc, :product_materials, :product_style, :product_cShown,:prt_type, :product_user, :product_vendor, :product_price, :product_stocks, :product_status, :product_size )";
  
   $statement = $connect->prepare($query);
   $statement->execute(
@@ -20,13 +20,12 @@
       ':product_user'  => $_POST["product_user"],
       ':product_vendor'  => $_POST["product_vendor"],
       ':product_price'  => $_POST["product_price"],
-      ':product_percentage'  => $_POST["product_percentage"],
       ':product_stocks'  => $_POST["product_stocks"],
       ':product_status'  => $_POST["product_status"],
       ':product_size'  => $tags_string
       )
     );
-  $pr_id = $connect->lastInsertId();
+    $pr_id = $connect->lastInsertId();
     if($statement){
       if(count($_FILES["image"]["tmp_name"]) > 0){
         for($count = 0; $count < count($_FILES["image"]["tmp_name"]); $count++){
@@ -37,8 +36,5 @@
         }
       }
     }
-
-  
-  
 ?>
 

@@ -18,25 +18,26 @@ a .noHover:hover {
             <div class="card card-table-border-none" id="recent-orders">
                 <div class="card-header justify-content-between">
                     <h2>Order History</h2>
-                    <div class="date-range-report ">
-                        <span></span>
-                    </div>
                 </div>
                 <div class="card-body pt-0 pb-5">
-                    <table class="table card-table table-responsive table-responsive-large" style="width:100%">
+                    <table  class="table table-condensed table-bordered table-hover dataTable no-footer" id="orderHistory" style="margin-bottom: 0px; width:100%; border-collapse: separate;">
                         <thead>
                             <tr>
-                                <th>Order ID</th>
-                                <th class="d-none d-md-table-cell">Amount</th>
-                                <th class="d-none d-md-table-cell">Date</th>
-                                <th>Status</th>
-                                <th>Action</th>
+                                <th scope="col" class="no-sort">#</th>
+                                <th scope="col" class="no-sort">Order ID</th>
+                                <th  scope="col" class="no-sort" >Amount</th>
+                                <th  scope="col" class="no-sort">Date</th>
+                                <th  scope="col" class="no-sort">Status</th>
+                                <th  scope="col" class="no-sort">Action</th>
                             </tr>
                         </thead>
                         <tbody>
-                            <?php foreach ($orderResult as $k => $v) { ?>
+                            <?php 
+                                $i = 1;
+                                foreach ($orderResult as $k => $v) { ?>
                             <tr>
-                                <td class="d-none d-md-table-cell"><?php echo $orderResult[$k]["ref_num"];?></td>
+                                <td scope="col" class="no-sort d-none d-md-table-cell text-dark" ><?php echo $i++; ?></td>
+                                <td  scope="col" class="no-sort d-none d-md-table-cell text-dark"><?php echo $orderResult[$k]["ref_num"];?></td>
                                 <td class="d-none d-md-table-cell"><span>&#8369; </span><?php echo  number_format($orderResult[$k]["amount"], 2);?></td>
                                 <td class="d-none d-md-table-cell"><?php echo date('d F Y', strtotime($orderResult[$k]["order_at"]));?></td>
                                 <td class="d-none d-md-table-cell">
@@ -55,3 +56,14 @@ a .noHover:hover {
         </div>
     </div>
 </div>
+<script>
+    $('#orderHistory').DataTable( {
+    "paging":   true,
+    "info":     true,
+    "scrollX": true,
+    "ordering": false,
+    columnDefs: [
+      { targets: 'no-sort', orderable: false }
+    ],
+  } );
+</script>

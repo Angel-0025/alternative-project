@@ -114,7 +114,3 @@
     </div>
 </div>
 <!-- END SECTION SHOP -->
-<script>
-   
-    
-</script>

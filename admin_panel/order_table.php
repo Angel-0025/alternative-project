@@ -18,32 +18,35 @@ $orderResult = $orderModel->getAllOrders();
                     </div>
                 </div>
                 <div class="card-body pt-0 pb-5">
-                    <table class="table card-table table-responsive table-responsive-large" style="width:100%">
+                    <table  class="table table-condensed table-bordered table-hover dataTable no-footer" id="orderTable" style="margin-bottom: 0px; width:100%; border-collapse: separate;">
                         <thead>
                             <tr>
-                                <th>Order ID</th>
-                                <th class="d-none d-md-table-cell">Amount</th>
-                                <th class="d-none d-md-table-cell">Status</th>
-                                <th>Receipt</th>
-                                <th>Action</th>
+                                <th scope="col" class="no-sort">#</th>
+                                <th scope="col" class="no-sort">Order ID</th>
+                                <th  scope="col" class="no-sort" >Amount</th>
+                                <th  scope="col" class="no-sort">Status</th>
+                                <th  scope="col" class="no-sort">Receipt</th>
+                                <th  scope="col" class="no-sort">Action</th>
                             </tr>
                         </thead>
                         <tbody>
                             <?php 
                             if($orderResult != 0){
+                                $i = 1;
                                 foreach ($orderResult as $k => $v) { ?>
                             <tr>
-                                <td class="d-none d-md-table-cell"><?php echo $orderResult[$k]["ref_num"];?></td>
+                                <td scope="col" class="no-sort d-none d-md-table-cell text-dark" ><?php echo $i++; ?></td>
+                                <td scope="col" class="no-sort d-none d-md-table-cell text-dark"><?php echo $orderResult[$k]["ref_num"];?></td>
                                 <td class="d-none d-md-table-cell"><span>&#8369; </span><?php echo number_format($orderResult[$k]["amount"], 2)?></td>
                                 <td>
-                                <span class="badge badge-warning"><?php echo $orderResult[$k]["order_status"];?></span>
+                                    <span class="badge badge-warning"><?php echo $orderResult[$k]["order_status"];?></span>
                                 </td>
                                 <td class="d-none d-md-table-cell">
-                                <a target="_blank" title="Generate Invoice" style="" href="./invoice.php?id=<?php echo $orderResult[$k]["id"];?>">Print Receipt</a>
+                                    <a target="_blank" title="Generate Invoice" style="" href="./invoice.php?id=<?php echo $orderResult[$k]["id"];?>">Print Receipt</a>
                                 </td>
                                 <td >
-                                <a class="mb-1 btn btn-primary btn-sm"  href="index.php?page=order_process&id=<?php echo $orderResult[$k]["id"];?>">Process</a>
-                                <button type="button" class="mb-1 btn btn-danger btn-sm">Cancel</button>
+                                    <a class="mb-1 btn btn-primary btn-sm"  href="index.php?page=order_process&id=<?php echo $orderResult[$k]["id"];?>">Process</a>
+                                    <button type="button" class="mb-1 btn btn-danger btn-sm">Cancel</button>
                                 </td>
                             </tr>
                             <?php }}?>
@@ -54,4 +57,14 @@ $orderResult = $orderModel->getAllOrders();
         </div>
     </div>
 </div>
-
+<script>
+    $('#orderTable').DataTable( {
+    "paging":   true,
+    "info":     true,
+    "scrollX": true,
+    "ordering": false,
+    columnDefs: [
+      { targets: 'no-sort', orderable: false }
+    ],
+  } );
+</script>
