@@ -312,12 +312,12 @@ $('.cat_slider').owlCarousel({
             loop:true
         },
 		1250:{
-            items:7,
+            items:4,
             nav:true,
             loop:false
         },
 		1680:{
-            items:7,
+            items:4,
             nav:true,
             loop:false
         }

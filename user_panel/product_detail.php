@@ -22,7 +22,6 @@
         // Simple error to display if the id wasn't specified
         exit('Product does not exist!');
     }
-    print_r($_SESSION["product_id"]);
 ?>
 <style>
     /* Chrome, Safari, Edge, Opera */
@@ -110,9 +109,11 @@ input[type=number] {
                                 <span class="price"><span>&#8369; </span><?=number_format($product['price'], 2);?></span>
                                 <del></del>
                                 <div class="on_sale">
-                                    <span><?=$product['discount']?></span>
+                                    <span>Item Stock:</span>
+                                    <span><?=$product['stocks'];?> </span>
                                 </div>
                             </div>
+
                             <div class="rating_wrap">
                                     <div class="rating">
                                         <div class="product_rate" style="width:<?php echo ($product['rating'] *20)?>%"></div>
@@ -210,8 +211,58 @@ input[type=number] {
                         <hr />
                         <ul class="product-meta">
                             <li>SKU: <a href="#">BE45VGRT</a></li>
-                            <li>Category: <a href="#">Clothing</a></li>
-                            <li>Tags: <a href="#" rel="tag">Cloth</a>, <a href="#" rel="tag">printed</a> </li>
+                            <li>Category: 
+                                <a 
+                                    <?php
+                                    if($product['type'] == "basketball shoes"){
+                                        $type = "basketball";
+                                        ?>
+                                            href="index.php?page=type_search&catyp=<?php echo $type;?>"
+                                        <?php
+                                    }
+                                    if($product['type'] == "running shoes"){
+                                        $type = "running";
+                                        ?>
+                                            href="index.php?page=type_search&catyp=<?php echo $type;?>"
+                                        <?php
+                                    }
+                                    ?>
+                                ><?php echo ucfirst($product['type']);?></a>
+                            </li>
+                            <li>Tags: 
+                                <a 
+                                <?php
+                                    if(strtolower($product['user_target']) == "men"){
+                                        $ut = "men";
+                                ?>
+                                    href="index.php?page=target_searchM&catrftm=<?=$ut?>"
+                                <?php
+                                    }
+                                    if(strtolower($product['user_target']) == "women"){
+                                        $ut = "women";
+                                ?>
+                                    href="index.php?page=target_search&catrft=<?=$ut?>"
+                                <?php
+                                    }
+                                    if(strtolower($product['user_target']) == "unisex"){
+                                        $ut = "unisex";
+                                ?>
+                                    href="index.php?page=target_search&catrft=<?=$ut?>"
+                                <?php
+                                    }
+                                    if(strtolower($product['user_target']) == "boy"){
+                                        $ut = "boy";
+                                ?>
+                                    href="index.php?page=target_search&catrft=<?=$ut?>"
+                                <?php
+                                    }if(strtolower($product['user_target']) == "girl"){
+                                        $ut = "girl";
+                                ?>
+                                    href="index.php?page=target_search&catrft=<?=$ut?>"
+                                <?php
+                                    }
+                                ?>
+                                rel="tag"><?php echo $product['user_target']?></a> </li>
                         </ul> 
                         <div class="product_share">
                             <span>Share:</span>
@@ -321,7 +372,11 @@ input[type=number] {
                                         </div>
                                     </div>
                                     <input type="hidden" id="pid" name="pid" class="pID" value="<?=$_GET['id']?>">
+                                    <?php
+                                        if(isset($_SESSION['userID'])){
+                                    ?>
                                     <input type="hidden" id="uid" name="uid" value="<?=$_SESSION['userID']?>">
+                                    <?php }?>
                                     <div class="form-group col-12">
                                         <textarea required="required" placeholder="Your review *" class="form-control" name="reveiwM" id="reveiwM" rows="4"></textarea>
                                     </div>
@@ -348,34 +403,51 @@ input[type=number] {
                 	<h3>Releted Products</h3>
                 </div>
             	<div class="releted_product_slider carousel_slider owl-carousel owl-theme" data-margin="20" data-responsive='{"0":{"items": "1"}, "481":{"items": "2"}, "768":{"items": "3"}, "1199":{"items": "4"}}'>
-                	<div class="item">
-                        <div class="product">
-                            <div class="product_img">
-                                <a href="shop-product-detail.html">
-                                    <img src="assets/images/product_img1.jpg" alt="product_img1">
-                                </a>
-                            </div>
-                            <div class="product_info">
-                                <h6 class="product_title"><a href="shop-product-detail.html">Blue Dress For Woman</a></h6>
-                                <div class="product_price">
-                                    <span class="price">$45.00</span>
-                                    <del>$55.25</del>
-                                    <div class="on_sale">
-                                        <span>35% Off</span>
-                                    </div>
-                                </div>
-                                <div class="rating_wrap">
-                                    <div class="rating">
-                                        <div class="product_rate" style="width:80%"></div>
-                                    </div>
-                                    <span class="rating_num">(21)</span>
-                                </div>
-                                <div class="pr_desc">
-                                    <p>Lorem ipsum dolor sit amet, consectetur adipiscing elit. Phasellus blandit massa enim. Nullam id varius nunc id varius nunc.</p>
-                                </div>
-                            </div>
-                        </div>
-                    </div>
+                <?php
+                        include 'db_connect.php';
+                        $pr_id = $product['product_id'];
+                        $pr_type = $product['type'];
+                        $pr_trgt =  $product['user_target'];
+                        $ven = $product['vendor'];
+                        $sql = mysqli_query($con, "SELECT * FROM product WHERE product_id NOT LIKE '%{$pr_id}%' AND type LIKE '%{$pr_type}%'  LIMIT 5");
+                        while ($row = mysqli_fetch_array($sql)) {
+                            $prd_id = $row['product_id'];   
+                    ?>
+					<div class="item">
+						<div class="product">
+							<div class="product-img">
+                                <?php
+                                    include 'db_connect.php';
+                                    $query = 'SELECT * FROM product_image where product_id = '. $prd_id .' and image_number = '. 0 .'';
+                                    $result = $con->query($query);
+                                    $followingdata = $result->fetch_assoc();  
+                                ?>
+                                <a href="index.php?page=product_detail&id=<?=$row['product_id']?>"  class="pdt_id">
+									<img src="data:image/jpeg;base64, <?=base64_encode( $followingdata['images'] );?>" alt="product_img1" />
+								</a>
+							</div>
+                                <?php ?>
+							<div class="product_info">
+								<h6 class="product_title"><a href="index.php?page=product_detail&id=<?=$row['product_id']?>"><?=$row['name'];?> </a></h6>
+								<div class="product_price">
+                                    <span class="price"><span>&#8369; </span><?=number_format($row['price'], 2);?> </span>
+									<div class="rating_wrap">
+										<div class="rating">
+											<div class="product_rate" style="width:<?php echo ($row['rating'] *20)?>%"></div>
+										</div>
+                                        <?php
+                                            $connect = new PDO("mysql:host=localhost;dbname=alternative_project", "root", "");
+                                            $select_stmt = $connect->prepare("SELECT * from product_review where product_id = ?");
+                                            $select_stmt->execute([$row['product_id']]);
+                                            $row=$select_stmt->rowCount();
+                                        ?>
+										<span class="rating_num">(<?=$row?>)</span>
+									</div>
+								</div>
+							</div>
+						</div>
+					</div>
+                    <?php }?>
                 </div>
             </div>
         </div>

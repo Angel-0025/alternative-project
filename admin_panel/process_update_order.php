@@ -16,7 +16,6 @@
     if($order_status == "On Delivery"){
         $order_info = $connect->prepare("UPDATE order_table SET order_status = ? WHERE id=?");
         $order_info->execute([$order_status ,$order_id]);
-
         if($order_info){
             echo 1;
         }
@@ -52,6 +51,23 @@
             )
         );
         if($statement){
+
+            $oti = $connect->prepare('SELECT * FROM order_table_item where order_id = ?');
+            $oti->execute([$order_id]);
+            while($prid= $oti->fetch(PDO::FETCH_ASSOC)){
+                
+                $pr = $connect->prepare('SELECT * FROM product where product_id = ?');
+                $pr->execute([$prid['product_id']]);
+                $pr_stock= $pr->fetch(PDO::FETCH_ASSOC);
+                
+                $product_id = $prid['quantity'];
+                $slct_stocks = $pr_stock['stocks'];
+                $stock =  $slct_stocks - $product_id;
+
+                $order_info = $connect->prepare("UPDATE product SET stocks = ? WHERE product_id=?");
+                $order_info->execute([$stock ,$prid['product_id']]);
+            }
+
             $delete_orderInfo = "DELETE FROM order_table WHERE id =?";
             $del = $connect->prepare($delete_orderInfo);
             $del->execute([$order_id]);

@@ -1,11 +1,4 @@
 <?php
-if(isset($_SESSION['search_word']) && !empty($_SESSION['search_word'])) {
-    echo $_SESSION['search_word'];
-}
-else{
-    echo 'ERROR';
-}
-
 include 'db_connect.php';
 ?>
 <style>
@@ -23,7 +16,7 @@ include 'db_connect.php';
         <div class="row align-items-center">
         	<div class="col-md-6">
                 <div class="page-title">
-            		<h1><?=$_SESSION['search_word']?></h1>
+            		<h1><?=$_GET['catrft']?> Shoes</h1>
                 </div>
             </div>
             <div class="col-md-6">
@@ -47,8 +40,7 @@ include 'db_connect.php';
                     <div class="col-lg-3 col-md-4 col-6">
                         <?php
                         // get the search terms from the url
-                            $k = $_SESSION['search_word'];
-
+                            $k = $_GET['catrft'];
                             // create the base variables for building the search query
                             $search_string = "SELECT * FROM product WHERE ";
                             $display_words = "";
@@ -56,7 +48,7 @@ include 'db_connect.php';
                             // format each of search keywords into the db query to be run
                             $keywords = explode(' ', $k);			
                             foreach ($keywords as $word){
-                                $search_string .= "name LIKE '%".$word."%' OR ";
+                                $search_string .= "user_target LIKE '%".$word."%' OR ";
                                 $display_words .= $word.' ';
                             }
                             $search_string = substr($search_string, 0, strlen($search_string)-4);
@@ -64,7 +56,9 @@ include 'db_connect.php';
 
                             // run the query in the db and search through each of the records returned
                             $query = mysqli_query($con, $search_string);
+                            
                             $result_count = mysqli_num_rows($query);
+                          
                             if($result_count > 0){
                             while ($row = mysqli_fetch_assoc($query)){
                         ?>
@@ -155,7 +149,7 @@ include 'db_connect.php';
                         <?php }
                         }
                         else{?>
-                            <h3 style="text-align: center;"><?php echo ucwords($_SESSION['search_word']);?> doesn't exist</h3>
+                            <h3 style="text-align: center;"><?php echo ucwords($_GET['catrft']);?> doesn't exist</h3>
                         <?php }?>
                     </div>
                                       

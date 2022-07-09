@@ -1,11 +1,20 @@
 <?php
-if(isset($_SESSION['search_word']) && !empty($_SESSION['search_word'])) {
-    echo $_SESSION['search_word'];
+ if (isset($_GET['catid'])) {
+    $connect = new PDO("mysql:host=localhost;dbname=alternative_project", "root", "");
+    // Prepare statement and execute, prevents SQL injection
+    $stmt = $connect->prepare('SELECT * FROM product WHERE vendor = ?');
+    $stmt->execute([$_GET['catid']]);
+    // Fetch the product from the database and return the result as an Array
+    $product = $stmt->fetch(PDO::FETCH_ASSOC);
+    // Check if the product exists (array is not empty)
+    if (!$product) {
+        // Simple error to display if the id for the product doesn't exists (array is empty)
+        exit('Product does not exist!');
+    }
+} else {
+    // Simple error to display if the id wasn't specified
+    exit('Product does not exist!');
 }
-else{
-    echo 'ERROR';
-}
-
 include 'db_connect.php';
 ?>
 <style>
@@ -23,7 +32,7 @@ include 'db_connect.php';
         <div class="row align-items-center">
         	<div class="col-md-6">
                 <div class="page-title">
-            		<h1><?=$_SESSION['search_word']?></h1>
+            		<h1><?=$_GET['catid']?></h1>
                 </div>
             </div>
             <div class="col-md-6">
@@ -47,8 +56,7 @@ include 'db_connect.php';
                     <div class="col-lg-3 col-md-4 col-6">
                         <?php
                         // get the search terms from the url
-                            $k = $_SESSION['search_word'];
-
+                            $k = $_GET['catid'];
                             // create the base variables for building the search query
                             $search_string = "SELECT * FROM product WHERE ";
                             $display_words = "";
@@ -56,12 +64,11 @@ include 'db_connect.php';
                             // format each of search keywords into the db query to be run
                             $keywords = explode(' ', $k);			
                             foreach ($keywords as $word){
-                                $search_string .= "name LIKE '%".$word."%' OR ";
+                                $search_string .= "vendor LIKE '%".$word."%' OR ";
                                 $display_words .= $word.' ';
                             }
                             $search_string = substr($search_string, 0, strlen($search_string)-4);
                             $display_words = substr($display_words, 0, strlen($display_words)-1);
-
                             // run the query in the db and search through each of the records returned
                             $query = mysqli_query($con, $search_string);
                             $result_count = mysqli_num_rows($query);
@@ -155,7 +162,7 @@ include 'db_connect.php';
                         <?php }
                         }
                         else{?>
-                            <h3 style="text-align: center;"><?php echo ucwords($_SESSION['search_word']);?> doesn't exist</h3>
+                            <h3 style="text-align: center;"><?php echo ucwords($_GET['catid']);?> doesn't exist</h3>
                         <?php }?>
                     </div>
                                       

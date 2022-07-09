@@ -33,6 +33,7 @@ a .noHover:hover {
                         </thead>
                         <tbody>
                             <?php 
+                                if($orderResult != 0){
                                 $i = 1;
                                 foreach ($orderResult as $k => $v) { ?>
                             <tr>
@@ -48,7 +49,7 @@ a .noHover:hover {
                                 <a class="mb-1 btn btn-primary btn-sm"  href="index.php?page=order_archive_view&id=<?php echo $orderResult[$k]["order_id"];?>">View</a>
                                 </td>
                             </tr>
-                            <?php }?>
+                            <?php }}?>
                         </tbody>
                     </table>
                 </div>

@@ -49,7 +49,7 @@ print_r($product['product_id']);
                 <h2>Add Product</h2>
             </div>
         </div>
-        <span id="success_message"></span>
+        <span id="alert-success_message"></span>
             <!-- Title/Description and Organization -->
             <div class="row">
                 <div class="col-8">
@@ -113,6 +113,7 @@ print_r($product['product_id']);
                                         <option value="adidas">Adidas</option>
                                         <option value="nike">Nike</option>
                                         <option value="reebok">Reebok</option>
+                                        <option value="under armour">Under Armour</option>
                                     </select>
                                 </div>
                             </div>

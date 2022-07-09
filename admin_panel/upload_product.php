@@ -77,7 +77,7 @@
                 <h2>Add Product</h2>
             </div>
         </div>
-        <span id="success_message"></span>
+        <span id="alert-message"></span>
             <!-- Title/Description and Organization -->
             <div class="row">
                 <div class="col-8">
@@ -141,6 +141,7 @@
                                         <option value="adidas">Adidas</option>
                                         <option value="nike">Nike</option>
                                         <option value="reebok">Reebok</option>
+                                        <option value="under armour">Under Armour</option>
                                     </select>
                                 </div>
                             </div>
@@ -183,13 +184,6 @@
                                         <input type="number" class="form-control form-control-md input-md" required="" name="product_price"  id="product_price" placeholder="Enter Product Price">
                                     </div>
                                 </div>
-                                <div class="form-group col-sm-6 mb-3">
-                                    <label for="product-title">Discount</label>
-                                    <div class="input-group-prepend">
-                                        <div class="input-group-text">%</div>
-                                        <input type="number" class="form-control form-control-md input-md" required="" name="product_percentage"  id="product_percentage" placeholder="Enter Product Discount">
-                                    </div>
-                                </div>
                             </div>
                         </div>
                     </div>
@@ -212,9 +206,8 @@
                                     <label for="product-status">Product Status</label>
                                     <select class="form-control form-control-md prd_vendor select2-hidden-accessible" required="" name="product_status" id="product_status">
                                         <option value="">Select Product Type</option>
-                                        <option value="adidas">Adidas</option>
-                                        <option value="nike">Nike</option>
-                                        <option value="reebok">Reebok</option>
+                                        <option value="In Stock">In Stock</option>
+                                        <option value="Out of Stock">Out of Stock</option>
                                     </select>
                                 </div>
                             </div>
@@ -284,13 +277,17 @@ $(document).ready(function () {
                 beforeSend:function(){
                 $('#submit').val('Submitting...');
                 },
-                success:function(data){
-                    if(data != '')
+                success:function(response){
+                    if(response == 1)
                     {
-                        $('#image').val('');
-                        $('#success_message').html(data);
-                        $('#submit').attr("disabled", false);
-                        $('#submit').val('Submit');
+                        window.location.href="index.php?page=product_list";   
+                        //$(".alert-message").html('<div class="alert alert-success alert-dismissible mt-2"><button type="button" class="close" data-dismiss="alert">x</button> <strong>Product is Updated!</strong></div>');
+                        $('#submit').removeAttr("disabled","disabled");
+                       // $('#image').val('');
+                    }
+                    if(response == 2){
+                        $(".alert-message").html('<div class="alert alert-alert alert-dismissible mt-2"><button type="button" class="close" data-dismiss="alert">x</button> <strong>Something Went wrong!</strong></div>');
+                        $('#submit').removeAttr("disabled","disabled");
                     }
                 }
             });

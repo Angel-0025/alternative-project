@@ -2,45 +2,71 @@
 <div class="banner_section slide_medium shop_banner_slider staggered-animation-wrap">
     <div id="carouselExampleControls" class="carousel slide carousel-fade light_arrow" data-ride="carousel">
         <div class="carousel-inner">
-            <div class="carousel-item active background_bg" data-img-src="https://images.unsplash.com/photo-1531256379416-9f000e90aacc?crop=entropy&cs=tinysrgb&fm=jpg&ixlib=rb-1.2.1&q=80&raw_url=true&ixid=MnwxMjA3fDB8MHxwaG90by1wYWdlfHx8fGVufDB8fHx8&auto=format&fit=crop&w=774">
+            <div class="carousel-item active background_bg" data-img-src="assets/images/pexels-run-ffwpu-2526878.jpg">
                 <div class="banner_slide_content">
                     <div class="container"><!-- START CONTAINER -->
                         <div class="row">
                             <div class="col-lg-7 col-9">
                                 <div class="banner_content overflow-hidden">
-                                	<h5 class="mb-3 staggered-animation font-weight-light" data-animation="slideInLeft" data-animation-delay="0.5s">Get up to 50% off Today Only!</h5>
-                                    <h2 class="staggered-animation" data-animation="slideInLeft" data-animation-delay="1s">Woman Fashion</h2>
-                                    <a class="btn btn-fill-out rounded-0 staggered-animation text-uppercase" href="shop-left-sidebar.html" data-animation="slideInLeft" data-animation-delay="1.5s">Shop Now</a>
+                                    <h2 class="staggered-animation" data-animation="slideInLeft" data-animation-delay="1s"  style="color: #EDEADE;">Running Shoes</h2>
+                                        <?php
+                                            include 'db_connect.php';
+                                            $typ = "running";
+                                        ?>
+                                    <a class="btn btn-fill-out rounded-0 staggered-animation text-uppercase" data-animation="slideInLeft" data-animation-delay="1.5s" href="index.php?page=type_search&catyp=<?=$typ?>">Shop Now</a>
                                 </div>
                             </div>
                         </div>
                     </div><!-- END CONTAINER-->
                 </div>
             </div>
-            <div class="carousel-item background_bg" data-img-src="https://images.unsplash.com/photo-1531256379416-9f000e90aacc?crop=entropy&cs=tinysrgb&fm=jpg&ixlib=rb-1.2.1&q=80&raw_url=true&ixid=MnwxMjA3fDB8MHxwaG90by1wYWdlfHx8fGVufDB8fHx8&auto=format&fit=crop&w=774">
+            <div class="carousel-item background_bg" data-img-src="assets/images/pexels-jeshootscom-7432.jpg">
                 <div class="banner_slide_content">
                     <div class="container"><!-- STRART CONTAINER -->
                         <div class="row">
                             <div class="col-lg-6">
                                 <div class="banner_content overflow-hidden">
-                                	<h5 class="mb-3 staggered-animation font-weight-light" data-animation="slideInLeft" data-animation-delay="0.5s">50% off in all products</h5>
-                                    <h2 class="staggered-animation" data-animation="slideInLeft" data-animation-delay="1s">Man Fashion</h2>
-                                    <a class="btn btn-fill-out rounded-0 staggered-animation text-uppercase" href="shop-left-sidebar.html" data-animation="slideInLeft" data-animation-delay="1.5s">Shop Now</a>
+                                    <h2 class="staggered-animation" data-animation="slideInLeft" data-animation-delay="1s" style="color: #EDEADE;">Women Shoe</h2>
+                                        <?php
+                                            $trgt = "women";
+                                        ?>
+                                    <a class="btn btn-fill-out rounded-0 staggered-animation text-uppercase" data-animation="slideInLeft" data-animation-delay="1.5s" href="index.php?page=target_search&catrft=<?=$trgt?>">Shop Now</a>
                                 </div>
                             </div>
                         </div>
                     </div><!-- END CONTAINER-->
                 </div>
             </div>
-            <div class="carousel-item background_bg" data-img-src="https://images.unsplash.com/photo-1531256379416-9f000e90aacc?crop=entropy&cs=tinysrgb&fm=jpg&ixlib=rb-1.2.1&q=80&raw_url=true&ixid=MnwxMjA3fDB8MHxwaG90by1wYWdlfHx8fGVufDB8fHx8&auto=format&fit=crop&w=774">
+            <div class="carousel-item background_bg" data-img-src="assets/images/pexels-yaroslav-shuraev-8693988.jpg">
                 <div class="banner_slide_content">
                     <div class="container"><!-- STRART CONTAINER -->
                         <div class="row">
                             <div class="col-lg-6">
                                 <div class="banner_content overflow-hidden">
-                                	<h5 class="mb-3 staggered-animation font-weight-light" data-animation="slideInLeft" data-animation-delay="0.5s">Taking your Viewing Experience to Next Level</h5>
-                                    <h2 class="staggered-animation" data-animation="slideInLeft" data-animation-delay="1s">Summer Sale</h2>
-                                    <a class="btn btn-fill-out rounded-0 staggered-animation text-uppercase" href="shop-left-sidebar.html" data-animation="slideInLeft" data-animation-delay="1.5s">Shop Now</a>
+                                    <h2 class="staggered-animation" data-animation="slideInLeft" data-animation-delay="1s" style="color: #EDEADE;">Basketball Shoe</h2>
+                                        <?php
+                                            include 'db_connect.php';
+                                            $typ = "basketball";
+                                        ?>
+                                    <a class="btn btn-fill-out rounded-0 staggered-animation text-uppercase" data-animation="slideInLeft" data-animation-delay="1.5s" href="index.php?page=type_search&catyp=<?=$typ?>">Shop Now</a>
+                                </div>
+                            </div>
+                        </div>
+                    </div><!-- END CONTAINER-->
+                </div>
+            </div>
+            <div class="carousel-item background_bg" data-img-src="assets/images/pexels-jens-mahnke-1153838.jpg">
+                <div class="banner_slide_content">
+                    <div class="container"><!-- STRART CONTAINER -->
+                        <div class="row">
+                            <div class="col-lg-6">
+                                <div class="banner_content overflow-hidden">
+                                    <h2 class="staggered-animation" data-animation="slideInLeft" data-animation-delay="1s" style="color: #EDEADE;">Men Shoe</h2>
+                                        <?php
+                                            include 'db_connect.php';
+                                            $trgt = "men";
+                                        ?>
+                                    <a class="btn btn-fill-out rounded-0 staggered-animation text-uppercase" data-animation="slideInLeft" data-animation-delay="1.5s" href="index.php?page=target_searchM&catrftm=<?=$trgt?>">Shop Now</a>
                                 </div>
                             </div>
                         </div>
@@ -80,9 +106,6 @@
                                 <li class="nav-item">
                                     <a class="nav-link" id="featured-tab" data-toggle="tab" href="#featured" role="tab" aria-controls="featured" aria-selected="false">Featured</a>
                                 </li>
-                                <li class="nav-item">
-                                    <a class="nav-link" id="special-tab" data-toggle="tab" href="#special" role="tab" aria-controls="special" aria-selected="false">Special Offer</a>
-                                </li>
                             </ul>
                         </div>
                     </div>
@@ -93,119 +116,137 @@
                     <div class="tab_slider">
                         <div class="tab-pane fade show active" id="arrival" role="tabpanel" aria-labelledby="arrival-tab">
                             <div class="product_slider carousel_slider owl-carousel owl-theme nav_style1" data-loop="true" data-dots="false" data-nav="true" data-margin="20" data-responsive='{"0":{"items": "1"}, "481":{"items": "2"}, "768":{"items": "3"}, "1199":{"items": "4"}}'>
+                                <?php
+                                include 'db_connect.php';
+                                $sql = mysqli_query($con, "SELECT * FROM product ORDER BY product_id DESC LIMIT 5");
+                                while ($row = mysqli_fetch_array($sql)) {
+                                    $prd_id = $row['product_id'];   
+                                ?>
                                 <div class="item">
                                     <div class="product">
-                                        <div class="product_img">
-                                            <a href="shop-product-detail.html">
-                                                <img src="https://images.unsplash.com/photo-1516197926525-8c6cc1f192a5?ixlib=rb-1.2.1&ixid=MnwxMjA3fDB8MHxwaG90by1wYWdlfHx8fGVufDB8fHx8&auto=format&fit=crop&w=1468&q=80" alt="product_img1" alt="product_img1">
+                                        <div class="product-img">
+                                            <?php
+                                                include 'db_connect.php';
+                                                $query = 'SELECT * FROM product_image where product_id = '. $prd_id .' and image_number = '. 0 .'';
+                                                $result = $con->query($query);
+                                                $followingdata = $result->fetch_assoc();  
+                                            ?>
+                                            <a href="index.php?page=product_detail&id=<?=$row['product_id']?>"  class="pdt_id">
+                                                <img src="data:image/jpeg;base64, <?=base64_encode( $followingdata['images'] );?>" alt="product_img1" />
                                             </a>
                                         </div>
+                                        <?php ?>
                                         <div class="product_info">
-                                            <h6 class="product_title"><a href="shop-product-detail.html">Blue Dress For Woman</a></h6>
+                                            <h6 class="product_title"><a href="index.php?page=product_detail&id=<?=$row['product_id']?>"><?=$row['name'];?> </a></h6>
                                             <div class="product_price">
-                                                <span class="price">$45.00</span>
-                                                <del>$55.25</del>
-                                                <div class="on_sale">
-                                                    <span>35% Off</span>
+                                            <span class="price"><span>&#8369; </span><?=number_format($row['price'], 2);?> </span>
+                                                <div class="rating_wrap">
+                                                    <div class="rating">
+                                                        <div class="product_rate" style="width:<?php echo ($row['rating'] *20)?>%"></div>
+                                                    </div>
+                                                    <?php
+                                                        $connect = new PDO("mysql:host=localhost;dbname=alternative_project", "root", "");
+                                                        $select_stmt = $connect->prepare("SELECT * from product_review where product_id = ?");
+                                                        $select_stmt->execute([$row['product_id']]);
+                                                        $row=$select_stmt->rowCount();
+                                                    ?>
+                                                    <span class="rating_num">(<?=$row?>)</span>
                                                 </div>
-                                            </div>
-                                            <div class="rating_wrap">
-                                                <div class="rating">
-                                                    <div class="product_rate" style="width:80%"></div>
-                                                </div>
-                                                <span class="rating_num">(21)</span>
                                             </div>
                                         </div>
                                     </div>
                                 </div>
-
+                                <?php }?>
                             </div>
                         </div>
                         <div class="tab-pane fade" id="sellers" role="tabpanel" aria-labelledby="sellers-tab">
                             <div class="product_slider carousel_slider owl-carousel owl-theme nav_style1" data-loop="true" data-dots="false" data-nav="true" data-margin="20" data-responsive='{"0":{"items": "1"}, "481":{"items": "2"}, "768":{"items": "3"}, "1199":{"items": "4"}}'>
+                                <?php
+                                include 'db_connect.php';
+                                $sql = mysqli_query($con, "SELECT * FROM product ORDER BY stocks ASC LIMIT 5");
+                                while ($row = mysqli_fetch_array($sql)) {
+                                    $prd_id = $row['product_id'];   
+                                ?>
                                 <div class="item">
                                     <div class="product">
-                                        <div class="product_img">
-                                            <a href="shop-product-detail.html">
-                                                <img src="https://images.unsplash.com/photo-1516197926525-8c6cc1f192a5?ixlib=rb-1.2.1&ixid=MnwxMjA3fDB8MHxwaG90by1wYWdlfHx8fGVufDB8fHx8&auto=format&fit=crop&w=1468&q=80" alt="product_img1" alt="product_img9">
+                                        <div class="product-img">
+                                            <?php
+                                                include 'db_connect.php';
+                                                $query = 'SELECT * FROM product_image where product_id = '. $prd_id .' and image_number = '. 0 .'';
+                                                $result = $con->query($query);
+                                                $followingdata = $result->fetch_assoc();  
+                                            ?>
+                                            <a href="index.php?page=product_detail&id=<?=$row['product_id']?>"  class="pdt_id">
+                                                <img src="data:image/jpeg;base64, <?=base64_encode( $followingdata['images'] );?>" alt="product_img1" />
                                             </a>
                                         </div>
+                                        <?php ?>
                                         <div class="product_info">
-                                            <h6 class="product_title"><a href="shop-product-detail.html">T-Shirt Form Girls</a></h6>
+                                            <h6 class="product_title"><a href="index.php?page=product_detail&id=<?=$row['product_id']?>"><?=$row['name'];?> </a></h6>
                                             <div class="product_price">
-                                                <span class="price">$45.00</span>
-                                                <del>$55.25</del>
-                                                <div class="on_sale">
-                                                    <span>35% Off</span>
+                                            <span class="price"><span>&#8369; </span><?=number_format($row['price'], 2);?> </span>
+                                                <div class="rating_wrap">
+                                                    <div class="rating">
+                                                        <div class="product_rate" style="width:<?php echo ($row['rating'] *20)?>%"></div>
+                                                    </div>
+                                                    <?php
+                                                        $connect = new PDO("mysql:host=localhost;dbname=alternative_project", "root", "");
+                                                        $select_stmt = $connect->prepare("SELECT * from product_review where product_id = ?");
+                                                        $select_stmt->execute([$row['product_id']]);
+                                                        $row=$select_stmt->rowCount();
+                                                    ?>
+                                                    <span class="rating_num">(<?=$row?>)</span>
                                                 </div>
-                                            </div>
-                                            <div class="rating_wrap">
-                                                <div class="rating">
-                                                    <div class="product_rate" style="width:80%"></div>
-                                                </div>
-                                                <span class="rating_num">(21)</span>
                                             </div>
                                         </div>
                                     </div>
                                 </div>
+                                <?php }?>
                             </div>
                         </div>
                         <div class="tab-pane fade" id="featured" role="tabpanel" aria-labelledby="featured-tab">
                             <div class="product_slider carousel_slider owl-carousel owl-theme nav_style1" data-loop="true" data-dots="false" data-nav="true" data-margin="20" data-responsive='{"0":{"items": "1"}, "481":{"items": "2"}, "768":{"items": "3"}, "1199":{"items": "4"}}'>
+                                <?php
+                                include 'db_connect.php';
+                                $sql = mysqli_query($con, "SELECT * FROM product ORDER BY rating DESC LIMIT 5");
+                                while ($row = mysqli_fetch_array($sql)) {
+                                    $prd_id = $row['product_id'];   
+                                ?>
                                 <div class="item">
                                     <div class="product">
-                                        <div class="product_img">
-                                            <a href="shop-product-detail.html">
-                                                <img src="https://images.unsplash.com/photo-1516197926525-8c6cc1f192a5?ixlib=rb-1.2.1&ixid=MnwxMjA3fDB8MHxwaG90by1wYWdlfHx8fGVufDB8fHx8&auto=format&fit=crop&w=1468&q=80" alt="product_img1" alt="product_img5">
+                                        <div class="product-img">
+                                            <?php
+                                                include 'db_connect.php';
+                                                $query = 'SELECT * FROM product_image where product_id = '. $prd_id .' and image_number = '. 0 .'';
+                                                $result = $con->query($query);
+                                                $followingdata = $result->fetch_assoc();  
+                                            ?>
+                                            <a href="index.php?page=product_detail&id=<?=$row['product_id']?>"  class="pdt_id">
+                                                <img src="data:image/jpeg;base64, <?=base64_encode( $followingdata['images'] );?>" alt="product_img1" />
                                             </a>
                                         </div>
+                                        <?php ?>
                                         <div class="product_info">
-                                            <h6 class="product_title"><a href="shop-product-detail.html">blue dress for woman</a></h6>
+                                            <h6 class="product_title"><a href="index.php?page=product_detail&id=<?=$row['product_id']?>"><?=$row['name'];?> </a></h6>
                                             <div class="product_price">
-                                                <span class="price">$45.00</span>
-                                                <del>$55.25</del>
-                                                <div class="on_sale">
-                                                    <span>35% Off</span>
+                                            <span class="price"><span>&#8369; </span><?=number_format($row['price'], 2);?> </span>
+                                                <div class="rating_wrap">
+                                                    <div class="rating">
+                                                        <div class="product_rate" style="width:<?php echo ($row['rating'] *20)?>%"></div>
+                                                    </div>
+                                                    <?php
+                                                        $connect = new PDO("mysql:host=localhost;dbname=alternative_project", "root", "");
+                                                        $select_stmt = $connect->prepare("SELECT * from product_review where product_id = ?");
+                                                        $select_stmt->execute([$row['product_id']]);
+                                                        $row=$select_stmt->rowCount();
+                                                    ?>
+                                                    <span class="rating_num">(<?=$row?>)</span>
                                                 </div>
-                                            </div>
-                                            <div class="rating_wrap">
-                                                <div class="rating">
-                                                    <div class="product_rate" style="width:80%"></div>
-                                                </div>
-                                                <span class="rating_num">(21)</span>
                                             </div>
                                         </div>
                                     </div>
                                 </div>
-                            </div>
-                        </div>
-                        <div class="tab-pane fade" id="special" role="tabpanel" aria-labelledby="special-tab">
-                            <div class="product_slider carousel_slider owl-carousel owl-theme nav_style1" data-loop="true" data-dots="false" data-nav="true" data-margin="20" data-responsive='{"0":{"items": "1"}, "481":{"items": "2"}, "768":{"items": "3"}, "1199":{"items": "4"}}'>
-                                <div class="item">
-                                    <div class="product">
-                                        <div class="product_img">
-                                            <a href="shop-product-detail.html">
-                                                <img src="https://images.unsplash.com/photo-1516197926525-8c6cc1f192a5?ixlib=rb-1.2.1&ixid=MnwxMjA3fDB8MHxwaG90by1wYWdlfHx8fGVufDB8fHx8&auto=format&fit=crop&w=1468&q=80" alt="product_img1" alt="product_img4">
-                                            </a>
-                                        </div>
-                                        <div class="product_info">
-                                            <h6 class="product_title"><a href="shop-product-detail.html">light blue Shirt</a></h6>
-                                            <div class="product_price">
-                                                <span class="price">$69.00</span>
-                                                <del>$89.00</del>
-                                                <div class="on_sale">
-                                                    <span>20% Off</span>
-                                                </div>
-                                            </div>
-                                            <div class="rating_wrap">
-                                                <div class="rating">
-                                                    <div class="product_rate" style="width:70%"></div>
-                                                </div>
-                                                <span class="rating_num">(22)</span>
-                                            </div>
-                                        </div>
-                                    </div>
-                                </div>
+                                <?php }?>
                             </div>
                         </div>
                     </div>
@@ -229,60 +270,60 @@
             </div>
             <div class="row align-items-center">
                 <div class="col-12">
-                    <div class="cat_slider cat_style1 mt-4 mt-md-0 carousel_slider owl-carousel owl-theme nav_style5" data-loop="true" data-dots="false" data-nav="true" data-margin="30" data-responsive='{"0":{"items": "2"}, "480":{"items": "3"}, "576":{"items": "4"}, "768":{"items": "5"}, "991":{"items": "6"}, "1199":{"items": "7"}}'>
+                    <div class="cat_slider cat_style1 mt-4 mt-md-0 carousel_slider owl-carousel owl-theme nav_style5" data-loop="true" data-dots="false" data-nav="true" data-margin="30" data-responsive='{"0":{"items": "2"}, "480":{"items": "3"}, "576":{"items": "4"}, "768":{"items": "7"}, "991":{"items": "7"}, "1199":{"items": "7"}}'>
                         <div class="item">
+                            <?php
+                            include 'db_connect.php';
+                                $ven = "under armour";
+                                $sql = mysqli_query($con, "SELECT * FROM product WHERE vendor LIKE '{$ven}'");
+                                $row = mysqli_fetch_array($sql);
+                                $prd_id = $row['vendor'];   
+                            ?>
                             <div class="categories_box">
-                                <a href="#">
-                                    <img src="https://images.unsplash.com/photo-1516197926525-8c6cc1f192a5?ixlib=rb-1.2.1&ixid=MnwxMjA3fDB8MHxwaG90by1wYWdlfHx8fGVufDB8fHx8&auto=format&fit=crop&w=1468&q=80" alt="cat_img1"/>
-                                    <span>Television</span>
+                                <a href="index.php?page=category_search&catid=<?=$prd_id?>">
+                                    <img src="assets/images/5842f037a6515b1e0ad75b12.png"  width="65%" height="150"/>
                                 </a>
                             </div>
                         </div>
                         <div class="item">
                             <div class="categories_box">
-                                <a href="#">
-                                    <img src="https://images.unsplash.com/photo-1516197926525-8c6cc1f192a5?ixlib=rb-1.2.1&ixid=MnwxMjA3fDB8MHxwaG90by1wYWdlfHx8fGVufDB8fHx8&auto=format&fit=crop&w=1468&q=80" alt="cat_img2"/>
-                                    <span>Mobile</span>
+                                <?php
+                                include 'db_connect.php';
+                                    $ven = "adidas";
+                                    $sql = mysqli_query($con, "SELECT * FROM product WHERE vendor LIKE '{$ven}'");
+                                    $row = mysqli_fetch_array($sql);
+                                    $prd_id = $row['vendor'];   
+                                ?>
+                                <a href="index.php?page=category_search&catid=<?=$prd_id?>">
+                                    <img src="assets/images/adidas-logo-png-2371.png"  width="65%" height="150"/>
                                 </a>
                             </div>
                         </div>
                         <div class="item">
                             <div class="categories_box">
-                                <a href="#">
-                                    <img src="https://images.unsplash.com/photo-1516197926525-8c6cc1f192a5?ixlib=rb-1.2.1&ixid=MnwxMjA3fDB8MHxwaG90by1wYWdlfHx8fGVufDB8fHx8&auto=format&fit=crop&w=1468&q=80" alt="cat_img3"/>
-                                    <span>Headphone</span>
+                                <?php
+                                    include 'db_connect.php';
+                                    $ven = "nike";
+                                    $sql = mysqli_query($con, "SELECT * FROM product WHERE vendor LIKE '{$ven}'");
+                                    $row = mysqli_fetch_array($sql);
+                                    $prd_id = $row['vendor'];   
+                                ?>
+                                <a href="index.php?page=category_search&catid=<?=$prd_id?>">
+                                    <img src="assets/images/kindpng_827406.png"  width="65%" height="150"/>
                                 </a>
                             </div>
                         </div>
                         <div class="item">
                             <div class="categories_box">
-                                <a href="#">
-                                    <img src="https://images.unsplash.com/photo-1516197926525-8c6cc1f192a5?ixlib=rb-1.2.1&ixid=MnwxMjA3fDB8MHxwaG90by1wYWdlfHx8fGVufDB8fHx8&auto=format&fit=crop&w=1468&q=80" alt="cat_img4"/>
-                                    <span>Watch</span>
-                                </a>
-                            </div>
-                        </div>
-                        <div class="item">
-                            <div class="categories_box">
-                                <a href="#">
-                                    <img src="https://images.unsplash.com/photo-1516197926525-8c6cc1f192a5?ixlib=rb-1.2.1&ixid=MnwxMjA3fDB8MHxwaG90by1wYWdlfHx8fGVufDB8fHx8&auto=format&fit=crop&w=1468&q=80" alt="cat_img5"/>
-                                    <span>Game</span>
-                                </a>
-                            </div>
-                        </div>
-                        <div class="item">
-                            <div class="categories_box">
-                                <a href="#">
-                                    <img src="https://images.unsplash.com/photo-1516197926525-8c6cc1f192a5?ixlib=rb-1.2.1&ixid=MnwxMjA3fDB8MHxwaG90by1wYWdlfHx8fGVufDB8fHx8&auto=format&fit=crop&w=1468&q=80" alt="cat_img6"/>
-                                    <span>Camera</span>
-                                </a>
-                            </div>
-                        </div>
-                        <div class="item">
-                            <div class="categories_box">
-                                <a href="#">
-                                    <img src="https://images.unsplash.com/photo-1516197926525-8c6cc1f192a5?ixlib=rb-1.2.1&ixid=MnwxMjA3fDB8MHxwaG90by1wYWdlfHx8fGVufDB8fHx8&auto=format&fit=crop&w=1468&q=80" alt="cat_img7"/>
-                                    <span>Audio</span>
+                                <?php
+                                    include 'db_connect.php';
+                                    $ven = "reebok";
+                                    $sql = mysqli_query($con, "SELECT * FROM product WHERE vendor LIKE '{$ven}'");
+                                    $row = mysqli_fetch_array($sql);
+                                    $prd_id = $row['vendor'];   
+                                ?>
+                                <a href="index.php?page=category_search&catid=<?=$prd_id?>">
+                                    <img src="assets/images/Reebok_Logo_2019.png"  width="65%" height="150"/>
                                 </a>
                             </div>
                         </div>
@@ -312,7 +353,7 @@
 						</div>
                         <?php
                             include 'db_connect.php';
-                            $sql = mysqli_query($con, "SELECT * FROM product");
+                            $sql = mysqli_query($con, "SELECT * FROM product ORDER BY rating DESC LIMIT 5");
                             while ($row = mysqli_fetch_array($sql)) {
                                 $prd_id = $row['product_id'];   
                         ?>
@@ -334,10 +375,7 @@
 									<h6 class="product_title"><a href="index.php?page=product_detail&id=<?=$row['product_id']?>"><?=$row['name'];?> </a></h6>
 									<div class="product_price">
                                     <span class="price"><span>&#8369; </span><?=number_format($row['price'], 2);?> </span>
-										<del></del>
-										<div class="on_sale">
-											<span><?=$row['discount'];?> </span>
-										</div>
+ 
 										<div class="rating_wrap">
 											<div class="rating">
 												<div class="product_rate" style="width:<?php echo ($row['rating'] *20)?>%"></div>
@@ -355,131 +393,7 @@
 							</div>
 						</div>
                         <?php }?>
-                        <div class="item">
-							<div class="product">
-								<div class="product-img">
-									<a href="shop-product-detail.html">
-										<img src="https://images.unsplash.com/photo-1516197926525-8c6cc1f192a5?ixlib=rb-1.2.1&ixid=MnwxMjA3fDB8MHxwaG90by1wYWdlfHx8fGVufDB8fHx8&auto=format&fit=crop&w=1468&q=80" alt="product_img1">
-									</a>
-								</div>
-								<div class="product_info">
-									<h6 class="product_title"><a href="shop-product-detail.html">Blue Dress For Woman</a></h6>
-									<div class="product_price">
-                                    <span class="price">$45.00</span>
-										<del>$55.25</del>
-										<div class="on_sale">
-											<span>35% Off</span>
-										</div>
-										<div class="rating_wrap">
-											<div class="rating">
-												<div class="product_rate" style="width:80%"></div>
-											</div>
-											<span class="rating_num">(21)</span>
-										</div>
-									</div>
-								</div>
-							</div>
-						</div>
-                        <div class="item">
-							<div class="product">
-								<div class="product-img">
-									<a href="shop-product-detail.html">
-										<img src="https://images.unsplash.com/photo-1516197926525-8c6cc1f192a5?ixlib=rb-1.2.1&ixid=MnwxMjA3fDB8MHxwaG90by1wYWdlfHx8fGVufDB8fHx8&auto=format&fit=crop&w=1468&q=80" alt="product_img1">
-									</a>
-								</div>
-								<div class="product_info">
-									<h6 class="product_title"><a href="shop-product-detail.html">Blue Dress For Woman</a></h6>
-									<div class="product_price">
-                                    <span class="price">$45.00</span>
-										<del>$55.25</del>
-										<div class="on_sale">
-											<span>35% Off</span>
-										</div>
-										<div class="rating_wrap">
-											<div class="rating">
-												<div class="product_rate" style="width:80%"></div>
-											</div>
-											<span class="rating_num">(21)</span>
-										</div>
-									</div>
-								</div>
-							</div>
-						</div>
-                        <div class="item">
-							<div class="product">
-								<div class="product-img">
-									<a href="shop-product-detail.html">
-										<img src="https://images.unsplash.com/photo-1516197926525-8c6cc1f192a5?ixlib=rb-1.2.1&ixid=MnwxMjA3fDB8MHxwaG90by1wYWdlfHx8fGVufDB8fHx8&auto=format&fit=crop&w=1468&q=80" alt="product_img1">
-									</a>
-								</div>
-								<div class="product_info">
-									<h6 class="product_title"><a href="shop-product-detail.html">Blue Dress For Woman</a></h6>
-									<div class="product_price">
-                                    <span class="price">$45.00</span>
-										<del>$55.25</del>
-										<div class="on_sale">
-											<span>35% Off</span>
-										</div>
-										<div class="rating_wrap">
-											<div class="rating">
-												<div class="product_rate" style="width:80%"></div>
-											</div>
-											<span class="rating_num">(21)</span>
-										</div>
-									</div>
-								</div>
-							</div>
-						</div>
-                        <div class="item">
-							<div class="product">
-								<div class="product-img">
-									<a href="shop-product-detail.html">
-										<img src="https://images.unsplash.com/photo-1516197926525-8c6cc1f192a5?ixlib=rb-1.2.1&ixid=MnwxMjA3fDB8MHxwaG90by1wYWdlfHx8fGVufDB8fHx8&auto=format&fit=crop&w=1468&q=80" alt="product_img1">
-									</a>
-								</div>
-								<div class="product_info">
-									<h6 class="product_title"><a href="shop-product-detail.html">Blue Dress For Woman</a></h6>
-									<div class="product_price">
-                                    <span class="price">$45.00</span>
-										<del>$55.25</del>
-										<div class="on_sale">
-											<span>35% Off</span>
-										</div>
-										<div class="rating_wrap">
-											<div class="rating">
-												<div class="product_rate" style="width:80%"></div>
-											</div>
-											<span class="rating_num">(21)</span>
-										</div>
-									</div>
-								</div>
-							</div>
-						</div>
-                        <div class="item">
-							<div class="product">
-								<div class="product-img">
-									<a href="shop-product-detail.html">
-										<img src="https://images.unsplash.com/photo-1516197926525-8c6cc1f192a5?ixlib=rb-1.2.1&ixid=MnwxMjA3fDB8MHxwaG90by1wYWdlfHx8fGVufDB8fHx8&auto=format&fit=crop&w=1468&q=80" alt="product_img1">
-									</a>
-								</div>
-								<div class="product_info">
-									<h6 class="product_title"><a href="shop-product-detail.html">Blue Dress For Woman</a></h6>
-									<div class="product_price">
-                                    <span class="price">$45.00</span>
-										<del>$55.25</del>
-										<div class="on_sale">
-											<span>35% Off</span>
-										</div>
-										<div class="rating_wrap">
-											<div class="rating">
-												<div class="product_rate" style="width:80%"></div>
-											</div>
-											<span class="rating_num">(21)</span>
-										</div>
-									</div>
-								</div>
-							</div>
-						</div>
+                        
 					</div>
 				</div>
 			</div>

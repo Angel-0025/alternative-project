@@ -61,19 +61,7 @@
                 </button>
                 <div class="collapse navbar-collapse justify-content-end" id="navbarSupportedContent">
                     <ul class="navbar-nav">
-                        <li class="dropdown">
-                            <a data-toggle="dropdown" class="nav-link dropdown-toggle nav-home_page" href="#">Home</a>
-                            <div class="dropdown-menu">
-                                <ul> 
-                                    <li><a class="dropdown-item nav-link nav_item nav-home_page" href="index.php?page=home_page">Fashion 1</a></li>
-                                    <li><a class="dropdown-item nav-link nav_item nav-product_detail"  href="index.php?page=product_detail">Fashion 2</a></li>
-                                    <li><a class="dropdown-item nav-link nav_item  nav-product_search" href="index.php?page=product_search">Furniture 1</a></li>
-                                    <li><a class="dropdown-item nav-link nav_item" href="#">Furniture 2</a></li>
-                                    <li><a class="dropdown-item nav-link nav_item" href="#">Electronics 1</a></li>
-                                    <li><a class="dropdown-item nav-link nav_item" href="#">Electronics 2</a></li>
-                                </ul>
-                            </div>   
-                        </li>
+                        <li><a class="nav-link nav_item nav-home_page" href="index.php?page=home_page">Home</a></li> 
                         <li class="dropdown">
                             <a class="dropdown-toggle nav-link nav-register_page nav-login_page" href="#" data-toggle="dropdown">Pages</a>
                             <div class="dropdown-menu">
@@ -94,41 +82,54 @@
                                     <li class="mega-menu-col col-lg-3">
                                         <ul> 
                                             <li class="dropdown-header">Woman's</li>
-                                            <li><a class="dropdown-item nav-link nav_item" href="shop-list-left-sidebar.html">Vestibulum sed</a></li>
-                                            <li><a class="dropdown-item nav-link nav_item" href="shop-left-sidebar.html">Donec porttitor</a></li>
-                                            <li><a class="dropdown-item nav-link nav_item" href="shop-right-sidebar.html">Donec vitae facilisis</a></li>
-                                            <li><a class="dropdown-item nav-link nav_item" href="shop-list.html">Curabitur tempus</a></li>
-                                            <li><a class="dropdown-item nav-link nav_item" href="shop-load-more.html">Vivamus in tortor</a></li>
+                                            <li><a class="dropdown-item nav-link nav_item"  href="index.php?page=product_detail&id=20">Ultraboost DNA</a></li>
+                                            <li><a class="dropdown-item nav-link nav_item" href="index.php?page=product_detail&id=21">Nike ZoomX Streakfly</a></li>
+                                            <li><a class="dropdown-item nav-link nav_item" href="index.php?page=product_detail&id=22">Zig Dynamica</a></li>
                                         </ul>
                                     </li>
                                     <li class="mega-menu-col col-lg-3">
                                         <ul>
                                             <li class="dropdown-header">Men's</li>
-                                            <li><a class="dropdown-item nav-link nav_item" href="shop-cart.html">Donec vitae ante ante</a></li>
-                                            <li><a class="dropdown-item nav-link nav_item" href="checkout.html">Etiam ac rutrum</a></li>
-                                            <li><a class="dropdown-item nav-link nav_item" href="wishlist.html">Quisque condimentum</a></li>
-                                            <li><a class="dropdown-item nav-link nav_item" href="compare.html">Curabitur laoreet</a></li>
-                                            <li><a class="dropdown-item nav-link nav_item" href="order-completed.html">Vivamus in tortor</a></li>
+                                            <li><a class="dropdown-item nav-link nav_item" href="index.php?page=product_detail&id=7">LeBron 19</a></li>
+                                            <li><a class="dropdown-item nav-link nav_item" href="index.php?page=product_detail&id=1">D Rose Son of Chi</a></li>
+                                            <li><a class="dropdown-item nav-link nav_item" href="index.php?page=product_detail&id=4">Air Jordan XXXVI Low Luka</a></li>
+                                            <li><a class="dropdown-item nav-link nav_item" href="index.php?page=product_detail&id=11">Nike Air Zoom Pegasus 39</a></li>
+                                            <li><a class="dropdown-item nav-link nav_item" href="index.php?page=product_detail&id=17">VZigWild Trail 6</a></li>
                                         </ul>
                                     </li>
                                     <li class="mega-menu-col col-lg-3">
                                         <ul>
-                                            <li class="dropdown-header">Kid's</li>
-                                            <li><a class="dropdown-item nav-link nav_item" href="shop-product-detail.html">Donec vitae facilisis</a></li>
-                                            <li><a class="dropdown-item nav-link nav_item" href="shop-product-detail-left-sidebar.html">Quisque condimentum</a></li>
-                                            <li><a class="dropdown-item nav-link nav_item" href="shop-product-detail-right-sidebar.html">Etiam ac rutrum</a></li>
-                                            <li><a class="dropdown-item nav-link nav_item" href="shop-product-detail-thumbnails-left.html">Donec vitae ante ante</a></li>
-                                            <li><a class="dropdown-item nav-link nav_item" href="shop-product-detail-thumbnails-left.html">Donec porttitor</a></li>
+                                            <li class="dropdown-header">Boy's and Girls</li>
+                                            <li><a class="dropdown-item nav-link nav_item" href="index.php?page=product_detail&id=2">Harden Vol. 6 Shoes</a></li>
+                                            <li><a class="dropdown-item nav-link nav_item" href="index.php?page=product_detail&id=10">Tensaur  Sport Training Lace Shoes</a></li>
+                                            <li><a class="dropdown-item nav-link nav_item" href="index.php?page=product_detail&id=12">Reebok Road Supreme 2 Alt Shoes</a></li>
+                                            <li><a class="dropdown-item nav-link nav_item" href="index.php?page=product_detail&id=16">Reebok XT Sprinter Slip-On Shoes</a></li>
+                                            <li><a class="dropdown-item nav-link nav_item" href="index.php?page=product_detail&id=13">Run Falcon 2.0 Shoes</a></li>
                                         </ul>
                                     </li>
                                     <li class="mega-menu-col col-lg-3">
                                         <ul>
-                                            <li class="dropdown-header">Accessories</li>
-                                            <li><a class="dropdown-item nav-link nav_item" href="shop-product-detail.html">Donec vitae facilisis</a></li>
-                                            <li><a class="dropdown-item nav-link nav_item" href="shop-product-detail-left-sidebar.html">Quisque condimentum</a></li>
-                                            <li><a class="dropdown-item nav-link nav_item" href="shop-product-detail-right-sidebar.html">Etiam ac rutrum</a></li>
-                                            <li><a class="dropdown-item nav-link nav_item" href="shop-product-detail-thumbnails-left.html">Donec vitae ante ante</a></li>
-                                            <li><a class="dropdown-item nav-link nav_item" href="shop-product-detail-thumbnails-left.html">Donec porttitor</a></li>
+                                            <li class="dropdown-header">Shoes Type</li>
+                                            <?php
+                                                $typr = "running";
+                                            ?>
+                                            <li><a class="dropdown-item nav-link nav_item" href="index.php?page=type_search&catyp=<?=$typr?>">Running Shoes</a></li>
+                                            <?php
+                                                $typb = "basketball";
+                                            ?>
+                                            <li><a class="dropdown-item nav-link nav_item" href="index.php?page=type_search&catyp=<?=$typb?>">Basketball Shoes</a></li>
+                                            <?php
+                                                $trgt = "men";
+                                            ?>
+                                            <li><a class="dropdown-item nav-link nav_item" href="index.php?page=target_searchM&catrftm=<?=$trgt?>">Men's Shoes</a></li>
+                                            <?php
+                                                $trgt = "women";
+                                            ?>
+                                            <li><a class="dropdown-item nav-link nav_item" href="index.php?page=target_search&catrft=<?=$trgt?>">Women's Shoes</a></li>
+                                            <?php
+                                                $trgt = "unisex";
+                                            ?>
+                                            <li><a class="dropdown-item nav-link nav_item" href="index.php?page=target_search&catrft=<?=$trgt?>">Unisex Shoes</a></li>
                                         </ul>
                                     </li>
                                 </ul>
