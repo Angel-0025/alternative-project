@@ -1,15 +1,15 @@
+<style>
+  .app-brand a img {
+    max-width: 50px !important;
+  }
+</style>
 <aside class="left-sidebar bg-sidebar">
   <div id="sidebar" class="sidebar sidebar-with-footer">
     <!-- Aplication Brand -->
-    <div class="app-brand">
+    <div class="app-brand" >
       <a href="/index.html">
-        <svg class="brand-icon" xmlns="http://www.w3.org/2000/svg" preserveAspectRatio="xMidYMid" width="30" height="33" viewBox="0 0 30 33">
-          <g fill="none" fill-rule="evenodd">
-            <path class="logo-fill-blue" fill="#7DBCFF" d="M0 4v25l8 4V0zM22 4v25l8 4V0z" />
-            <path class="logo-fill-white" fill="#FFF" d="M11 4v25l8 4V0z" />
-          </g>
-        </svg>
-        <span class="brand-name">Sleek Dashboard</span>
+        <img src="assets/img/shoes.png" alt="">
+        <span class="brand-name">Dashboard</span>
       </a>
     </div>
     <!-- begin sidebar scrollbar -->
@@ -33,11 +33,6 @@
                   <span class="nav-text">Analytics</span>
                 </a>
               </li>
-              <li class="nav-test">
-                <a class="sidenav-item-link " href="index.php?page=test">
-                  <span class="nav-text">Invoice</span>
-                </a>
-              </li>
             </div>
           </ul>
         </li>
@@ -48,14 +43,14 @@
           </a>
           <ul class="collapse"  id="products" data-parent="#sidebar-menu">
             <div class="sub-menu">
-              <li class="nav-upload_product">
-                <a class="sidenav-item-link " href="index.php?page=upload_product">
-                  <span class="nav-text">Upload New Product</span>
-                </a>
-              </li>
               <li class="nav-product_list">
                 <a class="sidenav-item-link " href="index.php?page=product_list">
                   <span class="nav-text">Product List</span>
+                </a>
+              </li>
+              <li class="nav-upload_product">
+                <a class="sidenav-item-link " href="index.php?page=upload_product">
+                  <span class="nav-text">Upload New Product</span>
                 </a>
               </li>
             </div>

@@ -53,8 +53,7 @@
     	<div class="container">
             <nav class="navbar navbar-expand-lg"> 
                 <a class="navbar-brand" href="index.html">
-                    <img class="logo_light" src="" alt="logo" />
-                    <img class="logo_dark" src="" alt="logo" />
+                    <img class="logo_dark" src="assets/images/shoes1-removebg-preview-1.png" alt="logo" />
                 </a>
                 <button class="navbar-toggler" type="button" data-toggle="collapse" data-target="#navbarSupportedContent" aria-expanded="false"> 
                     <span class="ion-android-menu"></span>
@@ -101,7 +100,7 @@
                                         <ul>
                                             <li class="dropdown-header">Boy's and Girls</li>
                                             <li><a class="dropdown-item nav-link nav_item" href="index.php?page=product_detail&id=2">Harden Vol. 6 Shoes</a></li>
-                                            <li><a class="dropdown-item nav-link nav_item" href="index.php?page=product_detail&id=10">Tensaur  Sport Training Lace Shoes</a></li>
+                                            <li><a class="dropdown-item nav-link nav_item" href="index.php?page=product_detail&id=10">Tensaur   Sport Training Lace Shoes</a></li>
                                             <li><a class="dropdown-item nav-link nav_item" href="index.php?page=product_detail&id=12">Reebok Road Supreme 2 Alt Shoes</a></li>
                                             <li><a class="dropdown-item nav-link nav_item" href="index.php?page=product_detail&id=16">Reebok XT Sprinter Slip-On Shoes</a></li>
                                             <li><a class="dropdown-item nav-link nav_item" href="index.php?page=product_detail&id=13">Run Falcon 2.0 Shoes</a></li>

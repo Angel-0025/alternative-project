@@ -11,10 +11,9 @@ ob_start();
 </head>
 <body>
 <div style="text-align:right;">
-        <b>Sender:</b> Phppot
     </div>
     <div style="text-align: left;border-top:1px solid #000;">
-        <div style="font-size: 24px;color: #666;">INVOICE</div>
+        <div style="font-size: 24px;color: #666;">Order Receipt</div>
     </div>
 <table style="line-height: 1.5;">
     <tr><td><b>Reference #:</b> <?php echo $result[0]["ref_num"]; ?>

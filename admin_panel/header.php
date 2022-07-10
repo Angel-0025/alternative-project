@@ -29,7 +29,7 @@
 
 
     <!-- FAVICON -->
-    <link href="assets/img/favicon.png" rel="shortcut icon" />
+    <link href="assets/img/favicon1.png" rel="shortcut icon" />
     
     <!-- Font awesome -->
     <script type="text/javascript" src="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/5.13.1/js/all.min.js" crossorigin="anonymous"></script>
