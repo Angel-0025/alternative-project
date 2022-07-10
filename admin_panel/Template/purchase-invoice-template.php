@@ -66,12 +66,7 @@ foreach ($orderItemResult as $k => $v) {
     <td style = "text-align:right;"><?php echo number_format($total, 2); ?></td>
 </tr>
 </table></div>
-<p><u>Kindly make your payment to</u>:<br/>
-Bank: American Bank of Commerce<br/>
-A/C: 05346346543634563423<br/>
-BIC: 23141434<br/>
-</p>
-<p><i>Note: Please send a remittance advice by email to vincy@phppot.com</i></p>
+
 </body>
 </html>
 

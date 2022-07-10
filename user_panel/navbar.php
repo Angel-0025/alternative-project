@@ -61,19 +61,6 @@
                 <div class="collapse navbar-collapse justify-content-end" id="navbarSupportedContent">
                     <ul class="navbar-nav">
                         <li><a class="nav-link nav_item nav-home_page" href="index.php?page=home_page">Home</a></li> 
-                        <li class="dropdown">
-                            <a class="dropdown-toggle nav-link nav-register_page nav-login_page" href="#" data-toggle="dropdown">Pages</a>
-                            <div class="dropdown-menu">
-                                <ul> 
-                                    <li><a class="dropdown-item nav-link nav_item" href="contact.html">Contact Us</a></li> 
-                                    <li><a class="dropdown-item nav-link nav_item nav-login_page" href="index.php?page=login_page">Login</a></li>
-                                    <li><a class="dropdown-item nav-link nav_item nav-register_page" href="index.php?page=register_page">Register</a></li>
-                                    <li><a class="dropdown-item nav-link nav_item nav-account_page" href="index.php?page=account_page">Account</a></li>
-                                    <li><a class="dropdown-item nav-link nav_item nav-tnc_page" href="index.php?page=tnc_page">Terms and Conditions</a></li>
-                                    <li><a class="dropdown-item nav-link nav_item nav-cOrder_page" href="index.php?page=cOrder_page">Order Complete</a></li>
-                                </ul>
-                            </div>
-                        </li>
                         <li class="dropdown dropdown-mega-menu">
                             <a class="dropdown-toggle nav-link" href="#" data-toggle="dropdown">Products</a>
                             <div class="dropdown-menu">
