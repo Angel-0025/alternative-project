@@ -3,7 +3,7 @@
     $connect = new PDO("mysql:host=localhost;dbname=alternative_project", "root", "");
 
     $user_id = $_POST["userID"];
-    $status  = "Order Placed";
+    $status  = "Order in Process";
     $ref_num = mt_rand(100000, 999999);
     $order_id;
 

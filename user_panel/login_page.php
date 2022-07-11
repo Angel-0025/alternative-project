@@ -46,6 +46,7 @@
                                     <div class="custome-checkbox"> 
                                     </div>
                                 </div>
+                                <a href="#">Forgot Password?</a>
                             </div>
                             <div class="form-group">
                                 <button type="submit" class="btn btn-fill-out btn-block" name="login" id="login">Log in</button>

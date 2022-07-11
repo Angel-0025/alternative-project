@@ -80,11 +80,28 @@
                                                 while($order = $stmt->fetch(PDO::FETCH_ASSOC)){
                                             ?>
                                             <tr>
-                                                <td><?=$order['ref_num']?></td>
-                                                <td><?php echo date('F d, Y', strtotime($order["order_at"]));?></td>
-                                                <td><?=$order['order_status']?></td>
-                                                <td><span>&#8369; </span><?=number_format($order['amount'], 2)?></td>
-                                                <td><a href="index.php?page=view_order&id=<?php echo $order["id"];?>" class="btn btn-fill-out btn-sm">View</a></td>
+                                                <form method="post" enctype="multipart/form-data">
+                                                    <td><?=$order['ref_num']?></td>
+                                                    <td><?php echo date('F d, Y', strtotime($order["order_at"]));?></td>
+                                                    <td><?=$order['order_status']?></td>
+                                                    <td><span>&#8369; </span><?=number_format($order['amount'], 2)?></td>
+                                                    <td>
+                                                        <a href="index.php?page=view_order&id=<?php echo $order["id"];?>" class="btn btn-fill-out btn-sm">View</a>
+                                                        <?php
+                                                            if($order['order_status'] == "Order in Process"){
+                                                        ?>
+                                                            <a type="button" id="<?php echo $order["id"];?>" name="<?=$order['ref_num']?>" class="btn btn-fill-out btn-sm order_cancel">Cancel Order</a>
+                                                        <?php
+                                                            }
+                                                            else{
+                                                        ?>
+                                                            
+                                                        <?php
+                                                            }
+                                                        ?>
+                                                    
+                                                    </td>
+                                                </form>
                                             </tr>
                                                 <?php }?>
                                         </tbody>
@@ -123,7 +140,9 @@
                                                 <td><?php echo date('F d, Y', strtotime($order["order_at"]));?></td>
                                                 <td><?=$order['order_status']?></td>
                                                 <td><span>&#8369; </span><?=number_format($order['amount'], 2)?></td>
-                                                <td><a href="index.php?page=view_order_archive&id=<?php echo $order["id"];?>" class="btn btn-fill-out btn-sm">View</a></td>
+                                                <td>
+                                                    <a href="index.php?page=view_order_archive&id=<?php echo $order["id"];?>" class="btn btn-fill-out btn-sm">View</a>
+                                                </td>
                                             </tr>
                                                 <?php }?>
                                         </tbody>
@@ -237,6 +256,28 @@
 </div>
 <!-- END SECTION SHOP -->
 <script>
+$(document).ready(function () {  
+     $(document).on('click', '.order_cancel', function(){  
+        var cancel_id= $(this).attr('id');
+        var cancel_ref= $(this).attr('name');
+        var $ele = $(this).parent().parent();
+        $.ajax({
+            type: "POST",
+            url: 'assets/php/cancel_order.php',
+            data: {cancel_id:cancel_id, cancel_ref:cancel_ref},
+            success:function(data) {
+                if(data== 1){
+                 $ele.fadeOut().remove();
+                 load_cart_item_number();
+                 load_total_cart();
+                }
+                if(data == 2){
+                    alert("can't delete the row");
+                }
+          }   
+       });  
+    });
+
     $('#update_address').on('submit', function(event){
         event.preventDefault();
         $('#updateAdd').attr("disabled","disabled");
@@ -303,4 +344,5 @@
                 $('.updateInfo-message').html('');
             }, 9999) 
     });
+});
 </script>
