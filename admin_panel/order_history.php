@@ -42,8 +42,20 @@ a .noHover:hover {
                                 <td class="d-none d-md-table-cell"><span>&#8369; </span><?php echo  number_format($orderResult[$k]["amount"], 2);?></td>
                                 <td class="d-none d-md-table-cell"><?php echo date('d F Y', strtotime($orderResult[$k]["order_at"]));?></td>
                                 <td class="d-none d-md-table-cell">
-                                <span class="badge badge-warning"><?php echo $orderResult[$k]["order_status"];?></span>
-                                </td>
+                                <?php
+                                    if($orderResult[$k]["order_status"] == "Received"){
+                                ?>
+                                 <span class="badge badge-success"><?php echo $orderResult[$k]["order_status"];?></span>
+                                    </td>
+                                <?php
+                                    }
+                                    else{
+                                ?>
+                                    <span class="badge badge-danger"><?php echo $orderResult[$k]["order_status"];?></span>
+                                <?php
+                                    }
+                                ?>
+                               
                                 <td >
                                 <a target="_blank" title="Generate Invoice" class="mb-1 btn btn-success btn-sm noHover" style="color: white;" href="./invoice_archive.php?id=<?php echo $orderResult[$k]["order_id"];?>">Print Receipt</a>
                                 <a class="mb-1 btn btn-primary btn-sm"  href="index.php?page=order_archive_view&id=<?php echo $orderResult[$k]["order_id"];?>">View</a>

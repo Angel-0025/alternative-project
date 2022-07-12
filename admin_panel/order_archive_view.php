@@ -2,6 +2,9 @@
     .product-thumbnail img {
 	max-width: 100px;
 }
+    .badge {
+        padding-top: 0.5em;
+    }
 </style>
 <?php
 // Check to make sure the id parameter is specified in the URL
@@ -21,7 +24,6 @@ if (isset($_GET['id'])) {
     // Simple error to display if the id wasn't specified
     exit('Product does not exist!');
 }
-echo $_GET['id'];
 ?>
 <div class="content">
     <!-- Order History -->
@@ -30,7 +32,14 @@ echo $_GET['id'];
         <!-- Order History -->
             <div class="card card-table-border-none" id="recent-orders">
                 <div class="card-header justify-content-between">
-                    <h2>Order ID Number: <?=$order['ref_num']?> </h2>
+                    <h2 style="margin-bottom: 0px;">Order ID Number: <?=$order['ref_num']?> </h2>
+                    <?php
+                        if($order['order_status'] != "Received"){
+                    ?>
+                        <h5>Cancellation Reason: <span class="badge badge-danger"><?php echo $order['cancel_reason'];?></span></h5>
+                    <?php
+                        }
+                    ?>
                 </div>
                 <div class="card-body pt-0 pb-5">
                     <table class="table card-table table-responsive table-responsive-large" style="width:100%">
@@ -85,11 +94,11 @@ echo $_GET['id'];
                             </tr>
                         </tfoot>
                     </table>
+                  
                     <div class="form-group row ">
-                        <div class="col-sm-4 mt-4 pt-3 ml-auto">
-                            <label for="exampleFormControlSelect12"></label>
-                            <a target="_blank" title="Generate Invoice" class="mb-1 btn btn-primary btn-md" style="" href="./invoice_archive.php?id=<?php echo $_GET['id'];?>">Print Receipt</a>
-                            <a type="button" href="index.php?page=order_history" class="mb-1 btn btn-danger btn-md">Back</a>
+                        <div class="col-sm-3 mt-4 pt-3 ml-auto">
+                            <a target="_blank" title="Generate Invoice" class="mb-1 btn btn-primary btn-sm" style="" href="./invoice_archive.php?id=<?php echo $_GET['id'];?>">Print Receipt</a>
+                            <a type="button" href="index.php?page=order_history" class="mb-1 btn btn-danger btn-sm">Back</a>
                         </div>
                     </div>
                 </div>

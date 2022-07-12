@@ -13,7 +13,7 @@
                     <h2>Product List</h2>
                 </div>
                 <div class="card-body pt-0 pb-5">
-                    <table  class="table table-condensed table-bordered table-hover dataTable no-footer" id="productList" style="margin-bottom: 0px; width:100%; border-collapse: separate;">
+                    <table  class="table table-condensed table-bordered table-hover dataTable no-footer nowrap" id="productList" style="margin-bottom: 0px; width:100%; border-collapse: separate; ">
                         <thead>
                             <tr>
                                 <th scope="col" class="no-sort">#</th>
@@ -24,6 +24,7 @@
                                 <th  scope="col" class="no-sort">Stocks</th>
                                 <th  scope="col" class="no-sort">Price</th>
                                 <th  scope="col" class="no-sort">Action</th>
+                                
                             </tr>
                         </thead>
                         <tbody>
@@ -48,7 +49,7 @@
                                 <td class="d-none d-md-table-cell"><?php echo $product['stocks'];?></td>
                                 <td class="d-none d-md-table-cell"><span>&#8369; </span><?php echo number_format($product['price'], 2); ?></td>
                                 <td >
-                                    <a class="mb-1 btn btn-primary btn-sm"  href="index.php?page=product_update&id=<?php echo $product['product_id']; ?>">Edit</a>
+                                    <a class="mb-1 btn btn-primary btn-sm"  href="index.php?page=product_update&id=<?php echo $product['product_id']; ?>" >Edit</a>
                                     <a class="mb-1 btn btn-info btn-sm"  href="index.php?page=product_view&id=<?php echo $product['product_id']; ?>">View</a>
                                 </td>
                             </tr>
@@ -61,13 +62,19 @@
     </div>
 </div>
 <script>
-    $('#productList').DataTable( {
-    "paging":   true,
-    "info":     true,
-    "scrollX": true,
-    "ordering": false,
-    columnDefs: [
-      { targets: 'no-sort', orderable: false }
-    ],
-  } );
+$(document).ready(function() {
+    var table = $('#productList').DataTable( {
+        "paging":   true,
+        "info":     true,
+        "scrollX": true,
+        "ordering": false,
+        fixedColumns:   true,
+        columnDefs: [
+        { targets: 'no-sort', orderable: false }
+        ],
+        fixedColumns:   {
+            right: 1
+        }
+    } );
+} );
 </script>

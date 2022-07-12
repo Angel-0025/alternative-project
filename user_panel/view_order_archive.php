@@ -24,8 +24,15 @@ print_r($product['user_id']);
         <div class="row">
             <div class="col-md-12">
                 <div class="order_review">
-                    <div class="heading_s1">
+                    <div class="heading_s1 justify-content-between"  style="display: flex">
                         <h4>Your Orders # <?=$product['ref_num']?></h4>
+                        <?php
+                            if($product['order_status'] != "Received"){
+                        ?>
+                        <h5>Cancellation Reason: <span class="badge badge-danger"><?php echo $product['cancel_reason'];?></span></h5>
+                        <?php
+                            }
+                        ?>
                     </div>
                     <div class="table-responsive order_table">
                         <table class="table">
