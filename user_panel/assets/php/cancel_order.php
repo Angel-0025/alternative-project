@@ -15,9 +15,10 @@
         $address = $order_item['customer_address'];
         $amount = $order_item['amount'];
         $status = "Order Cancelled";
+        $reason = "Client Cancellation";
 
         //Insert 
-        $query = "INSERT INTO order_archive(order_id, user_id, ref_num, customer_fname, customer_lname, customer_address, amount, order_status) VALUES(:orderID, :userid, :refnum, :cfname, :clname, :caddress, :total_amount, :ostatus)";
+        $query = "INSERT INTO order_archive(order_id, user_id, ref_num, customer_fname, customer_lname, customer_address, amount, order_status, cancel_reason) VALUES(:orderID, :userid, :refnum, :cfname, :clname, :caddress, :total_amount, :ostatus, :creason)";
         $statement = $connect->prepare($query);
         $statement->execute(
         array(
@@ -29,6 +30,7 @@
             ':caddress'  =>  $address,
             ':total_amount'  =>  $amount,
             ':ostatus' => $status,
+            ':creason' => $reason,
             )
         );
 
