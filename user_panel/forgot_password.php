@@ -5,14 +5,14 @@
         <div class="row align-items-center">
         	<div class="col-md-6">
                 <div class="page-title">
-            		<h1>Login</h1>
+            		<h1>Forgot Password</h1>
                 </div>
             </div>
             <div class="col-md-6">
                 <ol class="breadcrumb justify-content-md-end">
                     <li class="breadcrumb-item"><a href="index.php?page=home_page">Home</a></li>
                     <li class="breadcrumb-item"><a href="#">Pages</a></li>
-                    <li class="breadcrumb-item active">Login</li>
+                    <li class="breadcrumb-item active">Forgot Password</li>
                 </ol>
             </div>
         </div>
@@ -32,27 +32,17 @@
             		<div class="padding_eight_all bg-white">
                         <div class="heading_s1">
                             <div class="login-message"></div>
-                            <h3>Login</h3>
+                            <h3>Forgot Password</h3>
                         </div>
-                        <form method="post" id="loginAcc" enctype="multipart/form-data">
+                        <form method="post" id="forgotPass" enctype="multipart/form-data">
                             <div class="form-group">
-                                <input type="text" required="" class="form-control" name="user_email" id="user_email" placeholder="Your Email">
+                                <input type="text" required="" class="form-control" name="fuser_email" id="fuser_email" placeholder="Your Email">
                             </div>
                             <div class="form-group">
-                                <input class="form-control" required="" type="password" name="user_password" id="user_password" placeholder="Password">
-                            </div>
-                            <div class="login_footer form-group">
-                                <div class="chek-form">
-                                    <div class="custome-checkbox"> 
-                                    </div>
-                                </div>
-                                <a href="index.php?page=forgot_password">Forgot Password?</a>
-                            </div>
-                            <div class="form-group">
-                                <button type="submit" class="btn btn-fill-out btn-block" name="login" id="login">Log in</button>
+                                <button type="submit" class="btn btn-fill-out btn-block" name="ctnPass" id="ctnPass">Continue</button>
                             </div>
                         </form>
-                        <div class="form-note text-center">Don't Have an Account? <a href="index.php?page=register_page">Sign up now</a></div>
+                        <div class="form-note text-center">Go back to login?<a href="index.php?page=login_page"> Login now</a></div>
                     </div>
                 </div>
             </div>
@@ -61,11 +51,11 @@
 </div>
 <!-- END LOGIN SECTION -->
 <script>
-      $('#loginAcc').on('submit', function(event){
+      $('#forgotPass').on('submit', function(event){
         event.preventDefault();
-        $('#login').attr("disabled","disabled");
+        $('#ctnPass').attr("disabled","disabled");
         $.ajax({
-            url:"./assets/php/process_login.php",
+            url:"assets/php/forgotPass.php",
             method:"POST",
             data: new FormData(this),
             contentType:false,
@@ -76,15 +66,15 @@
             },
             success:function(response){
                 if(response == 1){
-                    window.location.href="index.php?page=home_page";   
+                    window.location.href="index.php?page=reset_code";   
                 }
                 if(response == 2){
-                    $(".login-message").html('<div class="alert alert-danger alert-dismissible mt-2"><button type="button" class="close" data-dismiss="alert">x</button> <strong>Sorry, we counldn\'t an account with that email</strong></div>');
+                    $(".login-message").html('<div class="alert alert-danger alert-dismissible mt-2"><button type="button" class="close" data-dismiss="alert">x</button> <strong>Sorry, email doesn\'t exist</strong></div>');
                     $('#login').removeAttr("disabled","disabled");
- 
+
                 }
                 if(response == 3){
-                    $(".login-message").html('<div class="alert alert-danger alert-dismissible mt-2"><button type="button" class="close" data-dismiss="alert">x</button> <strong>The password you entered is wrong</strong></div>');
+                    $(".login-message").html('<div class="alert alert-danger alert-dismissible mt-2"><button type="button" class="close" data-dismiss="alert">x</button> <strong>Something went wrong</strong></div>');
                     $('#login').removeAttr("disabled","disabled");
 
                 }

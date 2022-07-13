@@ -1,3 +1,4 @@
+
 <!-- START SECTION BREADCRUMB -->
 <div class="breadcrumb_section bg_gray page-title-mini">
     <div class="container">
@@ -5,14 +6,14 @@
         <div class="row align-items-center">
         	<div class="col-md-6">
                 <div class="page-title">
-            		<h1>Login</h1>
+            		<h1>Reset Code</h1>
                 </div>
             </div>
             <div class="col-md-6">
                 <ol class="breadcrumb justify-content-md-end">
                     <li class="breadcrumb-item"><a href="index.php?page=home_page">Home</a></li>
                     <li class="breadcrumb-item"><a href="#">Pages</a></li>
-                    <li class="breadcrumb-item active">Login</li>
+                    <li class="breadcrumb-item active">Reset Code</li>
                 </ol>
             </div>
         </div>
@@ -31,28 +32,27 @@
                 <div class="login_wrap">
             		<div class="padding_eight_all bg-white">
                         <div class="heading_s1">
+                           
+                            <h3>Reset Code</h3>
                             <div class="login-message"></div>
-                            <h3>Login</h3>
-                        </div>
-                        <form method="post" id="loginAcc" enctype="multipart/form-data">
-                            <div class="form-group">
-                                <input type="text" required="" class="form-control" name="user_email" id="user_email" placeholder="Your Email">
-                            </div>
-                            <div class="form-group">
-                                <input class="form-control" required="" type="password" name="user_password" id="user_password" placeholder="Password">
-                            </div>
-                            <div class="login_footer form-group">
-                                <div class="chek-form">
-                                    <div class="custome-checkbox"> 
-                                    </div>
+                            <?php 
+                            if(isset($_SESSION['info'])){
+                                ?>
+                                <div class="alert alert-success text-center" style="padding: 0.4rem 0.4rem">
+                                    <?php echo $_SESSION['info']; ?>
                                 </div>
-                                <a href="index.php?page=forgot_password">Forgot Password?</a>
+                                <?php
+                            }
+                            ?>
+                        </div>
+                        <form method="post" id="resetCode" enctype="multipart/form-data">
+                            <div class="form-group">
+                                <input type="number" required="" class="form-control" name="rCode" id="rCode" placeholder="Enter Your Reset Code">
                             </div>
                             <div class="form-group">
-                                <button type="submit" class="btn btn-fill-out btn-block" name="login" id="login">Log in</button>
+                                <button type="submit" class="btn btn-fill-out btn-block" name="codeSubmit" id="codeSubmit">Submit</button>
                             </div>
                         </form>
-                        <div class="form-note text-center">Don't Have an Account? <a href="index.php?page=register_page">Sign up now</a></div>
                     </div>
                 </div>
             </div>
@@ -61,31 +61,31 @@
 </div>
 <!-- END LOGIN SECTION -->
 <script>
-      $('#loginAcc').on('submit', function(event){
+      $('#resetCode').on('submit', function(event){
         event.preventDefault();
-        $('#login').attr("disabled","disabled");
+        $('#codeSubmit').attr("disabled","disabled");
         $.ajax({
-            url:"./assets/php/process_login.php",
+            url:"./assets/php/resetcode_process.php",
             method:"POST",
             data: new FormData(this),
             contentType:false,
             cache:false,
             processData:false,
             beforeSend:function(){
-            $('#login').val('logging-in...');
+            $('#codeSubmit').val('Submitting...');
             },
             success:function(response){
                 if(response == 1){
-                    window.location.href="index.php?page=home_page";   
+                    window.location.href="index.php?page=change_password";   
                 }
                 if(response == 2){
-                    $(".login-message").html('<div class="alert alert-danger alert-dismissible mt-2"><button type="button" class="close" data-dismiss="alert">x</button> <strong>Sorry, we counldn\'t an account with that email</strong></div>');
-                    $('#login').removeAttr("disabled","disabled");
+                    $(".login-message").html('<div class="alert alert-danger alert-dismissible mt-2"><button type="button" class="close" data-dismiss="alert">x</button> <strong>The code you enter doesn\'t match</strong></div>');
+                    $('#codeSubmit').removeAttr("disabled","disabled");
  
                 }
                 if(response == 3){
                     $(".login-message").html('<div class="alert alert-danger alert-dismissible mt-2"><button type="button" class="close" data-dismiss="alert">x</button> <strong>The password you entered is wrong</strong></div>');
-                    $('#login').removeAttr("disabled","disabled");
+                    $('#codeSubmit').removeAttr("disabled","disabled");
 
                 }
               
