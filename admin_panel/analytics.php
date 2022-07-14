@@ -145,7 +145,7 @@ $year = isset($_GET['year']) ? $_GET['year'] : date('Y');
         <!-- Yearly Sales -->
             <div class="card card-table-border-none" id="recent-orders">
                 <div class="card-header justify-content-between">
-                    <h2>Yearl Sales</h2>
+                    <h2>Yearly Sales</h2>
                     <div class="form-group row" style="margin-bottom: 0px;">
                         <label for="" class="col-sm-3 col-form-label col-form-label-sm" style="font-size: .8rem; font-weight: 400; padding-right: 5px;margin-bottom: 0px;margin-top: 0px;">Month</label>
                         <div class="col-sm-8" style="padding-right: 0px; padding-left: 0px;">

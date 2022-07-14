@@ -79,7 +79,7 @@
         <li  class="has-sub" >
           <a class="sidenav-item-link" href="javascript:void(0)" data-toggle="collapse" data-target="#pages" aria-expanded="false" aria-controls="pages">
             <i class="mdi mdi-image-filter-none"></i>
-            <span class="nav-text">Pages</span> <b class="caret"></b>
+            <span class="nav-text">Account</span> <b class="caret"></b>
           </a>
           <ul  class="collapse"  id="pages" data-parent="#sidebar-menu">
             <div class="sub-menu">
