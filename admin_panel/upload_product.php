@@ -268,7 +268,7 @@ $(document).ready(function () {
         event.preventDefault();
             $('#submit').attr("disabled","disabled");
             $.ajax({
-                url:"admin_class.php",
+                url:"assets/php/admin_class.php",
                 method:"POST",
                 data: new FormData(this),
                 contentType:false,

@@ -243,7 +243,7 @@ $(document).ready(function () {
         event.preventDefault();
             $('#submit').attr("disabled","disabled");
             $.ajax({
-                url:"product_update_process.php",
+                url:"assets/php/product_update_process.php",
                 method:"POST",
                 data: new FormData(this),
                 contentType:false,

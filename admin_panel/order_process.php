@@ -117,7 +117,7 @@ $(document).ready(function () {
         event.preventDefault();
         $('#update').attr("disabled","disabled");
         $.ajax({
-            url:"process_update_order.php",
+            url:"assets/php/process_update_order.php",
             method:"POST",
             data: new FormData(this),
             contentType:false,

@@ -38,7 +38,7 @@ print_r($order_item['ref_num']);
         event.preventDefault();
         $('#deleteccl').attr("disabled","disabled");
         $.ajax({
-            url:"order_cancel_process.php",
+            url:"./assets/php/order_cancel_process.php",
             method:"POST",
             data: new FormData(this),
             contentType:false,
