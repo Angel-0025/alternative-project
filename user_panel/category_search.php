@@ -21,8 +21,8 @@ include 'db_connect.php';
     .disabled {
     pointer-events:none; 
     opacity:0.6;   
-}
-.active1{
+    }
+    .active1{
         color:red !important;
     }
 </style>
@@ -37,7 +37,7 @@ include 'db_connect.php';
             </div>
             <div class="col-md-6">
                 <ol class="breadcrumb justify-content-md-end">
-                    <li class="breadcrumb-item"><a href="#">Home</a></li>
+                    <li class="breadcrumb-item"><a href="index.php?page=home_page">Home</a></li>
                     <li class="breadcrumb-item"><a href="#">Pages</a></li>
                     <li class="breadcrumb-item active">Shop List</li>
                 </ol>

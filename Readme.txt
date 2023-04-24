@@ -2,7 +2,7 @@
 
 This E-commerce system is made for alternative internship. 
 
-## Authors
+## Author
 
 - Oribiada, Angel H.
 
@@ -18,8 +18,7 @@ What things you need to install to make the system work in your computer.
 - XAMPP Version 3.3.0
 - VSCode Version 1.69.1
 - Phpmyadmin Version 5.2.0
-- Composer
-- NPM
+
 
 ## Installation
 

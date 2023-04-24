@@ -47,7 +47,7 @@ input[type=number] {
             </div>
             <div class="col-md-6">
                 <ol class="breadcrumb justify-content-md-end">
-                    <li class="breadcrumb-item"><a href="#">Home</a></li>
+                    <li class="breadcrumb-item"><a href="index.php?page=home_page">Home</a></li>
                     <li class="breadcrumb-item">Product Detail</li>
                 </ol>
             </div>
